@@ -21,5 +21,6 @@
     <module>com.newtouch.lion-common</module>
     <module>com.newtouch.lion-main</module>
     <module>com.newtouch.lion-web</module>
+    <module>com.newtouch.lion-webmain</module>
   </modules>
 </project>
