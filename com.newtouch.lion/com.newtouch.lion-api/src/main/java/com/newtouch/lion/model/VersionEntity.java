@@ -25,7 +25,7 @@ import java.util.Date;
  * @author WangLijun
  * @version 1.0
  */
-public abstract class VersionEntity extends AuditEntity {
+public abstract class VersionEntity<PK> extends AuditEntity<PK> {
 
 	private static final long serialVersionUID = -746324913862566791L;
 	/***

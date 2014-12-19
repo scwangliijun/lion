@@ -50,7 +50,7 @@ import com.newtouch.lion.model.BaseEntity;
  * @version 1.0
  */
 
-public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
+public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK> {
 
 	private static final long serialVersionUID = 840623395509475191L;
 
@@ -82,17 +82,16 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 
 	private void addAuditInfo(T obj) {
 		if (obj instanceof AuditEntity) {
-			AuditEntity obj1 = (AuditEntity) obj;
-
-			Long id = obj1.getId();
-			if ((id == null) || (id.longValue() <= 0L)) {
+			@SuppressWarnings("unchecked")
+			AuditEntity<PK> obj1 = (AuditEntity<PK>) obj;
+			if ((obj1.getId() == null)) {
 				obj1.setCreatedById(AppContext.getUserInfo().getId());
 				if (obj1.getCreatedDate() == null) {
 					obj1.setCreatedDate(Calendar.getInstance().getTime());
 				}
 			}
 			obj1.setUpdatedById(AppContext.getUserInfo().getId());
-			log.info("userId:{}",AppContext.getUserInfo().getId());
+			log.info("userId:{}", AppContext.getUserInfo().getId());
 			obj1.setUpdatedDate(Calendar.getInstance().getTime());
 		}
 	}
@@ -134,8 +133,7 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.lion.framework.dao.BaseDao#findByIdNoWaitLock(java.lang.Long)
+	 * @see com.lion.framework.dao.BaseDao#findByIdNoWaitLock(java.lang.Long)
 	 */
 	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
@@ -149,13 +147,13 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<T> findAll() {
-		String hql="from "+this.entityClass.getSimpleName();
+		String hql = "from " + this.entityClass.getSimpleName();
 		Query query = this.getCurrentSession().createQuery(hql);
 		return query.list();
 	}
 
 	public void eagerLoad(T obj) {
-		 Hibernate.initialize(obj);
+		Hibernate.initialize(obj);
 	}
 
 	public void evict(T obj) {
@@ -165,14 +163,13 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.lion.framework.dao.BaseDao#find(com.lion.framework.model.
+	 * @see com.lion.framework.dao.BaseDao#find(com.lion.framework.model.
 	 * BaseEntity )
 	 */
 
 	@Override
 	public List<T> find(T obj) {
-		//TODO
+		// TODO
 		// return super.getHibernateTemplate().findByExample(obj);
 		// return this.getCurrentSession().bySimpleNaturalId(obj);
 		return null;
@@ -187,7 +184,7 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	@Override
 	public int updateHQL(String hql, Map<String, ?> params) {
 		Session session = this.getCurrentSession();
-		Query  query=session.createQuery(hql);
+		Query query = session.createQuery(hql);
 		query.setProperties(params);
 		return query.executeUpdate();
 	}
@@ -224,8 +221,7 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.lion.framework.dao.BaseDao#lock(com.lion.framework.model.
+	 * @see com.lion.framework.dao.BaseDao#lock(com.lion.framework.model.
 	 * BaseEntity , org.hibernate.LockMode)
 	 */
 	@SuppressWarnings("deprecation")
@@ -237,8 +233,7 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.lion.framework.dao.BaseDao#nativeQueryCountSQL(java.lang.String,
+	 * @see com.lion.framework.dao.BaseDao#nativeQueryCountSQL(java.lang.String,
 	 * java.util.Map)
 	 */
 	@Override
@@ -429,8 +424,7 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.lion.framework.dao.BaseDao#remove(com.lion.framework.model.
+	 * @see com.lion.framework.dao.BaseDao#remove(com.lion.framework.model.
 	 * BaseEntity)
 	 */
 	@Override
@@ -441,8 +435,7 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.lion.framework.dao.BaseDao#removeObjects(java.util.Collection)
+	 * @see com.lion.framework.dao.BaseDao#removeObjects(java.util.Collection)
 	 */
 	@Override
 	public void removeObjects(Collection<T> objs) {
@@ -465,8 +458,7 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.lion.framework.dao.BaseDao#updateByNamedQuery(java.lang.String,
+	 * @see com.lion.framework.dao.BaseDao#updateByNamedQuery(java.lang.String,
 	 * java.util.Map)
 	 */
 	@Override
@@ -479,8 +471,7 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.lion.framework.dao.BaseDao#update(com.lion.framework.model.
+	 * @see com.lion.framework.dao.BaseDao#update(com.lion.framework.model.
 	 * BaseEntity)
 	 */
 	@Override
@@ -492,20 +483,19 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.lion.framework.dao.BaseDao#update(com.lion.framework.model.
+	 * @see com.lion.framework.dao.BaseDao#update(com.lion.framework.model.
 	 * BaseEntity, java.util.Date)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void update(T obj, Date updateDate) {
-		this.updateEntity((AuditEntity) obj, updateDate);
+		this.updateEntity((AuditEntity<PK>) obj, updateDate);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.lion.framework.dao.BaseDao#updateObjects(com.lion.framework
+	 * @see com.lion.framework.dao.BaseDao#updateObjects(com.lion.framework
 	 * .model.BaseEntity)
 	 */
 	@Override
@@ -517,17 +507,17 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.lion.framework.dao.BaseDao#updateObjects(com.lion.framework
+	 * @see com.lion.framework.dao.BaseDao#updateObjects(com.lion.framework
 	 * .model.BaseEntity, java.util.Date)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void updateObjects(Collection<T> objs, Date updateDate) {
 		// TODO Auto-generated method stub
 		for (Iterator<T> localIterator = objs.iterator(); localIterator
 				.hasNext();) {
 			Object obj = localIterator.next();
-			updateEntity((AuditEntity) obj, updateDate);
+			updateEntity((AuditEntity<PK>) obj, updateDate);
 		}
 	}
 
@@ -536,7 +526,7 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	 * @param o
 	 * @param updateDate
 	 */
-	private void updateEntity(AuditEntity obj, Date updateDate) {
+	private void updateEntity(AuditEntity<PK> obj, Date updateDate) {
 		if (updateDate == null) {
 			obj.setUpdatedDate(Calendar.getInstance().getTime());
 		} else {
@@ -548,8 +538,7 @@ public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * com.lion.framework.dao.BaseDao#getsSequenceNextval(java.lang.String)
+	 * @see com.lion.framework.dao.BaseDao#getsSequenceNextval(java.lang.String)
 	 */
 	public long getsSequenceNextval(String sequenceName) {
 		String sql = "select " + sequenceName + ".Nextval as seq from dual";

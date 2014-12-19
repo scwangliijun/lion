@@ -35,7 +35,7 @@ import com.newtouch.lion.model.BaseEntity;
  * @author WangLijun
  * @version 1.0
  */
-public interface BaseDao<T extends BaseEntity> extends Serializable {
+public interface BaseDao<T,PK extends BaseEntity<PK>> extends Serializable {
 	/**
 	 * 获得当前事物的session
 	 * @return org.hibernate.Session

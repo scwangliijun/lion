@@ -25,7 +25,7 @@ import java.io.Serializable;
  * @author WangLijun
  * @version 1.0
  */
-public abstract class BaseEntity implements Serializable {
+public abstract class BaseEntity<PK> implements Serializable {
 
 	/**
 	 * 
@@ -36,7 +36,7 @@ public abstract class BaseEntity implements Serializable {
 	 * 
 	 * @return Long
 	 */
-	public abstract Long getId();
+	public abstract PK getId();
 
 	/***
 	 * 序列号
@@ -78,7 +78,8 @@ public abstract class BaseEntity implements Serializable {
 			return false;
 		if (super.getClass() != obj.getClass())
 			return false;
-		BaseEntity other = (BaseEntity) obj;
+		@SuppressWarnings("unchecked")
+		BaseEntity<PK> other = (BaseEntity<PK>) obj;
 		if (getId() == null)
 			if (other.getId() != null)
 				return false;

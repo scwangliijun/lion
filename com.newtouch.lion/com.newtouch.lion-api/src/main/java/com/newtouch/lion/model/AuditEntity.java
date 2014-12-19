@@ -25,7 +25,7 @@ import java.util.Date;
  * @author WangLijun
  * @version 1.0
  */
-public abstract class AuditEntity extends BaseEntity {
+public abstract class AuditEntity<PK> extends BaseEntity<PK> {
 
 	/**
 	 * @Fields serialVersionUID:TODO
