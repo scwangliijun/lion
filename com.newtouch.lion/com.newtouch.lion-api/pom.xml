@@ -9,7 +9,6 @@
 		<version>${lion-parent.version}</version>
 		<relativePath>../com.newtouch.lion-parent/pom.xml</relativePath>
 	</parent>
-	<groupId>com.newtouch.lion-api</groupId>
 	<artifactId>com.newtouch.lion-api</artifactId>
 	<name>com.newtouch.lion-api</name>
 	<url>http://maven.apache.org</url>
