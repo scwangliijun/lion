@@ -9,8 +9,6 @@ package com.newtouch.lion.model.system;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -33,8 +31,6 @@ import com.newtouch.lion.model.AuditEntity;
  * @author WangLijun
  * @version 1.0
  */
-@Entity
-@Table(name="BAS_LOGIN_LOG")
 public class LoginLog extends AuditEntity<Long> {
 	
 	private static final long serialVersionUID = -8978760822915952711L;

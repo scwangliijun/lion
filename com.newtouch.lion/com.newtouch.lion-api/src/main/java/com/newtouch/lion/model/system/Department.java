@@ -9,12 +9,10 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.newtouch.lion.model.VersionEntity;
@@ -37,8 +35,6 @@ import com.newtouch.lion.model.VersionEntity;
  * @author WangLijun
  * @version 1.0
  */
-@Entity
-@Table(name = "BAS_DEPARTMENT")
 public class Department  extends  VersionEntity<Long>{
 	
 	

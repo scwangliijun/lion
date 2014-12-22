@@ -4,11 +4,29 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
 	<!-- Hibernate Common Configuraction -->
-	<bean  class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<!-- 指定JPA持久化提供商，此处使用Hibernate实现HibernatePersistence类 -->
+	<bean id="persistenceProvider" class="org.hibernate.ejb.HibernatePersistence" />
+	<!-- 如果指定jpaVendorAdapter此属性可选，此处为HibernateJpaDialect -->
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+	<!-- 指定实现厂商专用特性，即generateDdl= false表示不自动生成DDL，database= HSQL表示使用hsqldb数据库 -->
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="generateDdl" value="false" />
+		<property name="database" value="HSQL" />
+	</bean>
 	<!-- 配置hibernate session工厂 -->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="hibernateProperties">
+		<property name="persistenceProvider" ref="persistenceProvider" />
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence-mysql.xml"></property>
+		<property name="mappingResources">
+			<list>
+				<value>classpath:model/system/bas_demo.orm.xml</value>
+			</list>
+		</property>
+		<property name="jpaPropertyMap">
 			<props>
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
@@ -27,17 +45,5 @@
 				<prop key="current_session_context_class">thread</prop>
 			</props>
 		</property>
-
-		<!-- 自动扫描注解方式配置的hibernate类文件 -->
-		<property name="packagesToScan">
-			<list>
-				<value>com.lion.api.model</value>
-			</list>
-		</property>
-		
-		
-		<!-- 自动扫描hbm方式配置的hibernate文件和.hbm文件 -->
-		<!-- <property name="mappingDirectoryLocations"> <list> <value>classpath:sy/hbm</value> 
-			</list> </property> -->
 	</bean>
 </beans>

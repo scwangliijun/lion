@@ -11,10 +11,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 import com.newtouch.lion.model.VersionEntity;
 
@@ -35,8 +33,6 @@ import com.newtouch.lion.model.VersionEntity;
  * @author WangLijun
  * @version 1.0
  */
-@Entity
-@Table(name = "bas_code_type")
 public class CodeType extends VersionEntity<Long> {
 	
 	private static final long serialVersionUID = -5566664366790451165L;

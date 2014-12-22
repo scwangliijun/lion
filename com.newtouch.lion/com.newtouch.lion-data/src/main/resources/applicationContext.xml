@@ -11,7 +11,7 @@
 	<import resource="common/applicationContext-properties.xml" />
 	
 	<!-- repository Start -->
-	<import resource="dao/applicationContext-hibernate.xml" />
+	<import resource="dao/applicationContext-jpa.xml" />
 	<import resource="tx/applicationContext-transaction.xml" />
 	<!-- repository End -->
 

@@ -7,8 +7,6 @@
 package com.newtouch.lion.model.system; 
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 import com.newtouch.lion.model.VersionEntity;
 
@@ -29,8 +27,6 @@ import com.newtouch.lion.model.VersionEntity;
  * @author WangLijun
  * @version 1.0
  */
-@Entity
-@Table(name="BAS_TIPTEXT")
 public class TipText extends VersionEntity<Long> {
 	
 	

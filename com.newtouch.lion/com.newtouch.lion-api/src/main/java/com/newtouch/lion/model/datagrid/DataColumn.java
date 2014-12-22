@@ -5,9 +5,6 @@
  * $id: Columns.java 9552 2013-3-27 下午4:48:20 WangLijun$
  */
 package com.newtouch.lion.model.datagrid;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import com.newtouch.lion.model.VersionEntity;
 
 
@@ -28,8 +25,6 @@ import com.newtouch.lion.model.VersionEntity;
  * @author WangLijun
  * @version 1.0
  */
-@Entity
-@Table(name="BAS_COLUMN")
 public class DataColumn extends VersionEntity<Long> {
 
 	/**

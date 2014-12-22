@@ -10,13 +10,6 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
 import com.newtouch.lion.model.AuditEntity;
 
 /**
@@ -58,8 +51,7 @@ public class DemoModel extends AuditEntity<Long> implements Serializable {
 	/**
 	 * @return the demoModel
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "parent_id", updatable = false, insertable = false)
+	 
 	public DemoModel getDemoModel() {
 		return demoModel;
 	}
@@ -74,8 +66,7 @@ public class DemoModel extends AuditEntity<Long> implements Serializable {
 	/**
 	 * @return the demoModels
 	 */
-	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-	@JoinColumn(name="parent_id",referencedColumnName="bas_demo_id")
+	 
 	public Set<DemoModel> getDemoModels() {
 		return demoModels;
 	}
@@ -110,7 +101,7 @@ public class DemoModel extends AuditEntity<Long> implements Serializable {
 	/**
 	 * @return the nameZh
 	 */
-	@Column(name="name_zh")
+
 	public String getNameZh() {
 		return nameZh;
 	}
