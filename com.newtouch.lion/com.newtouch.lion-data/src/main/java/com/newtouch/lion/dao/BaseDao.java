@@ -4,7 +4,7 @@
  *
  * $id: BaseDao.java 9552 2012-7-8 上午01:11:03 WangLijun$
  */
-package com.newtouch.lion.data.dao;
+package com.newtouch.lion.dao;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -12,11 +12,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.LockMode;
-import org.hibernate.Session;
+import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 
-import com.newtouch.lion.data.page.PageResult;
 import com.newtouch.lion.model.BaseEntity;
+import com.newtouch.lion.page.PageResult;
 
 /**
  * <p>
@@ -40,7 +40,7 @@ public interface BaseDao<T,PK extends BaseEntity<PK>> extends Serializable {
 	 * 获得当前事物的session
 	 * @return org.hibernate.Session
 	 */
-	public Session getCurrentSession();
+	public EntityManager getEntityManager();
 	
 	/***
 	 * 
@@ -113,7 +113,7 @@ public interface BaseDao<T,PK extends BaseEntity<PK>> extends Serializable {
 	 * @param params
 	 * @return
 	 */
-	public List<T> findByNamedQuery(String queryName, Map<String, Object> params);
+	public List<T> findByNamedQuery(String queryName, Map<String, ?> params);
 	
 	/***
 	 * 强制进行从 Session缓存到数据库的同步，然后清除Session缓存，事务提交前默认会执行这个方法。
@@ -136,7 +136,7 @@ public interface BaseDao<T,PK extends BaseEntity<PK>> extends Serializable {
 	 * @param entity
 	 * @param lockMode
 	 */
-	public void lock(T entity, LockMode lockMode);
+	public void lock(T entity, LockModeType lockModeType);
 	/***
 	 * 根据SQL和参数，统计当前记录总数
 	 * @param countSql
@@ -243,7 +243,7 @@ public interface BaseDao<T,PK extends BaseEntity<PK>> extends Serializable {
 	 * @param params 参数
 	 * @return int 返回更新数量
 	 */
-	public int updateByNamedQuery(String queryName, Map<String, Object> params);
+	public int updateByNamedQuery(String queryName, Map<String, ?> params);
 	
 	/**
 	 * 更新对象 

@@ -4,7 +4,7 @@
  *
  * $id: PageResult.java 9552 2012-7-8 上午01:14:38 WangLijun$
  */
-package com.newtouch.lion.data.page;
+package com.newtouch.lion.page;
 
 import java.io.Serializable;
 import java.util.ArrayList;

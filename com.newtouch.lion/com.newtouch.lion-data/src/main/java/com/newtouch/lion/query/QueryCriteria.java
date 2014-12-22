@@ -4,7 +4,7 @@
  *
  * $id: QueryCriteria.java 9552 2013-1-12 下午9:06:21 WangLijun$
  */
-package com.newtouch.lion.data.query;
+package com.newtouch.lion.query;
 
 import java.io.Serializable;
 import java.util.HashMap;

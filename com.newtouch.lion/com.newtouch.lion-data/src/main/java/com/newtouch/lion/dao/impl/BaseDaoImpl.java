@@ -4,7 +4,7 @@
  *
  * $id: BaseDaoImpl.java 9552 2012-7-8 上午01:18:39 WangLijun$
  */
-package com.newtouch.lion.data.dao.impl;
+package com.newtouch.lion.dao.impl;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -15,22 +15,22 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
-import org.hibernate.Hibernate;
-import org.hibernate.LockMode;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
+import javax.persistence.Query;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 
-import com.newtouch.lion.data.dao.BaseDao;
-import com.newtouch.lion.data.page.PageResult;
-import com.newtouch.lion.data.session.AppContext;
+import com.newtouch.lion.dao.BaseDao;
 import com.newtouch.lion.model.AuditEntity;
 import com.newtouch.lion.model.BaseEntity;
+import com.newtouch.lion.page.PageResult;
+import com.newtouch.lion.session.AppContext;
 
 /**
  * <p>
@@ -57,7 +57,7 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	protected final Logger log = LoggerFactory.getLogger(super.getClass());
 
 	@Autowired(required = true)
-	private SessionFactory sessionFactory;
+	private EntityManager  entityManager;
 
 	private Class<T> entityClass;
 
@@ -76,8 +76,8 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 * 
 	 * @return org.hibernate.Session
 	 */
-	public Session getCurrentSession() {
-		return this.sessionFactory.getCurrentSession();
+	public EntityManager getEntityManager() {
+		return this.entityManager;
 	}
 
 	private void addAuditInfo(T obj) {
@@ -106,9 +106,9 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 * @see com.lion.framework.dao.BaseDao#findById(java.lang.Long)
 	 */
 
-	@SuppressWarnings("unchecked")
+
 	public T findById(Long id) {
-		return (T) this.getCurrentSession().load(this.entityClass, id);
+		return (T) this.entityManager.find(entityClass, id);
 	}
 
 	/*
@@ -124,10 +124,9 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 * 
 	 * @see com.lion.framework.dao.BaseDao#getById(java.lang.Long)
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public T getById(Long id) {
-		return (T) this.getCurrentSession().get(this.entityClass, id);
+		return  this.findById(id);
 	}
 
 	/*
@@ -135,11 +134,9 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 * 
 	 * @see com.lion.framework.dao.BaseDao#findByIdNoWaitLock(java.lang.Long)
 	 */
-	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	public T findByIdNoWaitLock(Long id) {
-		return ((T) this.getCurrentSession().load(this.entityClass, id,
-				LockMode.UPGRADE_NOWAIT));
+		return ((T) this.entityManager.find(this.entityClass, id,LockModeType.PESSIMISTIC_READ));
 	}
 
 	/***
@@ -147,17 +144,20 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 */
 	@SuppressWarnings("unchecked")
 	public List<T> findAll() {
-		String hql = "from " + this.entityClass.getSimpleName();
-		Query query = this.getCurrentSession().createQuery(hql);
-		return query.list();
+	 
+		StringBuilder sb=new StringBuilder();
+		sb.append("from ");
+		sb.append(this.entityClass.getSimpleName());
+		Query  query=this.entityManager.createQuery(sb.toString());
+		return query.getResultList();
 	}
 
 	public void eagerLoad(T obj) {
-		Hibernate.initialize(obj);
+		 this.entityManager.persist(obj);
 	}
 
 	public void evict(T obj) {
-		this.getCurrentSession().evict(obj);
+		this.entityManager.merge(obj);
 	}
 
 	/*
@@ -169,9 +169,7 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 
 	@Override
 	public List<T> find(T obj) {
-		// TODO
-		// return super.getHibernateTemplate().findByExample(obj);
-		// return this.getCurrentSession().bySimpleNaturalId(obj);
+		 //TODO
 		return null;
 	}
 
@@ -183,19 +181,19 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 */
 	@Override
 	public int updateHQL(String hql, Map<String, ?> params) {
-		Session session = this.getCurrentSession();
-		Query query = session.createQuery(hql);
-		query.setProperties(params);
+	 
+		Query query = this.entityManager.createQuery(hql);
+		this.setParams(query, params);
 		return query.executeUpdate();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findByNamedQuery(String queryName, Map<String, Object> params) {
-		Session session = this.getCurrentSession();
-		Query query = session.getNamedQuery(queryName);
-		query.setProperties(params);
-		return query.list();
+	public List<T> findByNamedQuery(String queryName, Map<String, ?> params) {
+	 
+		Query query =this.entityManager.createNamedQuery(queryName,this.entityClass);
+		this.setParams(query, params);
+		return query.getResultList();
 	}
 
 	/*
@@ -205,7 +203,7 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 */
 
 	public void flush() {
-		this.getCurrentSession().flush();
+		this.entityManager.flush();
 	}
 
 	/*
@@ -215,7 +213,7 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 */
 
 	public void clear() {
-		this.getCurrentSession().clear();
+		this.entityManager.clear();
 	}
 
 	/*
@@ -224,10 +222,10 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 * @see com.lion.framework.dao.BaseDao#lock(com.lion.framework.model.
 	 * BaseEntity , org.hibernate.LockMode)
 	 */
-	@SuppressWarnings("deprecation")
+
 	@Override
-	public void lock(T entity, LockMode lockMode) {
-		this.getCurrentSession().lock(entity, lockMode);
+	public void lock(T entity, LockModeType lockModeType) {
+		this.entityManager.lock(entity, lockModeType);
 	}
 
 	/*
@@ -239,20 +237,14 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	@Override
 	public Long nativeQueryCountSQL(String countSql, Map<String, ?> params) {
 
-		SQLQuery query = this.getCurrentSession().createSQLQuery(countSql);
-		query.setProperties(params);
-		return (Long) query.uniqueResult();
+		Query  query=this.entityManager.createNativeQuery(countSql);
+		for(Entry<String,?> entry:params.entrySet()){
+			query.setParameter(entry.getKey(), entry.getValue());
+		}
+		return (Long) query.getSingleResult();
 	}
 
-	private SQLQuery createSQLQuery(String sql, Map<String, ?> params) {
-		SQLQuery query = this.getCurrentSession().createSQLQuery(sql);
-		if (params != null && !params.isEmpty()) {
-			for (String key : params.keySet()) {
-				query.setParameter(key, params.get(key));
-			}
-		}
-		return query;
-	}
+	 
 
 	/*
 	 * (non-Javadoc)
@@ -277,10 +269,11 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 			pr.setTotalPage((pr.getTotalCount() + pageSize - 1) / pageSize);
 			pr.setCurrentPage((offsetIndex + pageSize) / pageSize);
 		}
-		SQLQuery query = this.createSQLQuery(sql, params);
+		Query query = this.entityManager.createQuery(sql);
+		this.setParams(query, params);
 		query.setFirstResult(offsetIndex);
 		query.setMaxResults(pageSize);
-		List content = query.list();
+		List content = query.getResultList();
 		pr.setContent(content);
 		return pr;
 	}
@@ -294,17 +287,17 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 
 	@Override
 	public int nativeUpdateSQL(String sql, Map<String, ?> params) {
-		SQLQuery sqlQuery = this.getCurrentSession().createSQLQuery(sql);
-		sqlQuery.setProperties(params);
-		return Integer.valueOf(sqlQuery.executeUpdate());
+		Query query = this.entityManager.createNativeQuery(sql);
+	
+		return Integer.valueOf(query.executeUpdate());
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<T> query(String hql, Map<String, ?> params) {
 
-		Query query = this.getCurrentSession().createQuery(hql);
-		query.setProperties(params);
-		return query.list();
+		Query query = this.entityManager.createQuery(hql);
+		this.setParams(query, params);
+		return query.getResultList();
 	}
 
 	/*
@@ -344,11 +337,11 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 					/ pageSize);
 			pageResult.setCurrentPage((offsetIndex + pageSize) / pageSize);
 		}
-		Query query = this.getCurrentSession().createQuery(hql);
-		query.setProperties(params);
+		Query query =this.entityManager.createQuery(hql);
+		this.setParams(query, params);
 		query.setFirstResult(offsetIndex);
 		query.setMaxResults(pageSize);
-		List<T> content = query.list();
+		List<T> content = query.getResultList();
 		pageResult.setContent(content);
 		return pageResult;
 	}
@@ -368,9 +361,9 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 
 	public Long queryCount(final String countHql, final Map<String, ?> params) {
 
-		Query query = this.getCurrentSession().createQuery(countHql);
-		query.setProperties(params);
-		return (Long) query.uniqueResult();
+		Query query = this.entityManager.createQuery(countHql);
+		this.setParams(query, params);
+		return (Long) query.getSingleResult();
 
 	}
 
@@ -390,7 +383,7 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 
 	public void save(T obj) {
 		this.addAuditInfo(obj);
-		this.getCurrentSession().saveOrUpdate(obj);
+		this.mergeObject(obj);
 	}
 
 	/**
@@ -410,15 +403,14 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 		for (T obj : objs) {
 			addAuditInfo(obj);
 		}
-		// super.getHibernateTemplate().saveOrUpdateAll(objs);
-		this.getCurrentSession().saveOrUpdate(objs);
+		this.entityManager.persist(objs);
 	}
 
 	/***
 	 * @see om.lion.framework.dao.BaseDao#mergeObject(com.lion.framework.model.BaseEntity)
 	 */
 	public void mergeObject(T obj) {
-		this.getCurrentSession().merge(obj);
+		this.entityManager.merge(obj);
 	}
 
 	/*
@@ -429,7 +421,7 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 */
 	@Override
 	public void remove(T obj) {
-		this.getCurrentSession().delete(obj);
+		this.entityManager.remove(obj);
 	}
 
 	/*
@@ -439,9 +431,12 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 */
 	@Override
 	public void removeObjects(Collection<T> objs) {
-		// TODO
-		this.getCurrentSession().delete(objs);
-
+		if(CollectionUtils.isEmpty(objs)){
+			return;
+		}
+		for(T t:objs){
+			this.remove(t);
+		}
 	}
 
 	/*
@@ -462,10 +457,20 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 * java.util.Map)
 	 */
 	@Override
-	public int updateByNamedQuery(String queryName, Map<String, Object> params) {
-		Query query = this.getCurrentSession().getNamedQuery(queryName);
-		query.setProperties(params);
+	public int updateByNamedQuery(String queryName, Map<String, ?> params) {
+		Query query = this.entityManager.createNamedQuery(queryName,this.entityClass);
+		this.setParams(query, params);
 		return query.executeUpdate();
+	}
+	
+	private void setParams(Query query,Map<String,?> params){
+		if(CollectionUtils.isEmpty(params)){
+			return;
+		}
+		for(Entry<String,?> entry:params.entrySet()){
+			query.setParameter(entry.getKey(), entry.getValue());
+		}
+		
 	}
 
 	/*
@@ -532,7 +537,7 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 		} else {
 			obj.setUpdatedDate(updateDate);
 		}
-		this.getCurrentSession().merge(obj);
+		this.entityManager.merge(obj);
 	}
 
 	/*
@@ -540,10 +545,12 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 * 
 	 * @see com.lion.framework.dao.BaseDao#getsSequenceNextval(java.lang.String)
 	 */
-	public long getsSequenceNextval(String sequenceName) {
-		String sql = "select " + sequenceName + ".Nextval as seq from dual";
-		return (Long) this.getCurrentSession().createSQLQuery(sql)
-				.uniqueResult();
+	public long getsSequenceNextval(String sequenceName) {		 
+		StringBuilder sb=new StringBuilder();
+		sb.append("select ");
+		sb.append(sequenceName);
+		sb.append(".Nextval as seq from dual");
+		return (Long) this.entityManager.createNativeQuery(sb.toString()).getSingleResult();
 	}
 
 	/*

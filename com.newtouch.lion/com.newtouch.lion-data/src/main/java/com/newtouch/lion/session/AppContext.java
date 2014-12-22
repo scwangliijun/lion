@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.newtouch.lion.data.session;
+package com.newtouch.lion.session;
 
 import java.util.Locale;
 
