@@ -1,10 +1,10 @@
 /*
- * Copyright (c)  2013, lion
+ * Copyright (c)  2013, Newtouch
  * All rights reserved. 
  *
  * $id: DemoServiceImpl.java 9552 2013-3-22 上午9:16:23 WangLijun$
  */
-package com.newtouch.lion.service.impl;
+package com.newtouch.lion.service.system.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +29,7 @@ import com.newtouch.lion.service.system.DemoService;
  * Copyright: Copyright (c) 2013
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun
@@ -48,14 +48,10 @@ public class DemoServiceImpl extends AbstractService implements DemoService {
 	 */
 	@Override
 	public List<DemoModel> doFindByParentId() {
-
 		String hql = "from DemoModel where  id=:id";
-
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("id", 4L);
-		List<DemoModel> demoModels = demoDao.query(hql, params);
-
-	  
+		List<DemoModel> demoModels = demoDao.query(hql, params);	  
 		return demoModels;
 	}
 
