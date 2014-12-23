@@ -28,7 +28,7 @@ import java.util.Date;
 public abstract class AuditEntity<PK> extends BaseEntity<PK> {
 
 	/**
-	 * @Fields serialVersionUID:TODO
+	 * @Fields serialVersionUID
 	 */
 
 	private static final long serialVersionUID = 9064060658032054919L;

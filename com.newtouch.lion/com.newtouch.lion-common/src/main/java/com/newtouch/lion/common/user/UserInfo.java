@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.newtouch.lion.session;
+package com.newtouch.lion.common.user;
 
 import java.io.Serializable;
 

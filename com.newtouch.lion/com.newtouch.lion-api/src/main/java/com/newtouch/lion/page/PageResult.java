@@ -30,8 +30,7 @@ import java.util.List;
 public class PageResult<T> implements Serializable {
 
 	/**
-	 * @Fields serialVersionUID:TODO
-	 */
+	 * @Fields serialVersionUID	 */
 
 	private static final long serialVersionUID = -6684174444925096614L;
 	/** 当前页索引 默认值为:0 */
