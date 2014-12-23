@@ -20,10 +20,10 @@
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="persistenceProvider" ref="persistenceProvider" />
-		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence-mysql.xml"></property>
+		<!-- <property name="persistenceXmlLocation" value="classpath:META-INF/persistence-mysql.xml"></property>--> 
 		<property name="mappingResources">
 			<list>
-				<value>classpath:model/system/bas_demo.orm.xml</value>
+				<value>model/system/bas_demo.orm.xml</value>
 			</list>
 		</property>
 		<property name="jpaPropertyMap">

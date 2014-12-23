@@ -19,11 +19,11 @@ import java.util.Map.Entry;
 
 import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 
 import com.newtouch.lion.dao.BaseDao;
@@ -50,15 +50,15 @@ import com.newtouch.lion.session.AppContext;
  * @version 1.0
  */
 
-public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK> {
+public class BaseDaoImpl<T extends BaseEntity<PK>, PK> implements BaseDao<T, PK> {
 
 	private static final long serialVersionUID = 840623395509475191L;
-
+	/**日志*/
 	protected final Logger log = LoggerFactory.getLogger(super.getClass());
-
-	@Autowired(required = true)
+	/**entityManager*/
+	@PersistenceContext
 	private EntityManager  entityManager;
-
+	/**实体类*/
 	private Class<T> entityClass;
 
 	@SuppressWarnings("unchecked")
@@ -82,7 +82,6 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 
 	private void addAuditInfo(T obj) {
 		if (obj instanceof AuditEntity) {
-			@SuppressWarnings("unchecked")
 			AuditEntity<PK> obj1 = (AuditEntity<PK>) obj;
 			if ((obj1.getId() == null)) {
 				obj1.setCreatedById(AppContext.getUserInfo().getId());
@@ -491,7 +490,6 @@ public class BaseDaoImpl<T, PK extends BaseEntity<PK>> implements BaseDao<T, PK>
 	 * @see com.lion.framework.dao.BaseDao#update(com.lion.framework.model.
 	 * BaseEntity, java.util.Date)
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void update(T obj, Date updateDate) {
 		this.updateEntity((AuditEntity<PK>) obj, updateDate);

@@ -9,25 +9,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 	<util:properties id="applicationPropertiesConfig" location="classpath:application.properties" />
-
-	<!--  <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-		destroy-method="close" depends-on="applicationPropertiesConfig">
-		<property name="driverClass"
-			value="#{applicationPropertiesConfig['database.driverClassName']}" />
-		<property name="jdbcUrl"
-			value="#{applicationPropertiesConfig['database.jdbcurl']}" />
-		<property name="user"
-			value="#{applicationPropertiesConfig['database.user']}" />
-		<property name="password"
-			value="#{applicationPropertiesConfig['database.password']}" />
-		<property name="initialPoolSize"
-			value="#{applicationPropertiesConfig['database.initialPoolSize']}" />
-		<property name="minPoolSize"
-			value="#{applicationPropertiesConfig['database.minPoolSize']}" />
-		<property name="maxPoolSize"
-			value="#{applicationPropertiesConfig['database.maxPoolSize']}" />
-	</bean>-->
-
+	
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
 		<!-- <property name="dbType" value="#{applicationPropertiesConfig['database.driverClassName']}" /> -->
 		<!-- 基本属性 url、user、password -->

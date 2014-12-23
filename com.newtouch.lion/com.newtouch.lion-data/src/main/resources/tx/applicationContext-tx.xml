@@ -41,7 +41,7 @@
 
 		<aop:advisor id="methodTrace" advice-ref="methodTraceAdvice"
 			pointcut="execution(* *..*Service.*(..))" order="3" />
-
+			
 		<aop:advisor id="serviceTx" advice-ref="txAdvice" pointcut="execution(* *..*Service.*(..))" order="4" />
 	</aop:config>
 </beans>

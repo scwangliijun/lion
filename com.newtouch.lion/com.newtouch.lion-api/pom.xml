@@ -27,5 +27,11 @@
 			<artifactId>persistence-api</artifactId>
 		</dependency>
 		<!-- JPA End -->
+		<!-- Logger Start -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<!-- Logger End -->
 	</dependencies>
 </project>

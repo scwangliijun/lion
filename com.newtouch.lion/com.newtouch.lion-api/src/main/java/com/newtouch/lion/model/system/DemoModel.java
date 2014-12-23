@@ -116,6 +116,6 @@ public class DemoModel extends AuditEntity<Long> implements Serializable {
 	@Override
 	public String toString() {
 		return "DemoModel [id=" + id + ", nameZh=" + nameZh + ", demoModel="
-				+ demoModel + ", demoModels=" + demoModels + "]";
+				+ demoModel.toString() + ", demoModels=" + demoModels + "]";
 	}
 }

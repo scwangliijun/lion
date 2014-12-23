@@ -2,7 +2,8 @@
 <entity-mappings version="2.1"
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
-	<package>com.newtouch.api.model.system</package>
+	<package>com.newtouch.lion.model.system</package>
+	<access>PROPERTY</access>
 	<entity class="DemoModel">
 		<table  name="bas_demo"/>
 		<attributes>
@@ -10,8 +11,22 @@
 			  		<column  name="BAS_DEMO_ID" unique="true" nullable="false" precision="11" scale="0"/>
 			  		<generated-value strategy="IDENTITY"/>
 			  </id>
-			  <basic name="nameZh">
-			  		<column  name="name_zh" length="30" nullable="true"/>
+			  <basic name="nameZh" >
+			  		<column  name="NAME_ZH" length="30" nullable="true"/>
+			  </basic>
+			  <basic name="createdById">
+			  		<column name="CREATE_BY"  length="11" scale="0"/>
+			  </basic>
+			  <basic name="createdDate">
+			  		<column name="CREATE_DATE"/>
+			  		<temporal>TIMESTAMP</temporal>
+			  </basic>
+			  <basic name="updatedById">
+			  		<column name="UPDATE_BY"  length="11"  scale="0"/>
+			  </basic>
+			  <basic name="updatedDate">
+			  		<column  name="UPDATE_DATE"/>
+			  		<temporal>TIMESTAMP</temporal>
 			  </basic>
 			  <many-to-one name="demoModel" fetch="LAZY">
 			  		<join-column name="PARENT_ID" referenced-column-name="bas_demo_id" insertable="false"  updatable="false"/>

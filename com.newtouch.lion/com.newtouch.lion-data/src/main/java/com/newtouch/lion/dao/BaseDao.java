@@ -1,5 +1,5 @@
 /*
- * Copyright (c)  2012, lion
+ * Copyright (c)  2012, Newtouch
  * All rights reserved. 
  *
  * $id: BaseDao.java 9552 2012-7-8 上午01:11:03 WangLijun$
@@ -29,13 +29,13 @@ import com.newtouch.lion.page.PageResult;
  * Copyright: Copyright (c) 2012
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun
  * @version 1.0
  */
-public interface BaseDao<T,PK extends BaseEntity<PK>> extends Serializable {
+public interface BaseDao<T extends BaseEntity<PK>,PK> extends Serializable {
 	/**
 	 * 获得当前事物的session
 	 * @return org.hibernate.Session
@@ -285,13 +285,6 @@ public interface BaseDao<T,PK extends BaseEntity<PK>> extends Serializable {
 	 */
 	public List<String> getTables(String schemaPattern, String tableNamePattern);
 	
-	/*
-	 * 根据持久化对象获取该对象映射表的所有列名称
-	 * @param obj
-	 * @return List<String>
-	 */
-	//TODO
-	//public List<String> getColumns(T obj);
 	
 	/***
 	 * 根据数据库表名称获取该表的所有列的名称
