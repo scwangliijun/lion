@@ -51,5 +51,9 @@
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
 		<!-- Spring framework End -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
 	</dependencies>
 </project>

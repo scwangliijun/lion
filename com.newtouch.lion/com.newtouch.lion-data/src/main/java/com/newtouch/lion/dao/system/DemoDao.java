@@ -1,5 +1,5 @@
 /*
- * Copyright (c)  2013, lion
+ * Copyright (c)  2013, Newtouch
  * All rights reserved. 
  *
  * $id: DemoDao.java 9552 2013-3-22 上午9:11:59 WangLijun$
@@ -20,7 +20,7 @@ import com.newtouch.lion.model.system.DemoModel;
  * Copyright: Copyright (c) 2013
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun

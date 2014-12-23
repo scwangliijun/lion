@@ -1,5 +1,8 @@
-/**
- * 
+/*
+ * Copyright (c)  2013, Newtouch
+ * All rights reserved. 
+ *
+ * $id: Department.java 9552 2013-3-22 上午9:01:29 WangLijun$
  */
 package com.newtouch.lion.model.system;
 
@@ -17,7 +20,6 @@ import javax.persistence.Transient;
 
 import com.newtouch.lion.model.VersionEntity;
 
-
 /**
  * <p>
  * Title: 部门 Model
@@ -29,45 +31,42 @@ import com.newtouch.lion.model.VersionEntity;
  * Copyright: Copyright (c) 2012
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun
  * @version 1.0
  */
-public class Department  extends  VersionEntity<Long>{
-	
-	
+public class Department extends VersionEntity<Long> {
+
 	private static final long serialVersionUID = 1281321300758302400L;
 	/*** 部门ID */
 	private Long id;
-	/**上一级部门ID*/
+	/** 上一级部门ID */
 	private Long parentDepartmentId;
-	/**部门编号*/
+	/** 部门编号 */
 	private String departmentNO;
-	/**部门中文名称*/
+	/** 部门中文名称 */
 	private String nameZh;
-	/**部门英文名称*/
+	/** 部门英文名称 */
 	private String nameEn;
-	/**部门描述*/
+	/** 部门描述 */
 	private String description;
-	/**是否可编辑*/
-	private  boolean editable;
-	/**部门所属用户集合*/
+	/** 是否可编辑 */
+	private boolean editable;
+	/** 部门所属用户集合 */
 	private Set<User> users = new HashSet<User>(0);
-	/**部门父子对象*/
+	/** 部门父子对象 */
 	private Department department;
-	/**该部门所属下级所有部门集合*/
+	/** 该部门所属下级所有部门集合 */
 	private Set<Department> departments = new HashSet<Department>(0);
-	
+
 	private List<Department> sortedChildDepartment;
-	
-	
+
 	@Override
 	public Long getId() {
 		return this.id;
 	}
-
 
 	/**
 	 * @return the parentDepartmentId
@@ -77,15 +76,13 @@ public class Department  extends  VersionEntity<Long>{
 		return parentDepartmentId;
 	}
 
-
 	/**
 	 * @return the departmentNO
 	 */
-	
+
 	public String getDepartmentNO() {
 		return departmentNO;
 	}
-
 
 	/**
 	 * @return the nameZh
@@ -95,7 +92,6 @@ public class Department  extends  VersionEntity<Long>{
 		return nameZh;
 	}
 
-
 	/**
 	 * @return the nameEn
 	 */
@@ -103,7 +99,6 @@ public class Department  extends  VersionEntity<Long>{
 	public String getNameEn() {
 		return nameEn;
 	}
-
 
 	/**
 	 * @return the description
@@ -113,14 +108,10 @@ public class Department  extends  VersionEntity<Long>{
 		return description;
 	}
 
-
 	/**
 	 * @return the isEditable
 	 */
-	@Column(name="EDITABLE")
-	 
-
-
+	@Column(name = "EDITABLE")
 	/**
 	 * @return the users
 	 */
@@ -128,25 +119,23 @@ public class Department  extends  VersionEntity<Long>{
 	public Set<User> getUsers() {
 		return users;
 	}
-	
+
 	/**
 	 * @return the isEditable
 	 */
-	@Column(name="EDITABLE")
+	@Column(name = "EDITABLE")
 	public boolean isEditable() {
 		return editable;
 	}
 
-
 	/**
 	 * @return the department
 	 */
-	@ManyToOne(fetch = FetchType.LAZY,targetEntity=Department.class,cascade=CascadeType.MERGE)
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Department.class, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "PARENT_BAS_DEPARTMENT_ID", updatable = false, insertable = false)
 	public Department getDepartment() {
 		return department;
 	}
-
 
 	/**
 	 * @return the Departments
@@ -155,6 +144,7 @@ public class Department  extends  VersionEntity<Long>{
 	public Set<Department> getDepartments() {
 		return departments;
 	}
+
 	/***
 	 * defualt
 	 */
@@ -186,10 +176,8 @@ public class Department  extends  VersionEntity<Long>{
 	 * @param departments
 	 */
 	public Department(Long parentDepartmentId, String departmentNO,
-			String nameZh, String nameEn, String description,
-			boolean editable,
-			Set<User> users,
-			Department department, Set<Department> departments) {
+			String nameZh, String nameEn, String description, boolean editable,
+			Set<User> users, Department department, Set<Department> departments) {
 		super();
 		this.parentDepartmentId = parentDepartmentId;
 		this.departmentNO = departmentNO;
@@ -202,89 +190,86 @@ public class Department  extends  VersionEntity<Long>{
 		this.departments = departments;
 	}
 
-
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
 	/**
-	 * @param parentDepartmentId the parentDepartmentId to set
+	 * @param parentDepartmentId
+	 *            the parentDepartmentId to set
 	 */
 	public void setParentDepartmentId(Long parentDepartmentId) {
 		this.parentDepartmentId = parentDepartmentId;
 	}
 
-
 	/**
-	 * @param departmentNO the departmentNO to set
+	 * @param departmentNO
+	 *            the departmentNO to set
 	 */
 	public void setDepartmentNO(String departmentNO) {
 		this.departmentNO = departmentNO;
 	}
 
-
 	/**
-	 * @param nameZh the nameZh to set
+	 * @param nameZh
+	 *            the nameZh to set
 	 */
 	public void setNameZh(String nameZh) {
 		this.nameZh = nameZh;
 	}
 
-
 	/**
-	 * @param nameEn the nameEn to set
+	 * @param nameEn
+	 *            the nameEn to set
 	 */
 	public void setNameEn(String nameEn) {
 		this.nameEn = nameEn;
 	}
 
-
 	/**
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-
 	/**
-	 * @param isEditable the isEditable to set
+	 * @param isEditable
+	 *            the isEditable to set
 	 */
 	public void setEditable(boolean editable) {
 		this.editable = editable;
 	}
 
-
 	/**
-	 * @param Users the tsUsers to set
+	 * @param Users
+	 *            the tsUsers to set
 	 */
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 
-
 	/**
-	 * @param department the tsDepartment to set
+	 * @param department
+	 *            the tsDepartment to set
 	 */
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
 
-
 	/**
-	 * @param tsDepartments the tsDepartments to set
+	 * @param tsDepartments
+	 *            the tsDepartments to set
 	 */
 	public void setDepartments(Set<Department> departments) {
 		this.departments = departments;
 	}
 
-
-	
-	
 	/**
 	 * @return the sortedChildDepartment
 	 */
@@ -293,16 +278,17 @@ public class Department  extends  VersionEntity<Long>{
 		return sortedChildDepartment;
 	}
 
-
 	/**
-	 * @param sortedChildDepartment the sortedChildDepartment to set
+	 * @param sortedChildDepartment
+	 *            the sortedChildDepartment to set
 	 */
 	public void setSortedChildDepartment(List<Department> sortedChildDepartment) {
 		this.sortedChildDepartment = sortedChildDepartment;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -314,7 +300,4 @@ public class Department  extends  VersionEntity<Long>{
 				+ ", Users= ";
 	}
 
-	
-	
-	
 }

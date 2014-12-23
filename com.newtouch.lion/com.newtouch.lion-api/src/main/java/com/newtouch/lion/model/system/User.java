@@ -1,5 +1,8 @@
-/**
- * 
+/*
+ * Copyright (c)  2012, Newtouch
+ * All rights reserved. 
+ *
+ * $id: User.java 9552 2012-12-30 下午8:37:24 WangLijun$
  */
 package com.newtouch.lion.model.system;
 
@@ -29,7 +32,7 @@ import com.newtouch.lion.model.VersionEntity;
  * Copyright: Copyright (c) 2012
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun

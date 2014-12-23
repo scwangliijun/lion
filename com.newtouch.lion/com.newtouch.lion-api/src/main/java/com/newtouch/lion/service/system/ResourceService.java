@@ -1,5 +1,5 @@
-/**
- * Copyright (c)  2012, lion
+/*
+ * Copyright (c)  2012, Newtouch
  * All rights reserved. 
  *
  * $id: TsResourceService.java 9552 2012-12-31 下午9:57:44 WangLijun$
@@ -23,7 +23,7 @@ import com.newtouch.lion.tree.Tree;
  * Copyright: Copyright (c) 2012
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun

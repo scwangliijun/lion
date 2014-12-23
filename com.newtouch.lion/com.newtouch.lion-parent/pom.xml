@@ -27,7 +27,6 @@
 		<logback-ext-spring.version>0.1.1</logback-ext-spring.version>
 		<javax.persistence.version>2.1</javax.persistence.version>
 		<hibernate.version>4.2.2.Final</hibernate.version>
-
 		<aopalliance.version>1.0</aopalliance.version>
 		<springframework.version>3.2.12.RELEASE</springframework.version>
 		<hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
@@ -39,6 +38,7 @@
 		<commons-logging.version>1.2</commons-logging.version>
 		<commons-collections.version>3.1</commons-collections.version>
 		<commons-lang.version>2.6</commons-lang.version>
+		<fastjson.version>1.2.3</fastjson.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -477,6 +477,13 @@
 				<version>${commons-lang.version}</version>
 			</dependency>
 			<!-- commons End -->
+			<!-- JSON Start -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+			<!-- JSON End -->
 		</dependencies>
 	</dependencyManagement>
 	<build>

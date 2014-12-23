@@ -1,8 +1,8 @@
-/**
-	* Copyright (c)  2013, lion
-	* All rights reserved. 
-	*
-	* $id: LoginLogService.java 9552 2013-1-12 下午1:48:23 WangLijun$
+/*
+* Copyright (c)  2013, Newtouch
+* All rights reserved. 
+*
+* $id: LoginLogService.java 9552 2013-1-12 下午1:48:23 WangLijun$
 */
 package com.newtouch.lion.service.system; 
 
@@ -18,7 +18,7 @@ package com.newtouch.lion.service.system;
  * Copyright: Copyright (c) 2013
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun

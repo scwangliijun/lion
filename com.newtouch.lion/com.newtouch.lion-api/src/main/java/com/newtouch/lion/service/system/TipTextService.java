@@ -1,11 +1,10 @@
-/**
-	* Copyright (c)  2013, lion
-	* All rights reserved. 
-	*
-	* $id: TipTextService.java 9552 2013-1-12 下午1:48:54 WangLijun$
-*/
-package com.newtouch.lion.service.system; 
-
+/*
+ * Copyright (c)  2013, Newtouch
+ * All rights reserved. 
+ *
+ * $id: TipTextService.java 9552 2013-1-12 下午1:48:54 WangLijun$
+ */
+package com.newtouch.lion.service.system;
 
 /**
  * <p>
@@ -18,7 +17,7 @@ package com.newtouch.lion.service.system;
  * Copyright: Copyright (c) 2013
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun
@@ -27,5 +26,3 @@ package com.newtouch.lion.service.system;
 public interface TipTextService {
 
 }
-
-	

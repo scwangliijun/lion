@@ -1,5 +1,5 @@
 /*
- * Copyright (c)  2013, lion
+ * Copyright (c)  2013, Newtouch
  * All rights reserved. 
  *
  * $id: Licence.java 9552 2013-5-19 下午8:06:38 WangLijun$
@@ -17,7 +17,7 @@ package com.newtouch.lion.model.application;
  * Copyright: Copyright (c) 2013
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun

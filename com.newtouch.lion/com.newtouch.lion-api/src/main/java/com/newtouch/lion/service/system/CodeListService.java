@@ -1,10 +1,10 @@
-/**
-	* Copyright (c)  2013, lion
-	* All rights reserved. 
-	*
-	* $id: CodeListService.java 9552 2013-1-12 下午1:40:29 WangLijun$
-*/
-package com.newtouch.lion.service.system; 
+/*
+ * Copyright (c)  2013, Newtouch
+ * All rights reserved. 
+ *
+ * $id: CodeListService.java 9552 2013-1-12 下午1:40:29 WangLijun$
+ */
+package com.newtouch.lion.service.system;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import com.newtouch.lion.query.QueryCriteria;
  * Copyright: Copyright (c) 2013
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun
@@ -32,58 +32,64 @@ import com.newtouch.lion.query.QueryCriteria;
 public interface CodeListService {
 	/***
 	 * 创建CodeList对象
-	 * @param  codeList
+	 * 
+	 * @param codeList
 	 */
-	public void  doCreateObj(CodeList codeList);
-	/**根据ID，查询对象*/
+	public void doCreateObj(CodeList codeList);
+
+	/** 根据ID，查询对象 */
 	public CodeList doFindById(Long id);
-	
+
 	/**
-	 * 根据Id删除CodeList对象 
+	 * 根据Id删除CodeList对象
+	 * 
 	 * @param id
-	 * @return 
+	 * @return
 	 * */
-	public int  doDeleteById(Long id);
-	
-	/**删除CodeList
+	public int doDeleteById(Long id);
+
+	/**
+	 * 删除CodeList
 	 * 
-	 * @param  codeList
+	 * @param codeList
 	 * 
 	 * */
-	public void  doDeleteByObj(CodeList codeList);
-	
+	public void doDeleteByObj(CodeList codeList);
+
 	/***
-	 *更新
+	 * 更新
 	 */
-	public void  doUpdateByParams(Long id,Long codeTypeId,String codeValue,String nameEn,String nameZh,int sortNo,Boolean editable);
-	/**更新*/
+	public void doUpdateByParams(Long id, Long codeTypeId, String codeValue,
+			String nameEn, String nameZh, int sortNo, Boolean editable);
+
+	/** 更新 */
 	public CodeList doUpdateObj(CodeList obj);
-	
-	
-	/**通用类型编码查询，并返回分页对象*/
+
+	/** 通用类型编码查询，并返回分页对象 */
 	public PageResult<CodeList> doFindByCriteria(QueryCriteria criteria);
-	
+
 	/***
 	 * 根据通过编码类型英文名称，查询CodeList对象
 	 */
 	public List<CodeList> doFindCodeListByCodeTypeNameEn(String codeTypeNameEn);
+
 	/**
 	 * 根据通过编码类型英文名称，查询CodeList对象,根据默认选择
 	 * */
 	public List<CodeList> doFindCodeListByNameEn(String codeTypeNameEn,
 			String selectedValue);
+
 	/**
 	 * 判断参数的英文名是否已存在，
+	 * 
 	 * @param nameEn
-	 * @return  boolean
+	 * @return boolean
 	 * @author dengkang
 	 * */
-	public boolean doIsExistByNameEn(String nameEn); 
-	
+	public boolean doIsExistByNameEn(String nameEn);
+
 	/***
 	 * 根据通过编码类型英文名称，并返回JSON字符串
 	 */
-	//public String  getCodeListForJSONByCodeTypeNameEn(String codeTypeNameEn);
+	// public String getCodeListForJSONByCodeTypeNameEn(String codeTypeNameEn);
 }
-
-	

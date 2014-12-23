@@ -1,5 +1,5 @@
 /*
- * Copyright (c)  2013, lion
+ * Copyright (c)  2013, Newtouch
  * All rights reserved. 
  *
  * $id: SystemException.java 9552 2013-4-7 下午12:05:36 WangLijun$
@@ -19,7 +19,7 @@ import org.springframework.core.NestedRuntimeException;
  * Copyright: Copyright (c) 2013
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun

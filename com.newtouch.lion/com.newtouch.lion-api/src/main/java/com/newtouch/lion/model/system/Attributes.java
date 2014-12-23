@@ -1,12 +1,10 @@
 /*
- * Copyright (c)  2013, lion
+ * Copyright (c)  2013, Newtouch
  * All rights reserved. 
  *
  * $id: Attributes.java 9552 2013-3-26 下午10:12:02 WangLijun$
  */
 package com.newtouch.lion.model.system;
-
-
 
 /**
  * <p>
@@ -19,16 +17,16 @@ package com.newtouch.lion.model.system;
  * Copyright: Copyright (c) 2013
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun
  * @version 1.0
  */
 public class Attributes {
-	/**URL路径*/
+	/** URL路径 */
 	private String path;
- 
+
 	/**
 	 * @return the path
 	 */
@@ -45,6 +43,6 @@ public class Attributes {
 	}
 
 	public void setTarget(String target) {
-		 
+
 	}
 }

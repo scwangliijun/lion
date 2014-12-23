@@ -1,5 +1,5 @@
 /*
- * Copyright (c)  2012, lion
+ * Copyright (c)  2012, Newtouch
  * All rights reserved. 
  *
  * $id: TsParameterService.java 9552 2012-7-8 下午09:24:04 WangLijun$
@@ -24,7 +24,7 @@ import com.newtouch.lion.query.QueryCriteria;
  * Copyright: Copyright (c) 2012
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun

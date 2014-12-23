@@ -1,5 +1,5 @@
 /*
- * Copyright (c)  2012, lion
+ * Copyright (c)  2012, Newtouch
  * All rights reserved. 
  *
  * $id: TsParameter.java 9552 2012-7-8 上午12:36:16 WangLijun$
@@ -21,7 +21,7 @@ import com.newtouch.lion.model.VersionEntity;
  * Copyright: Copyright (c) 2012
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun
@@ -42,7 +42,7 @@ public class Parameter extends VersionEntity<Long> {
 	 * @Fields type：参数类型
 	 */
 	private String type;
-	/**@Fileds editable 是否可编辑*/
+	/** @Fileds editable 是否可编辑 */
 	private Boolean editable;
 	/**
 	 * @Fields nameEn：英文名称
@@ -60,19 +60,21 @@ public class Parameter extends VersionEntity<Long> {
 	 * @Fields description:参数描述
 	 */
 	private String description;
-	
+
 	public Parameter() {
-		 super();
+		super();
 	}
+
 	/***
 	 * 
-	 * @param id 物理主键ID
+	 * @param id
+	 *            物理主键ID
 	 */
-	public Parameter(Long id){
+	public Parameter(Long id) {
 		super();
-		this.id=id;
+		this.id = id;
 	}
-	
+
 	/*
 	 * <p>Title: getId</p> <p>Description: </p>
 	 * 
@@ -89,12 +91,11 @@ public class Parameter extends VersionEntity<Long> {
 	 * 
 	 * @return the type
 	 */
-	@Column(name="CATEGORY")
+	@Column(name = "CATEGORY")
 	public String getType() {
 		return type;
 	}
 
-	
 	/**
 	 * setter method
 	 * 
@@ -111,7 +112,7 @@ public class Parameter extends VersionEntity<Long> {
 	 * 
 	 * @return the nameEn
 	 */
-	@Column(name="NAMEEN", unique=true)
+	@Column(name = "NAMEEN", unique = true)
 	public String getNameEn() {
 
 		return this.nameEn;
@@ -133,7 +134,7 @@ public class Parameter extends VersionEntity<Long> {
 	 * 
 	 * @return the nameZh
 	 */
-	 @Column(name="NAMEZH")
+	@Column(name = "NAMEZH")
 	public String getNameZh() {
 
 		return nameZh;
@@ -155,7 +156,7 @@ public class Parameter extends VersionEntity<Long> {
 	 * 
 	 * @return the value
 	 */
-	@Column(name="VALUE", length=1024)
+	@Column(name = "VALUE", length = 1024)
 	public String getValue() {
 
 		return value;
@@ -177,7 +178,7 @@ public class Parameter extends VersionEntity<Long> {
 	 * 
 	 * @return the description
 	 */
-	@Column(name="DESCRIPTION", length=1024)
+	@Column(name = "DESCRIPTION", length = 1024)
 	public String getDescription() {
 
 		return description;
@@ -207,24 +208,29 @@ public class Parameter extends VersionEntity<Long> {
 
 	/**
 	 * getter method
+	 * 
 	 * @return the editable
 	 */
-	@Column(name="EDITABLE")
+	@Column(name = "EDITABLE")
 	public Boolean getEditable() {
-	
+
 		return editable;
 	}
 
 	/**
 	 * setter method
-	 * @param editable the editable to set
+	 * 
+	 * @param editable
+	 *            the editable to set
 	 */
 	public void setEditable(Boolean editable) {
-	
+
 		this.editable = editable;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -239,5 +245,5 @@ public class Parameter extends VersionEntity<Long> {
 				+ ", getUpdatedById()=" + getUpdatedById()
 				+ ", getUpdatedDate()=" + getUpdatedDate() + "]";
 	}
-	
+
 }

@@ -168,5 +168,12 @@
 			<artifactId>commons-lang</artifactId>
 		</dependency>
 		<!-- commons End -->
+		<!-- JSON Start -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+		<!-- JSON End -->
 	</dependencies>
 </project>

@@ -1,11 +1,10 @@
-
 /*
-* Copyright (c)  2014, Newtouch
-* All rights reserved. 
-*
-* $id: ApplicationProperty.java 9552 2014年12月23日 下午2:54:19 WangLijun$
-*/
-package com.newtouch.lion.model.application; 
+ * Copyright (c)  2014, Newtouch
+ * All rights reserved. 
+ *
+ * $id: ApplicationProperty.java 9552 2014年12月23日 下午2:54:19 WangLijun$
+ */
+package com.newtouch.lion.model.application;
 
 import com.newtouch.lion.model.BaseEntity;
 
@@ -36,19 +35,19 @@ public class ApplicationProperty extends BaseEntity<Long> {
 	 * ID
 	 * */
 	private Long id;
-	
-	/**应用名称*/
+
+	/** 应用名称 */
 	private String appId;
-	/**配置项-key*/
+	/** 配置项-key */
 	private String key;
-	
-	/**配置项-value*/
+
+	/** 配置项-value */
 	private String value;
-	
-	/**配置项描述*/
+
+	/** 配置项描述 */
 	private String description;
 
-	/**ID*/
+	/** ID */
 	@Override
 	public Long getId() {
 		return this.id;
@@ -62,7 +61,8 @@ public class ApplicationProperty extends BaseEntity<Long> {
 	}
 
 	/**
-	 * @param appId 配置项APPID
+	 * @param appId
+	 *            配置项APPID
 	 */
 	public void setAppId(String appId) {
 		this.appId = appId;
@@ -76,7 +76,8 @@ public class ApplicationProperty extends BaseEntity<Long> {
 	}
 
 	/**
-	 * @param key 配置项键
+	 * @param key
+	 *            配置项键
 	 */
 	public void setKey(String key) {
 		this.key = key;
@@ -90,7 +91,8 @@ public class ApplicationProperty extends BaseEntity<Long> {
 	}
 
 	/**
-	 * @param value 配置项值
+	 * @param value
+	 *            配置项值
 	 */
 	public void setValue(String value) {
 		this.value = value;
@@ -104,7 +106,8 @@ public class ApplicationProperty extends BaseEntity<Long> {
 	}
 
 	/**
-	 * @param description 配置描述
+	 * @param description
+	 *            配置描述
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -116,9 +119,5 @@ public class ApplicationProperty extends BaseEntity<Long> {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	
 
 }
-
-	

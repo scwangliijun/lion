@@ -1,5 +1,5 @@
 /*
- * Copyright (c)  2012, lion
+ * Copyright (c)  2012, Newtouch
  * All rights reserved. 
  *
  * $id: VersionEntity.java 9552 2012-7-8 上午12:22:27 WangLijun$
@@ -19,7 +19,7 @@ import java.util.Date;
  * Copyright: Copyright (c) 2012
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun

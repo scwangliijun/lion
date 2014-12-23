@@ -1,5 +1,5 @@
 /*
- * Copyright (c)  2014, lion
+ * Copyright (c)  2014, Newtouch
  * All rights reserved. 
  *
  * $id: PasswordEncoderService.java 9552 2014-4-5 下午12:10:19 WangLijun$
@@ -17,7 +17,7 @@ package com.newtouch.lion.service.system;
  * Copyright: Copyright (c) 2014
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun

@@ -1,5 +1,5 @@
 /*
- * Copyright (c)  2013, lion
+ * Copyright (c)  2013, Newtouch
  * All rights reserved. 
  *
  * $id: DemoDaoImpl.java 9552 2013-3-22 上午9:12:53 WangLijun$

@@ -1,5 +1,5 @@
 /*
- * Copyright (c)  2012, lion
+ * Copyright (c)  2012, Newtouch
  * All rights reserved. 
  *
  * $id: BaseDaoImpl.java 9552 2012-7-8 上午01:18:39 WangLijun$
@@ -43,7 +43,7 @@ import com.newtouch.lion.session.AppContext;
  * Copyright: Copyright (c) 2012
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun

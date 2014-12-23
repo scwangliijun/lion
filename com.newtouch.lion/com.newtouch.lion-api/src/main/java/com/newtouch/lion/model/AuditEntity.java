@@ -13,7 +13,7 @@ import java.util.Date;
  * Title:AuditEntity
  * </p>
  * <p>
- * Description:用于Model创建、更新时添加创建用户Id,日期、更新用户Id,日期，无逻辑删除Model 可继承该类 
+ * Description:用于Model创建、更新时添加创建用户Id,日期、更新用户Id,日期，无逻辑删除Model 可继承该类
  * </p>
  * <p>
  * Copyright: Copyright (c) 2012
@@ -54,7 +54,7 @@ public abstract class AuditEntity<PK> extends BaseEntity<PK> {
 	 * 
 	 * @return the createdById
 	 */
- 
+
 	public Long getCreatedById() {
 
 		return createdById;
@@ -66,7 +66,7 @@ public abstract class AuditEntity<PK> extends BaseEntity<PK> {
 	 * @param createdById
 	 *            the createdById to set
 	 */
-	
+
 	public void setCreatedById(Long createdById) {
 
 		this.createdById = createdById;
@@ -77,7 +77,7 @@ public abstract class AuditEntity<PK> extends BaseEntity<PK> {
 	 * 
 	 * @return the createdDate
 	 */
-	 
+
 	public Date getCreatedDate() {
 		return createdDate;
 	}
@@ -99,7 +99,7 @@ public abstract class AuditEntity<PK> extends BaseEntity<PK> {
 	 * 
 	 * @return the updatedById
 	 */
-	 
+
 	public Long getUpdatedById() {
 
 		return updatedById;
@@ -122,7 +122,7 @@ public abstract class AuditEntity<PK> extends BaseEntity<PK> {
 	 * 
 	 * @return the updatedDate
 	 */
- 
+
 	public Date getUpdatedDate() {
 
 		return updatedDate;

@@ -1,10 +1,10 @@
-/**
-	* Copyright (c)  2012, lion
-	* All rights reserved. 
-	*
-	* $id: TsCodeList.java 9552 2012-12-30 下午8:46:28 WangLijun$
-*/
-package com.newtouch.lion.model.system; 
+/*
+ * Copyright (c)  2012, Newtouch
+ * All rights reserved. 
+ *
+ * $id: TsCodeList.java 9552 2012-12-30 下午8:46:28 WangLijun$
+ */
+package com.newtouch.lion.model.system;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,68 +25,65 @@ import com.newtouch.lion.model.VersionEntity;
  * Copyright: Copyright (c) 2012
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun
  * @version 1.0
  */
 public class CodeList extends VersionEntity<Long> {
-	
+
 	private static final long serialVersionUID = -3068188326261674873L;
-	/**通用编码列表id*/
+	/** 通用编码列表id */
 	private Long id;
-	/**编码值*/
+	/** 编码值 */
 	private String codeValue;
-	/**编码中文名称*/
+	/** 编码中文名称 */
 	private String nameZh;
-	/**编码英文名称*/
+	/** 编码英文名称 */
 	private String nameEn;
-	/**编码排序*/
+	/** 编码排序 */
 	private int sortNo;
-	/**是否可编辑*/
+	/** 是否可编辑 */
 	private Boolean editable;
-	/**编码类型对象*/
+	/** 编码类型对象 */
 	private CodeType codeType;
-	/**默认选择*/
-	private Boolean  selected;
-	/**编辑类型ID*/
+	/** 默认选择 */
+	private Boolean selected;
+	/** 编辑类型ID */
 	private Long codeTypeId;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.lion.framework.model.BaseEntity#getId()
 	 */
 	@Override
-	@Column(name ="BAS_CODE_LIST_ID", unique = true, nullable = false, precision = 11, scale = 0)
+	@Column(name = "BAS_CODE_LIST_ID", unique = true, nullable = false, precision = 11, scale = 0)
 	public Long getId() {
 		return this.id;
 	}
 
-	
-
 	/**
 	 * @return the codeTypeId
 	 */
-	@Column(name="BAS_CODE_TYPE_ID",nullable=false,insertable=false,updatable=false)
+	@Column(name = "BAS_CODE_TYPE_ID", nullable = false, insertable = false, updatable = false)
 	public Long getCodeTypeId() {
 		return codeTypeId;
 	}
 
-
-
 	/**
-	 * @param codeTypeId the codeTypeId to set
+	 * @param codeTypeId
+	 *            the codeTypeId to set
 	 */
 	public void setCodeTypeId(Long codeTypeId) {
 		this.codeTypeId = codeTypeId;
 	}
 
-
-
 	/**
 	 * @return the codeValue
 	 */
-	@Column(name="CODE_VALUE")
+	@Column(name = "CODE_VALUE")
 	public String getCodeValue() {
 		return codeValue;
 	}
@@ -94,7 +91,7 @@ public class CodeList extends VersionEntity<Long> {
 	/**
 	 * @return the nameZh
 	 */
-	@Column(name="NAME_ZH")
+	@Column(name = "NAME_ZH")
 	public String getNameZh() {
 		return nameZh;
 	}
@@ -102,7 +99,7 @@ public class CodeList extends VersionEntity<Long> {
 	/**
 	 * @return the nameEn
 	 */
-	@Column(name="NAME_EN")
+	@Column(name = "NAME_EN")
 	public String getNameEn() {
 		return nameEn;
 	}
@@ -110,7 +107,7 @@ public class CodeList extends VersionEntity<Long> {
 	/**
 	 * @return the sortNo
 	 */
-	@Column(name="SORT_NO")
+	@Column(name = "SORT_NO")
 	public int getSortNo() {
 		return sortNo;
 	}
@@ -118,95 +115,90 @@ public class CodeList extends VersionEntity<Long> {
 	/**
 	 * @return the editable
 	 */
-	@Column(name="EDITABLE")
+	@Column(name = "EDITABLE")
 	public Boolean getEditable() {
 		return editable;
 	}
-	
+
 	/**
 	 * @return the tsCodeType
 	 */
-	@ManyToOne(cascade=CascadeType.MERGE,fetch = FetchType.LAZY)
-	@JoinColumn(name = "BAS_CODE_TYPE_ID",nullable=false,insertable=true,updatable=true)
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+	@JoinColumn(name = "BAS_CODE_TYPE_ID", nullable = false, insertable = true, updatable = true)
 	public CodeType getCodeType() {
 		return this.codeType;
 	}
-	
-	
-
-	 
-
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
- 
 
 	/**
-	 * @param codeValue the codeValue to set
+	 * @param codeValue
+	 *            the codeValue to set
 	 */
 	public void setCodeValue(String codeValue) {
 		this.codeValue = codeValue;
 	}
 
 	/**
-	 * @param nameZh the nameZh to set
+	 * @param nameZh
+	 *            the nameZh to set
 	 */
 	public void setNameZh(String nameZh) {
 		this.nameZh = nameZh;
 	}
 
 	/**
-	 * @param nameEn the nameEn to set
+	 * @param nameEn
+	 *            the nameEn to set
 	 */
 	public void setNameEn(String nameEn) {
 		this.nameEn = nameEn;
 	}
 
 	/**
-	 * @param sortNo the sortNo to set
+	 * @param sortNo
+	 *            the sortNo to set
 	 */
 	public void setSortNo(int sortNo) {
 		this.sortNo = sortNo;
 	}
 
 	/**
-	 * @param tsCodeType the tsCodeType to set
+	 * @param tsCodeType
+	 *            the tsCodeType to set
 	 */
 	public void setCodeType(CodeType codeType) {
 		this.codeType = codeType;
 	}
 
 	/**
-	 * @param editable the editable to set
+	 * @param editable
+	 *            the editable to set
 	 */
 	public void setEditable(Boolean editable) {
 		this.editable = editable;
 	}
 
-
-
 	/**
 	 * @return the selected
 	 */
-	@Column(name="SELECTED")
+	@Column(name = "SELECTED")
 	public Boolean getSelected() {
 		return selected;
 	}
 
-
-
 	/**
-	 * @param selected the selected to set
+	 * @param selected
+	 *            the selected to set
 	 */
 	public void setSelected(Boolean selected) {
 		this.selected = selected;
 	}
-	
-	
-}
 
-	
+}
