@@ -5,15 +5,15 @@
  * $id: Columns.java 9552 2013-3-27 下午4:48:20 WangLijun$
  */
 package com.newtouch.lion.model.datagrid;
-import com.newtouch.lion.model.VersionEntity;
 
+import com.newtouch.lion.model.VersionEntity;
 
 /**
  * <p>
- * Title:
+ * Title:DatColumn 定义
  * </p>
  * <p>
- * Description:
+ * Description:DatColumn 定义
  * </p>
  * <p>
  * Copyright: Copyright (c) 2013
@@ -31,11 +31,11 @@ public class DataColumn extends VersionEntity<Long> {
 		 * 
 		 */
 	private static final long serialVersionUID = 5425792065799995912L;
-	
+
 	private Long id;
-	/**当前显示顺序从1开始，用于控制列显示顺序*/
-	private int showOrder=1; 
-	/** 列映射字段名称 ，与Model绑定*/
+	/** 当前显示顺序从1开始，用于控制列显示顺序 */
+	private int showOrder = 1;
+	/** 列映射字段名称 ，与Model绑定 */
 	private Long dataGridId;
 	private String field;
 	/** 列名显示字段 */
@@ -88,10 +88,10 @@ public class DataColumn extends VersionEntity<Long> {
 	 * options: object, the editor options corresponding to the edit type.
 	 */
 	private String editor;
-	
-	/**数据*/
+
+	/** 数据 */
 	private DataGrid dataGrid;
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -108,9 +108,7 @@ public class DataColumn extends VersionEntity<Long> {
 	public int getShowOrder() {
 		return showOrder;
 	}
-	
-	
-	
+
 	/**
 	 * @return the dataGridId
 	 */
@@ -224,7 +222,6 @@ public class DataColumn extends VersionEntity<Long> {
 		return editor;
 	}
 
-	 
 	/**
 	 * @return the dataGrid
 	 */
@@ -233,133 +230,152 @@ public class DataColumn extends VersionEntity<Long> {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
 	/**
-	 * @param showOrder the showOrder to set
+	 * @param showOrder
+	 *            the showOrder to set
 	 */
 	public void setShowOrder(int showOrder) {
 		this.showOrder = showOrder;
 	}
 
 	/**
-	 * @param field the field to set
+	 * @param field
+	 *            the field to set
 	 */
 	public void setField(String field) {
 		this.field = field;
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * @param width the width to set
+	 * @param width
+	 *            the width to set
 	 */
 	public void setWidth(Long width) {
 		this.width = width;
 	}
 
 	/**
-	 * @param rowspan the rowspan to set
+	 * @param rowspan
+	 *            the rowspan to set
 	 */
 	public void setRowspan(int rowspan) {
 		this.rowspan = rowspan;
 	}
 
 	/**
-	 * @param colspan the colspan to set
+	 * @param colspan
+	 *            the colspan to set
 	 */
 	public void setColspan(int colspan) {
 		this.colspan = colspan;
 	}
 
 	/**
-	 * @param sortable the sortable to set
+	 * @param sortable
+	 *            the sortable to set
 	 */
 	public void setSortable(Boolean sortable) {
 		this.sortable = sortable;
 	}
 
 	/**
-	 * @param order the order to set
+	 * @param order
+	 *            the order to set
 	 */
 	public void setOrder(String order) {
 		this.order = order;
 	}
 
 	/**
-	 * @param headerAlign the headerAlign to set
+	 * @param headerAlign
+	 *            the headerAlign to set
 	 */
 	public void setHeaderAlign(String headerAlign) {
 		this.headerAlign = headerAlign;
 	}
 
 	/**
-	 * @param align the align to set
+	 * @param align
+	 *            the align to set
 	 */
 	public void setAlign(String align) {
 		this.align = align;
 	}
 
 	/**
-	 * @param hidden the hidden to set
+	 * @param hidden
+	 *            the hidden to set
 	 */
 	public void setHidden(Boolean hidden) {
 		this.hidden = hidden;
 	}
 
 	/**
-	 * @param checkbox the checkbox to set
+	 * @param checkbox
+	 *            the checkbox to set
 	 */
 	public void setCheckbox(Boolean checkbox) {
 		this.checkbox = checkbox;
 	}
 
 	/**
-	 * @param formatter the formatter to set
+	 * @param formatter
+	 *            the formatter to set
 	 */
 	public void setFormatter(String formatter) {
 		this.formatter = formatter;
 	}
 
 	/**
-	 * @param styler the styler to set
+	 * @param styler
+	 *            the styler to set
 	 */
 	public void setStyler(String styler) {
 		this.styler = styler;
 	}
 
 	/**
-	 * @param sorter the sorter to set
+	 * @param sorter
+	 *            the sorter to set
 	 */
 	public void setSorter(String sorter) {
 		this.sorter = sorter;
 	}
 
 	/**
-	 * @param editor the editor to set
+	 * @param editor
+	 *            the editor to set
 	 */
 	public void setEditor(String editor) {
 		this.editor = editor;
 	}
 
 	/**
-	 * @param dataGrid the dataGrid to set
+	 * @param dataGrid
+	 *            the dataGrid to set
 	 */
 	public void setDataGrid(DataGrid dataGrid) {
 		this.dataGrid = dataGrid;
 	}
 
 	/**
-	 * @param dataGridId the dataGridId to set
+	 * @param dataGridId
+	 *            the dataGridId to set
 	 */
 	public void setDataGridId(Long dataGridId) {
 		this.dataGridId = dataGridId;

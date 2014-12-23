@@ -9,11 +9,6 @@ package com.newtouch.lion.model.system;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-
 import com.newtouch.lion.model.VersionEntity;
 
 /**
@@ -64,7 +59,7 @@ public class CodeType extends VersionEntity<Long> {
 	/**
 	 * @return the codeType
 	 */
-	@Column(name = "CODE_TYPE", length = 20)
+ 
 	public String getType() {
 		return type;
 	}
@@ -72,7 +67,7 @@ public class CodeType extends VersionEntity<Long> {
 	/**
 	 * @return the nameZh
 	 */
-	@Column(name = "NAME_ZH", unique = true, length = 128)
+	 
 	public String getNameZh() {
 		return nameZh;
 	}
@@ -80,7 +75,7 @@ public class CodeType extends VersionEntity<Long> {
 	/**
 	 * @return the nameEn
 	 */
-	@Column(name = "NAME_EN", unique = true, length = 128)
+	 
 	public String getNameEn() {
 		return nameEn;
 	}
@@ -88,7 +83,7 @@ public class CodeType extends VersionEntity<Long> {
 	/**
 	 * @return the editable
 	 */
-	@Column(name = "EDITABLE")
+ 
 	public Boolean getEditable() {
 		return editable;
 	}
@@ -96,15 +91,14 @@ public class CodeType extends VersionEntity<Long> {
 	/**
 	 * @return the codeLenLimit
 	 */
-	@Column(name = "CODE_LEN_LIMIT", precision = 4, scale = 0)
+	 
 	public Integer getCodeLenLimit() {
 		return codeLenLimit;
 	}
 
 	/**
-	 * @return the tsCodeLists
+	 * @return the CodeLists
 	 */
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "codeType")
 	public Set<CodeList> getCodeLists() {
 		return codeLists;
 	}

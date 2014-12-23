@@ -6,11 +6,6 @@
  */
 package com.newtouch.lion.model.system;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import com.newtouch.lion.model.VersionEntity;
 
@@ -58,8 +53,7 @@ public class CodeList extends VersionEntity<Long> {
 	 * 
 	 * @see com.lion.framework.model.BaseEntity#getId()
 	 */
-	@Override
-	@Column(name = "BAS_CODE_LIST_ID", unique = true, nullable = false, precision = 11, scale = 0)
+ 
 	public Long getId() {
 		return this.id;
 	}
@@ -67,7 +61,7 @@ public class CodeList extends VersionEntity<Long> {
 	/**
 	 * @return the codeTypeId
 	 */
-	@Column(name = "BAS_CODE_TYPE_ID", nullable = false, insertable = false, updatable = false)
+ 
 	public Long getCodeTypeId() {
 		return codeTypeId;
 	}
@@ -83,7 +77,7 @@ public class CodeList extends VersionEntity<Long> {
 	/**
 	 * @return the codeValue
 	 */
-	@Column(name = "CODE_VALUE")
+	 
 	public String getCodeValue() {
 		return codeValue;
 	}
@@ -91,7 +85,7 @@ public class CodeList extends VersionEntity<Long> {
 	/**
 	 * @return the nameZh
 	 */
-	@Column(name = "NAME_ZH")
+	 
 	public String getNameZh() {
 		return nameZh;
 	}
@@ -99,7 +93,6 @@ public class CodeList extends VersionEntity<Long> {
 	/**
 	 * @return the nameEn
 	 */
-	@Column(name = "NAME_EN")
 	public String getNameEn() {
 		return nameEn;
 	}
@@ -107,7 +100,7 @@ public class CodeList extends VersionEntity<Long> {
 	/**
 	 * @return the sortNo
 	 */
-	@Column(name = "SORT_NO")
+	 
 	public int getSortNo() {
 		return sortNo;
 	}
@@ -115,7 +108,7 @@ public class CodeList extends VersionEntity<Long> {
 	/**
 	 * @return the editable
 	 */
-	@Column(name = "EDITABLE")
+ 
 	public Boolean getEditable() {
 		return editable;
 	}
@@ -123,8 +116,7 @@ public class CodeList extends VersionEntity<Long> {
 	/**
 	 * @return the tsCodeType
 	 */
-	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-	@JoinColumn(name = "BAS_CODE_TYPE_ID", nullable = false, insertable = true, updatable = true)
+	
 	public CodeType getCodeType() {
 		return this.codeType;
 	}
@@ -188,7 +180,6 @@ public class CodeList extends VersionEntity<Long> {
 	/**
 	 * @return the selected
 	 */
-	@Column(name = "SELECTED")
 	public Boolean getSelected() {
 		return selected;
 	}

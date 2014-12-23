@@ -6,13 +6,11 @@
  */
 package com.newtouch.lion.model.system;
 
-import javax.persistence.Column;
-
 import com.newtouch.lion.model.VersionEntity;
 
 /**
  * <p>
- * Title:TsParameter
+ * Title:Parameter
  * </p>
  * <p>
  * Description:系统参数表
@@ -91,7 +89,6 @@ public class Parameter extends VersionEntity<Long> {
 	 * 
 	 * @return the type
 	 */
-	@Column(name = "CATEGORY")
 	public String getType() {
 		return type;
 	}
@@ -112,7 +109,7 @@ public class Parameter extends VersionEntity<Long> {
 	 * 
 	 * @return the nameEn
 	 */
-	@Column(name = "NAMEEN", unique = true)
+	
 	public String getNameEn() {
 
 		return this.nameEn;
@@ -134,7 +131,7 @@ public class Parameter extends VersionEntity<Long> {
 	 * 
 	 * @return the nameZh
 	 */
-	@Column(name = "NAMEZH")
+	
 	public String getNameZh() {
 
 		return nameZh;
@@ -156,7 +153,6 @@ public class Parameter extends VersionEntity<Long> {
 	 * 
 	 * @return the value
 	 */
-	@Column(name = "VALUE", length = 1024)
 	public String getValue() {
 
 		return value;
@@ -178,7 +174,7 @@ public class Parameter extends VersionEntity<Long> {
 	 * 
 	 * @return the description
 	 */
-	@Column(name = "DESCRIPTION", length = 1024)
+	
 	public String getDescription() {
 
 		return description;
@@ -211,7 +207,6 @@ public class Parameter extends VersionEntity<Long> {
 	 * 
 	 * @return the editable
 	 */
-	@Column(name = "EDITABLE")
 	public Boolean getEditable() {
 
 		return editable;
