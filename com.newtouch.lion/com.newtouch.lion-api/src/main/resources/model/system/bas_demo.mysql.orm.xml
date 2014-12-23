@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+	<package>com.newtouch.lion.model.system</package>
+	<access>PROPERTY</access>
+	<mapped-superclass access="PROPERTY"
+		class="com.newtouch.lion.model.AuditEntity">
+		<attributes>
+			<basic name="createdById" access="PROPERTY">
+				<column name="CREATE_BY" length="11" scale="0" nullable="true" />
+			</basic>
+			<basic name="createdDate" access="PROPERTY">
+				<column name="CREATE_DATE" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedById" access="PROPERTY">
+				<column name="UPDATE_BY" length="11" scale="0" nullable="true" />
+			</basic>
+			<basic name="updatedDate" access="PROPERTY">
+				<column name="UPDATE_DATE" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+		</attributes>
+	</mapped-superclass>
+	<entity class="DemoModel">
+		<table name="bas_demo" />
+		<attributes>
+			<id name="id" access="PROPERTY">
+				<column name="BAS_DEMO_ID" unique="true" nullable="false"
+					precision="11" scale="0" />
+				<generated-value strategy="IDENTITY" />
+			</id>
+			<basic name="nameZh" access="PROPERTY">
+				<column name="NAME_ZH" length="30" nullable="true" />
+			</basic>
+			<many-to-one name="demoModel" fetch="LAZY">
+				<join-column name="PARENT_ID" insertable="true"
+					updatable="true" />
+			</many-to-one>
+			<one-to-many name="demoModels" fetch="LAZY" mapped-by="demoModel"
+				access="PROPERTY">
+				<cascade>
+					<cascade-all />
+				</cascade>
+			</one-to-many>
+		</attributes>
+	</entity>
+</entity-mappings>

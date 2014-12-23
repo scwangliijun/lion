@@ -22,7 +22,7 @@
 		<!-- 配置初始化大小、最小、最大 -->
 		<property name="initialSize" value="#{applicationPropertiesConfig['database.initialSize']}" />
 		<property name="minIdle" value="#{applicationPropertiesConfig['database.minIdle']}" />
-		<property name="maxActive" value="#{applicationPropertiesConfig['database.maxActive']}" " />
+		<property name="maxActive" value="#{applicationPropertiesConfig['database.maxActive']}"/>
 
 		<!-- 配置获取连接等待超时的时间 -->
 		<property name="maxWait" value="60000" />

@@ -39,7 +39,7 @@ public class DemoServiceTest extends AllTest {
 	@Autowired
 	private DemoService demoService;
 
-	@Test
+	//@Test
 	public void doFindByParentIdTest() {
 		List<DemoModel> demoModels = demoService.doFindByParentId();
 		DemoModel demoModel=demoModels.get(0);
@@ -52,7 +52,7 @@ public class DemoServiceTest extends AllTest {
 
 	}
 
-	// @Test
+	 @Test
 	public void doCreateTest() {
 		DemoModel demoModel1 = new DemoModel();
 		demoModel1.setNameZh("HP1");

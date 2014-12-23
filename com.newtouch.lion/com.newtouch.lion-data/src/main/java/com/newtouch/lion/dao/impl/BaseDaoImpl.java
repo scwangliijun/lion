@@ -90,7 +90,6 @@ public class BaseDaoImpl<T extends BaseEntity<PK>, PK> implements BaseDao<T, PK>
 				}
 			}
 			obj1.setUpdatedById(AppContext.getUserInfo().getId());
-			log.info("userId:{}", AppContext.getUserInfo().getId());
 			obj1.setUpdatedDate(Calendar.getInstance().getTime());
 		}
 	}

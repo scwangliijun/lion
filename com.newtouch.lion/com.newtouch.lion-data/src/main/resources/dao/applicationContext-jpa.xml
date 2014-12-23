@@ -23,7 +23,8 @@
 		<!-- <property name="persistenceXmlLocation" value="classpath:META-INF/persistence-mysql.xml"></property>--> 
 		<property name="mappingResources">
 			<list>
-				<value>model/system/bas_demo.orm.xml</value>
+				<value>model/system/bas_app_properties.${database.prefix}.orm.xml</value>
+				<value>model/system/bas_demo.${database.prefix}.orm.xml</value>
 			</list>
 		</property>
 		<property name="jpaPropertyMap">

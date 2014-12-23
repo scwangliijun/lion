@@ -1,5 +1,5 @@
 /*
- * Copyright (c)  2013, lion
+ * Copyright (c)  2013, Newtouch
  * All rights reserved. 
  *
  * $id: MethodTimerAdvice.java 9552 2013-4-7 上午10:33:28 WangLijun$
@@ -32,7 +32,7 @@ import org.apache.commons.beanutils.BeanUtils;
  * Copyright: Copyright (c) 2013
  * </p>
  * <p>
- * Company: lion
+ * Company: Newtouch
  * </p>
  * 
  * @author WangLijun
