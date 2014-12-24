@@ -45,7 +45,7 @@ public class Department extends VersionEntity<Long> {
 	/** 上一级部门ID */
 	private Long parentDepartmentId;
 	/** 部门编号 */
-	private String departmentNO;
+	private String departmentNo;
 	/** 部门中文名称 */
 	private String nameZh;
 	/** 部门英文名称 */
@@ -60,7 +60,9 @@ public class Department extends VersionEntity<Long> {
 	private Department department;
 	/** 该部门所属下级所有部门集合 */
 	private Set<Department> departments = new HashSet<Department>(0);
-
+	/** 该部门所属的岗位集合 */
+	private Set<Position> positions = new HashSet<Position>(0);
+	/** 排序 */
 	private List<Department> sortedChildDepartment;
 
 	@Override
@@ -80,8 +82,8 @@ public class Department extends VersionEntity<Long> {
 	 * @return the departmentNO
 	 */
 
-	public String getDepartmentNO() {
-		return departmentNO;
+	public String getDepartmentNo() {
+		return departmentNo;
 	}
 
 	/**
@@ -166,7 +168,7 @@ public class Department extends VersionEntity<Long> {
 	/****
 	 * 
 	 * @param parentDepartmentId
-	 * @param departmentNO
+	 * @param departmentNo
 	 * @param nameZh
 	 * @param nameEn
 	 * @param description
@@ -175,12 +177,12 @@ public class Department extends VersionEntity<Long> {
 	 * @param department
 	 * @param departments
 	 */
-	public Department(Long parentDepartmentId, String departmentNO,
+	public Department(Long parentDepartmentId, String departmentNo,
 			String nameZh, String nameEn, String description, boolean editable,
 			Set<User> users, Department department, Set<Department> departments) {
 		super();
 		this.parentDepartmentId = parentDepartmentId;
-		this.departmentNO = departmentNO;
+		this.departmentNo = departmentNo;
 		this.nameZh = nameZh;
 		this.nameEn = nameEn;
 		this.description = description;
@@ -210,8 +212,8 @@ public class Department extends VersionEntity<Long> {
 	 * @param departmentNO
 	 *            the departmentNO to set
 	 */
-	public void setDepartmentNO(String departmentNO) {
-		this.departmentNO = departmentNO;
+	public void setDepartmentNo(String departmentNo) {
+		this.departmentNo = departmentNo;
 	}
 
 	/**
@@ -285,6 +287,22 @@ public class Department extends VersionEntity<Long> {
 	public void setSortedChildDepartment(List<Department> sortedChildDepartment) {
 		this.sortedChildDepartment = sortedChildDepartment;
 	}
+	
+	
+
+	/**
+	 * @return the positions
+	 */
+	public Set<Position> getPositions() {
+		return positions;
+	}
+
+	/**
+	 * @param positions the positions to set
+	 */
+	public void setPositions(Set<Position> positions) {
+		this.positions = positions;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -294,7 +312,7 @@ public class Department extends VersionEntity<Long> {
 	@Override
 	public String toString() {
 		return "Department [id=" + id + ", parentDepartmentId="
-				+ parentDepartmentId + ", departmentNO=" + departmentNO
+				+ parentDepartmentId + ", departmentNO=" + departmentNo
 				+ ", nameZh=" + nameZh + ", nameEn=" + nameEn
 				+ ", description=" + description + ", editable=" + editable
 				+ ", Users= ";

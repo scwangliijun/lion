@@ -50,11 +50,11 @@
 			<basic name="nameEn">
 				<column name="NAME_EN" length="128" nullable="true" />
 			</basic>
-				<basic name="value">
+			<basic name="value">
 				<column name="VALUE" length="256" nullable="true" />
 			</basic>
 			<basic name="editable">
-				<column name="EDITABLE"/>
+				<column name="EDITABLE" />
 			</basic>
 			<basic name="description">
 				<column name="DESCRIPTION" length="512" nullable="true" />
@@ -104,10 +104,12 @@
 				<column name="EDITABLE" />
 			</basic>
 			<basic name="codeLenLimit">
-				<column name="CODE_LEN_LIMIT" precision="11"  scale="0"/>
+				<column name="CODE_LEN_LIMIT" precision="11" scale="0" />
 			</basic>
 			<one-to-many name="codeLists" fetch="LAZY" mapped-by="codeType">
-					<cascade><cascade-all/></cascade>
+				<cascade>
+					<cascade-all />
+				</cascade>
 			</one-to-many>
 		</attributes>
 	</entity>
@@ -139,13 +141,14 @@
 				<column name="EDITABLE" />
 			</basic>
 			<basic name="sortNo">
-				<column name="SORT_NO"  precision="11"  scale="0"/>
+				<column name="SORT_NO" precision="11" scale="0" />
 			</basic>
 			<basic name="selected">
-				<column name="SELECTED"/>
+				<column name="SELECTED" />
 			</basic>
 			<many-to-one name="codeType" fetch="LAZY">
-				<join-column name="BAS_CODE_TYPE_ID" insertable="true"  updatable="true" nullable="false"/>
+				<join-column name="BAS_CODE_TYPE_ID" insertable="true"
+					updatable="true" nullable="false" />
 			</many-to-one>
 		</attributes>
 	</entity>

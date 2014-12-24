@@ -9,12 +9,6 @@ package com.newtouch.lion.model.system;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 
 import com.newtouch.lion.model.VersionEntity;
 
@@ -70,7 +64,7 @@ public class Role extends VersionEntity<Long> {
 	/**
 	 * @return the nameZh
 	 */
-	@Column(name = "NAME_ZH", unique = true, length = 100)
+	 
 	public String getNameZh() {
 		return nameZh;
 	}
@@ -78,7 +72,6 @@ public class Role extends VersionEntity<Long> {
 	/**
 	 * @return the nameEn
 	 */
-	@Column(name = "NAME_EN", unique = true, length = 100)
 	public String getNameEn() {
 		return nameEn;
 	}
@@ -86,7 +79,7 @@ public class Role extends VersionEntity<Long> {
 	/**
 	 * @return the description
 	 */
-	@Column(name = "DESCRIPTION", length = 255)
+
 	public String getDescription() {
 		return description;
 	}
@@ -94,7 +87,6 @@ public class Role extends VersionEntity<Long> {
 	/**
 	 * @return the editable
 	 */
-	@Column(name = "EDITABLE")
 	public Boolean getEditable() {
 		return editable;
 	}
@@ -102,8 +94,7 @@ public class Role extends VersionEntity<Long> {
 	/**
 	 * @return the users
 	 */
-	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-	@JoinTable(name = "BAS_USER_ROLE", joinColumns = { @JoinColumn(name = "BAS_ROLE_ID") }, inverseJoinColumns = { @JoinColumn(name = "BAS_USER_ID") })
+	 
 	public Set<User> getUsers() {
 		return users;
 	}
@@ -111,8 +102,7 @@ public class Role extends VersionEntity<Long> {
 	/**
 	 * @return the groups
 	 */
-	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-	@JoinTable(name = "BAS_GROUP_ROLE", joinColumns = { @JoinColumn(name = "BAS_ROLE_ID") }, inverseJoinColumns = { @JoinColumn(name = "BAS_GROUP_ID") })
+	 
 	public Set<Group> getGroups() {
 		return groups;
 	}
@@ -120,8 +110,6 @@ public class Role extends VersionEntity<Long> {
 	/**
 	 * @return the resources BAS_ROLE_RESOURCE
 	 */
-	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-	@JoinTable(name = "BAS_ROLE_RESOURCE", joinColumns = { @JoinColumn(name = "BAS_ROLE_ID") }, inverseJoinColumns = { @JoinColumn(name = "BAS_RESOURCE_ID") })
 	public Set<Resource> getResources() {
 		return resources;
 	}

@@ -10,7 +10,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -49,10 +48,10 @@ public class Group extends VersionEntity<Long> {
 	private String nameZh;
 	/** 用户组名称－英文 */
 	private String nameEn;
-	/** 用户组描述 */
-	private String description;
 	/** 是否可编辑 */
 	private Boolean editable;
+	/** 用户组描述 */
+	private String description;
 	/***
 	 * 所属用户组用户集合
 	 */
@@ -74,7 +73,6 @@ public class Group extends VersionEntity<Long> {
 	/**
 	 * @return the nameZh
 	 */
-	@Column(name = "NAME_ZH", unique = true, length = 100)
 	public String getNameZh() {
 		return nameZh;
 	}
@@ -82,7 +80,6 @@ public class Group extends VersionEntity<Long> {
 	/**
 	 * @return the nameEn
 	 */
-	@Column(name = "NAME_EN", unique = true, length = 100)
 	public String getNameEn() {
 		return nameEn;
 	}
@@ -90,7 +87,6 @@ public class Group extends VersionEntity<Long> {
 	/**
 	 * @return the description
 	 */
-	@Column(name = "DESCRIPTION", length = 255)
 	public String getDescription() {
 		return description;
 	}
@@ -98,7 +94,6 @@ public class Group extends VersionEntity<Long> {
 	/**
 	 * @return the editable
 	 */
-	@Column(name = "EDITABLE")
 	public Boolean getEditable() {
 		return editable;
 	}

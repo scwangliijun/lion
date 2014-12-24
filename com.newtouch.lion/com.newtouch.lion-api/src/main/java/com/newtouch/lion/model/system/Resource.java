@@ -11,15 +11,9 @@ import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 
 import com.newtouch.lion.model.VersionEntity;
 
@@ -68,14 +62,15 @@ public class Resource extends VersionEntity<Long> {
 	private Boolean editable;
 	/** 资源目标 指HTML链接的target属性 */
 	private String target;
+	/** 资源性 */
+	private Attributes attributes;
 	/** 子资源关联父资源对象 */
 	private Resource resource;
 	/** 父资源关联父资源对象 */
 	private Set<Resource> resources = new HashSet<Resource>(0);
 	/** 资源所关联的角色集合 */
 	private Set<Role> roles = new HashSet<Role>();
-	/** 资源性 */
-	private Attributes attributes;
+
 
 	/*
 	 * (non-Javadoc)
@@ -90,7 +85,6 @@ public class Resource extends VersionEntity<Long> {
 	/**
 	 * @return the parentResourceId
 	 */
-	@Column(name = "PARENT_BAS_RESOURCE_ID", nullable = false, precision = 11, scale = 0)
 	public Long getParentResourceId() {
 		return parentResourceId;
 	}
@@ -98,7 +92,7 @@ public class Resource extends VersionEntity<Long> {
 	/**
 	 * @return the type
 	 */
-	@Column(name = "TYPE", length = 255)
+	
 	public String getType() {
 		return type;
 	}
@@ -106,7 +100,7 @@ public class Resource extends VersionEntity<Long> {
 	/**
 	 * @return the path
 	 */
-	@Column(name = "PATH", unique = true, length = 1024)
+	
 	public String getPath() {
 		return path;
 	}
@@ -114,7 +108,7 @@ public class Resource extends VersionEntity<Long> {
 	/**
 	 * @return the nameZh
 	 */
-	@Column(name = "NAME_ZH", unique = true, length = 255)
+
 	public String getNameZh() {
 		return nameZh;
 	}
@@ -122,7 +116,6 @@ public class Resource extends VersionEntity<Long> {
 	/**
 	 * @return the nameEn
 	 */
-	@Column(name = "NAME_EN", unique = true, length = 255)
 	public String getNameEn() {
 		return nameEn;
 	}
@@ -130,7 +123,6 @@ public class Resource extends VersionEntity<Long> {
 	/**
 	 * @return the description
 	 */
-	@Column(name = "DESCRIPTION", length = 255)
 	public String getDescription() {
 		return description;
 	}
@@ -138,7 +130,6 @@ public class Resource extends VersionEntity<Long> {
 	/**
 	 * @return the seqNum
 	 */
-	@Column(name = "SEQ_NUM")
 	public int getSeqNum() {
 		return seqNum;
 	}
@@ -146,7 +137,7 @@ public class Resource extends VersionEntity<Long> {
 	/**
 	 * @return the isLeaf
 	 */
-	@Column(name = "IS_LEAF")
+	 
 	public Boolean getIsLeaf() {
 		return isLeaf;
 	}
@@ -154,7 +145,7 @@ public class Resource extends VersionEntity<Long> {
 	/**
 	 * @return the editable
 	 */
-	@Column(name = "EDITABLE")
+	 
 	public Boolean getEditable() {
 		return editable;
 	}
@@ -162,7 +153,7 @@ public class Resource extends VersionEntity<Long> {
 	/**
 	 * @return the target
 	 */
-	@Column(name = "TARGET")
+	 
 	public String getTarget() {
 		return target;
 	}
@@ -170,8 +161,6 @@ public class Resource extends VersionEntity<Long> {
 	/**
 	 * @return the tsResource
 	 */
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	@JoinColumn(name = "PARENT_BAS_RESOURCE_ID", updatable = false, insertable = false)
 	public Resource getResource() {
 		return resource;
 	}
@@ -179,8 +168,7 @@ public class Resource extends VersionEntity<Long> {
 	/**
 	 * @return the tsResources
 	 */
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	@JoinColumn(name = "PARENT_BAS_RESOURCE_ID", updatable = false, insertable = false)
+
 	public Set<Resource> getResources() {
 		return resources;
 	}
@@ -188,8 +176,6 @@ public class Resource extends VersionEntity<Long> {
 	/**
 	 * @return the tsRoles
 	 */
-	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-	@JoinTable(name = "BAS_ROLE_RESOURCE", joinColumns = { @JoinColumn(name = "BAS_RESOURCE_ID", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "BAS_ROLE_ID", nullable = false, updatable = false) })
 	public Set<Role> getRoles() {
 		return roles;
 	}
