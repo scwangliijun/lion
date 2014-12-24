@@ -98,7 +98,7 @@
 				<column name="NAME_ZH" length="128" nullable="true" />
 			</basic>
 			<basic name="nameEn">
-				<column name="NAME_ZH" length="128" nullable="true" />
+				<column name="NAME_EN" length="128" nullable="true" />
 			</basic>
 			<basic name="editable">
 				<column name="EDITABLE" />
@@ -129,13 +129,13 @@
 			</basic>
 
 			<basic name="codeValue">
-				<column name="CODE_VALUE" length="255" nullable="true" />
+				<column name="CODE_VALUE" length="256" nullable="true" />
 			</basic>
 			<basic name="nameZh">
-				<column name="NAME_ZH" length="255" nullable="true" />
+				<column name="NAME_ZH" length="256" nullable="false" />
 			</basic>
 			<basic name="nameEn">
-				<column name="NAME_ZH" length="255" nullable="true" />
+				<column name="NAME_EN" length="256" nullable="false" />
 			</basic>
 			<basic name="editable">
 				<column name="EDITABLE" />
