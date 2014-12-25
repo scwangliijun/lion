@@ -39,6 +39,7 @@
 		<commons-collections.version>3.1</commons-collections.version>
 		<commons-lang.version>2.6</commons-lang.version>
 		<fastjson.version>1.2.3</fastjson.version>
+		<shiro.version>1.2.3</shiro.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -68,7 +69,6 @@
 				<scope>test</scope>
 			</dependency>
 			<!-- Test jar end -->
-
 			<!-- Logger Start -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -91,6 +91,55 @@
 				<version>${logback-ext-spring.version}</version>
 			</dependency>
 			<!-- Logger End -->
+			
+			<!-- Apache Shiro Start -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-web</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-aspectj</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-cas</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-ehcache</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-features</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-guice</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-quartz</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>			
+			<!-- Apache Shiro End -->
+			
 			<!-- JPA&ORM Start -->
 			<dependency>
 				<groupId>javax.persistence</groupId>
