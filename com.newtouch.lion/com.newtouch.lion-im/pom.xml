@@ -9,7 +9,7 @@
 		<version>${lion-parent.version}</version>
 		<relativePath>../com.newtouch.lion-parent/pom.xml</relativePath>
 	</parent>
-	<groupId>com.newtouch.lion-im</groupId>
+	<groupId>com.newtouch.lion</groupId>
 	<artifactId>com.newtouch.lion-im</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>com.newtouch.lion-im</name>

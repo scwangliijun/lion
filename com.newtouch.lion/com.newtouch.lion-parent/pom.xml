@@ -54,6 +54,21 @@
 				<artifactId>com.newtouch.lion-common</artifactId>
 				<version>${lion-common.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.newtouch.lion</groupId>
+				<artifactId>com.newtouch.lion-data</artifactId>
+				<version>${lion-data.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.newtouch.lion</groupId>
+				<artifactId>com.newtouch.lion-im</artifactId>
+				<version>${lion-im.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.newtouch.lion</groupId>
+				<artifactId>com.newtouch.lion-service</artifactId>
+				<version>${lion-service.version}</version>
+			</dependency>
 			<!-- lion End -->
 			<!-- Test jar start -->
 			<dependency>
@@ -533,6 +548,25 @@
 				<version>${fastjson.version}</version>
 			</dependency>
 			<!-- JSON End -->
+			<!-- Servlet&&JSP Start -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>2.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
+				<scope>provided</scope>
+			</dependency>
+			<!-- Servlet&&JSP End -->
 		</dependencies>
 	</dependencyManagement>
 	<build>
