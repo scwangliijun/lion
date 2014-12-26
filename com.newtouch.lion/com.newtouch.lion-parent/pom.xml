@@ -15,7 +15,7 @@
 		<lion-parent.version>0.0.1-SNAPSHOT</lion-parent.version>
 		<lion-im.version>0.0.1-SNAPSHOT</lion-im.version>
 		<lion-web.version>0.0.1-SNAPSHOT</lion-web.version>
-		<lion-webmain.version>0.0.1-SNAPSHOT</lion-webmain.version>
+		<lion-webadmin.version>0.0.1-SNAPSHOT</lion-webadmin.version>
 		<lion-api.version>0.0.1-SNAPSHOT</lion-api.version>
 		<lion-service.version>0.0.1-SNAPSHOT</lion-service.version>
 		<lion-data.version>0.0.1-SNAPSHOT</lion-data.version>

@@ -9,8 +9,8 @@
 		<version>${lion-parent.version}</version>
 		<relativePath>../com.newtouch.lion-parent/pom.xml</relativePath>
 	</parent>
-	<artifactId>com.newtouch.lion-webmain</artifactId>
-	<version>${lion-webmain.version}</version>
+	<artifactId>com.newtouch.lion-webadmin</artifactId>
+	<version>${lion-webadmin.version}</version>
 	<packaging>war</packaging>
 	<name>com.newtouch.lion-webmain Maven Webapp</name>
 	<url>http://maven.apache.org</url>
