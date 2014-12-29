@@ -8,13 +8,13 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
 	<!-- 扫描加载注解 -->
-	<context:component-scan base-package="com.saic.wemall.web" />
+	<context:annotation-config />
+	<context:component-scan base-package="com.newtouch.lion.web" />
 	<!-- Spring MVC自动 -->
 	<mvc:annotation-driven validator="validator">
 		<mvc:message-converters>
 			<bean class="com.newtouch.lion.web.converter.escape.StringEscapeHttpMessageConverter" />
-			<bean name="mappingJacksonHttpMessageConverter"
-				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+			<bean name="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 				<property name="supportedMediaTypes">
 					<list>
 						<value>text/html;charset=UTF-8</value>
@@ -25,40 +25,8 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-	<!-- 拦截器
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/user/**" />
-			<mvc:mapping path="/order/**" />
-			<mvc:mapping path="/personalInfo/**" />
-			<mvc:mapping path="/serviceFile/**" />
-			<mvc:mapping path="/store/mystore.htm" />
-			<mvc:exclude-mapping path="/resources/**" />
-			<bean
-				class="com.saic.wemall.web.interceptor.wechat.AuthorizationInterceptor">
-				 
-				<property name="excludeUrls">
-					<list>
-						<value>/connect/oauth2/authorize</value>
-						<value>/user/index.htm</value>
-						<value>/user/login.htm</value>
-						<value>/user/loginForm.htm</value>
-						<value>/user/redirect.htm</value>
-						<value>/user/bandAuthentication.htm</value>
-						<value>/wechat/index.htm</value>
-						<value>/user/register.htm</value>
-						<value>/about/index.htm</value>
-						<value>/service/index.htm</value>
-						<value>/service/list.htm</value>
-						<value>/order/cancel.htm</value>
-					</list>
-				</property>
-			</bean>
-		</mvc:interceptor>
-	</mvc:interceptors>-->
-	<!-- 拦截器配置 -->
-	<bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath:application.properties</value>
@@ -69,8 +37,7 @@
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 		<property name="order" value="1" />
 	</bean>
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
-		up static resources in the ${webappRoot}/resources directory -->
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<!-- hibernate validator 资源配置 -->
 	<bean name="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
@@ -96,17 +63,11 @@
 		<property name="useCodeAsDefaultMessage" value="false" />
 	</bean>
 	<!-- 针对free marker的视图配置 -->
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 		<property name="cache" value="true" />
 		<property name="order" value="1" />
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
-		<property name="viewNames">
-			<array>
-				<value>*.ftl</value>
-			</array>
-		</property>
+		<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
+		<property name="suffix" value=".ftl"/>
 		<property name="requestContextAttribute" value="request" />
 		<property name="exposeSpringMacroHelpers" value="true" />
 		<property name="exposeRequestAttributes" value="true" />
@@ -115,25 +76,20 @@
 		<property name="contentType" value="text/html;charset=utf-8" />
 	</bean>
 
-	<bean id="freeMarkerConfigurer"
-		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-		<description>Required for Freemarker to work in web tier</description>
+	<bean id="freeMarkerConfigurer"  class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 		<property name="configuration" ref="freemarkerConfiguration" />
 	</bean>
-	<bean id="freemarkerConfiguration"
-		class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
-		<description>Using the Config directly so we can use it outside the
-			web tier</description>
+	<bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
 		<!-- 模板加载路径 -->
 		<property name="templateLoaderPaths">
 			<list>
-				<value>/WEB-INF/view</value>
+				<value>/WEB-INF/view/</value>
 			</list>
 		</property>
 		<property name="configLocation">
 			<value>classpath:freemarker/freemarker.properties</value>
 		</property>
-		<!--全局变量部分 -->
+		<!--全局变量部分
 		<property name="freemarkerVariables">
 			<map>
 				<entry key="buildNo" value="{buildNo}" />
@@ -146,10 +102,10 @@
 				<entry key="financialProgram2" value="${ebiz.dealer.web.financialProgram2}" />
 				<entry key="imUrl" value="${ebiz.dealer.web.imUrl}" />
 				<entry key="minSuffix" value="${ebiz.dealer.web.minSuffix}" />
-				<!--  <entry key="jscssUrl" value-ref="fmJsscssUrl" />
-				<entry key="jscssCommonUrl" value-ref="fmJsscssCommonUrl" />-->
+				<entry key="jscssUrl" value-ref="fmJsscssUrl" />
+				<entry key="jscssCommonUrl" value-ref="fmJsscssCommonUrl" />
 			</map>
-		</property>
+		</property> -->
 		<property name="defaultEncoding" value="utf-8" />
 	</bean>
 
@@ -166,22 +122,21 @@
 		<property name="imgUrlStarNum" value="1" />
 		<property name="imgHostNumber" value="1" />
 	</bean>-->
-	<!-- json解析 -->
+	<!-- json解析-->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="2" />
 	</bean>
-	<bean id="gsonView" class="com.newtouch.lion.web.servlet.view.GsonView" />
+	<bean id="gsonView" class="com.newtouch.lion.web.servlet.view.GsonView"/>
 
 	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
-	<!-- 为了支持forward,redirect -->
-	<bean id="jsltViewResolver"
-		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	<!-- 为了支持forward,redirect-->
+	<bean id="jsltViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="order" value="3" />
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
-	</bean>
+	</bean> 
 
 
 	<!-- 统一异常处理 -->

@@ -18,7 +18,7 @@ import org.springframework.util.CollectionUtils;
 
 import com.newtouch.lion.common.sql.HqlUtils;
 import com.newtouch.lion.dao.system.UserDao;
-import com.newtouch.lion.json.json.JSONParser;
+import com.newtouch.lion.json.JSONParser;
 import com.newtouch.lion.model.system.Group;
 import com.newtouch.lion.model.system.Role;
 import com.newtouch.lion.model.system.User;

@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 
 import com.newtouch.lion.common.sql.HqlUtils;
 import com.newtouch.lion.dao.datagrid.DataGridDao;
-import com.newtouch.lion.json.json.JSONParser;
+import com.newtouch.lion.json.JSONParser;
 import com.newtouch.lion.model.datagrid.DataGrid;
 import com.newtouch.lion.page.PageResult;
 import com.newtouch.lion.query.QueryCriteria;

@@ -9,7 +9,7 @@
 		<param-name>webAppRootKey</param-name>
 		<param-value>Newtouch.web.root</param-value>
 	</context-param>
-	<!--  Spring Param  -->
+	<!-- Spring Param -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath*:applicationContext-admin.xml</param-value>
@@ -20,12 +20,27 @@
 	</context-param>
 	<!-- Context Param Initialization End -->
 
+	<!-- Listener Definitions Start -->
+	<!-- 防止内存溢出监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
+	</listener>
+	<!---获取Spring Request -->
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	<!-- Listener Definitions End -->
+
 	<!-- Filter Definitions Start -->
-	<!--SpringSecurityFilterChain Definision -->
-	<!--  <filter>
-		<filter-name>shiroFilter</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>-->
+	<!--shiroFilter Definision <filter> <filter-name>shiroFilter</filter-name> 
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 
+		</filter> -->
 	<!--CharacterEncodingFilter Definision -->
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
@@ -43,50 +58,34 @@
 	<filter>
 		<filter-name>OpenEntityManagerInViewFilter</filter-name>
 		<filter-class>
-			org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter
-		</filter-class>
+			org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
 		<init-param>
 			<param-name>singleSession</param-name>
 			<param-value>true</param-value>
 		</init-param>
 	</filter>
 	<!--struts2 Definision -->
-	
+
 	<!-- Filter Definitions Start -->
-	
+
 	<!-- Filter Mappings Start -->
-	<!--Hibernate Session Open filter mapping-->
+	<!--Hibernate Session Open filter mapping -->
 	<filter-mapping>
 		<filter-name>OpenEntityManagerInViewFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<!--characterEncodingFilter  mapping-->
+	<!--characterEncodingFilter mapping -->
 	<filter-mapping>
 		<filter-name>characterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<!--Shiro Fitler mapping-->
- 
+	<!--Shiro Fitler mapping -->
+
 	<!-- Filter Mappings End -->
-	
-	<!-- Listener Definitions Start-->
-	<listener>
-		<listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
-	</listener>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	<!-- 防止内存溢出监听器 -->
-	<listener>
-		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-	</listener>
-	<!---获取Spring Request -->
-	<listener>
-		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-	</listener>
-	<!-- Listener Definitions End -->
-	
-	<!--Servlet Definitions Start-->
+
+
+
+	<!--Servlet Definitions Start -->
 	<!-- Spring Default DispatchServlet -->
 	<servlet>
 		<servlet-name>dispatcherServlet</servlet-name>
@@ -97,41 +96,27 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	<!-- Spring Default FreemarkerServlet -->
 	<servlet>
-		<servlet-name>freemarkerServlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath*:controller/freemarker-servlet.xml</param-value>
-		</init-param>
-		<load-on-startup>2</load-on-startup>
+		<servlet-name>DruidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
 	</servlet>
-	<!--Servlet Definitions End-->
-	
-	<!--Servlet Mappings  Start-->
+	<!--Servlet Definitions End -->
+
+	<!--Servlet Mappings Start -->
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>freemarkerServlet</servlet-name>
-		<url-pattern>*.jhtml</url-pattern>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>freemarkerServlet</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>freemarkerServlet</servlet-name>
-		<url-pattern>/system/</url-pattern>
-	</servlet-mapping>
-	<!--Servlet Mappings  End-->
-	
-	<!-- Session超时定义,单位为分钟 -->  
-    <session-config>  
-        <session-timeout>30</session-timeout>  
-    </session-config>  
+	<!--Servlet Mappings End -->
+
+	<!-- Session超时定义,单位为分钟 -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
 	<!-- Welcome-File-List Start -->
 	<welcome-file-list>
 		<welcome-file>index.htm</welcome-file>

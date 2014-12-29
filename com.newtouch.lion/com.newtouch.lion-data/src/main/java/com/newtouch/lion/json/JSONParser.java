@@ -4,7 +4,7 @@
  *
  * $id: JSONParser.java 9552 2013-3-25 下午9:43:46 WangLijun$
  */
-package com.newtouch.lion.json.json;
+package com.newtouch.lion.json;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

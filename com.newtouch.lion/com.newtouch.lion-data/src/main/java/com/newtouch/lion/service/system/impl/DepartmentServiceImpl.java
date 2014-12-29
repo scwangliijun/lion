@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.newtouch.lion.dao.system.DepartmentDao;
-import com.newtouch.lion.json.json.JSONParser;
+import com.newtouch.lion.json.JSONParser;
 import com.newtouch.lion.model.system.Department;
 import com.newtouch.lion.service.AbstractService;
 import com.newtouch.lion.service.datagrid.DataColumnService;

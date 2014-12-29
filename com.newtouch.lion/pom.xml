@@ -12,14 +12,12 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <modules>
-  	<module>lion-parent</module>
     <module>com.newtouch.lion-parent</module>
     <module>com.newtouch.lion-im</module>
     <module>com.newtouch.lion-data</module>
     <module>com.newtouch.lion-service</module>
     <module>com.newtouch.lion-api</module>
     <module>com.newtouch.lion-common</module>
-    <module>com.newtouch.lion-main</module>
     <module>com.newtouch.lion-web</module>
     <module>com.newtouch.lion-webadmin</module>
   </modules>

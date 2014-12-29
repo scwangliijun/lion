@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import com.newtouch.lion.common.Assert;
 import com.newtouch.lion.common.codelist.CodeListConstant;
 import com.newtouch.lion.dao.system.ResourceDao;
-import com.newtouch.lion.json.json.JSONParser;
+import com.newtouch.lion.json.JSONParser;
 import com.newtouch.lion.model.system.Resource;
 import com.newtouch.lion.service.AbstractService;
 import com.newtouch.lion.service.datagrid.DataColumnService;
