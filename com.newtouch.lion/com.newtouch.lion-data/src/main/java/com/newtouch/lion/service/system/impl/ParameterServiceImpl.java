@@ -29,10 +29,10 @@ import com.newtouch.lion.service.system.ParameterService;
 
 /**
  * <p>
- * Title:
+ * Title:系统参数Service层实现
  * </p>
  * <p>
- * Description:
+ * Description:系统参数Service层实现
  * </p>
  * <p>
  * Copyright: Copyright (c) 2012

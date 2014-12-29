@@ -152,8 +152,8 @@
 				<column name="VIEW" length="100" nullable="true" />
 			</basic>
 			<one-to-many name="columns" fetch="LAZY">
-				<join-column name="BAS_DATAGRID_ID" insertable="true"
-					updatable="true" />
+				<join-column name="BAS_DATAGRID_ID" insertable="false"
+					nullable="true" updatable="false" />
 				<cascade>
 					<cascade-merge />
 				</cascade>
@@ -184,47 +184,50 @@
 				<column name="NAME" length="255" nullable="true" />
 			</basic>
 			<basic name="width">
-				<column name="WIDTH" precision="11" scale="0"  nullable="true"/>
+				<column name="WIDTH" precision="11" scale="0" nullable="true" />
 			</basic>
 			<basic name="rowspan">
 				<column name="ROWSPAN" precision="11" scale="0" />
 			</basic>
 			<basic name="colspan">
-				<column name="COLSPAN" precision="11" scale="0"  nullable="true"/>
+				<column name="COLSPAN" precision="11" scale="0" nullable="true" />
 			</basic>
 			<basic name="sortable">
-				<column name="SORTABLE" precision="1" scale="0"  nullable="true"/>
+				<column name="SORTABLE" precision="1" scale="0" nullable="true" />
 			</basic>
 			<basic name="order">
-				<column name="SORT_ORDER" length="5" nullable="true"/>
+				<column name="SORT_ORDER" length="5" nullable="true" />
 			</basic>
 			<basic name="headerAlign">
-				<column name="HEADER_ALIGN" length="10" nullable="true"/>
+				<column name="HEADER_ALIGN" length="10" nullable="true" />
 			</basic>
 			<basic name="align">
-				<column name="ALIGN"  length="10" nullable="true"/>
+				<column name="ALIGN" length="10" nullable="true" />
 			</basic>
 			<basic name="hidden">
-				<column name="HIDDEN" precision="1" scale="0"  nullable="true"/>
+				<column name="HIDDEN" precision="1" scale="0" nullable="true" />
 			</basic>
 			<basic name="checkbox">
-				<column name="CHECK_BOX" precision="1" scale="0"  nullable="true"/>
+				<column name="CHECK_BOX" precision="1" scale="0" nullable="true" />
 			</basic>
 			<basic name="formatter">
-				<column name="FORMATTER" length="256" nullable="true"/>
+				<column name="FORMATTER" length="256" nullable="true" />
 			</basic>
 			<basic name="styler">
-				<column name="STYLER"  length="256" nullable="true"/>
+				<column name="STYLER" length="256" nullable="true" />
 			</basic>
 			<basic name="sorter">
-				<column name="SORTER"  length="256" nullable="true"/>
+				<column name="SORTER" length="256" nullable="true" />
 			</basic>
 			<basic name="editor">
-				<column name="EDITOR"  length="256" nullable="true"/>
+				<column name="EDITOR" length="256" nullable="true" />
 			</basic>
 			<many-to-one name="dataGrid" fetch="LAZY">
-				<join-column name="BAS_DATAGRID_ID" insertable="true" 	updatable="true" nullable="false" />
-				<cascade><cascade-merge/></cascade>
+				<join-column name="BAS_DATAGRID_ID" insertable="false"
+					updatable="false" nullable="false" />
+				<cascade>
+					<cascade-merge />
+				</cascade>
 			</many-to-one>
 		</attributes>
 	</entity>
