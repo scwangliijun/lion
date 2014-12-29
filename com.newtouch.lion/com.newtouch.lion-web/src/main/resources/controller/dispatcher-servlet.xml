@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- 扫描加载注解 -->
+	<context:component-scan base-package="com.saic.wemall.web" />
+	<!-- Spring MVC自动 -->
+	<mvc:annotation-driven validator="validator">
+		<mvc:message-converters>
+			<bean class="com.newtouch.lion.web.converter.escape.StringEscapeHttpMessageConverter" />
+			<bean name="mappingJacksonHttpMessageConverter"
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+						<value>text/json;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<!-- 拦截器
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/**" />
+			<mvc:mapping path="/order/**" />
+			<mvc:mapping path="/personalInfo/**" />
+			<mvc:mapping path="/serviceFile/**" />
+			<mvc:mapping path="/store/mystore.htm" />
+			<mvc:exclude-mapping path="/resources/**" />
+			<bean
+				class="com.saic.wemall.web.interceptor.wechat.AuthorizationInterceptor">
+				 
+				<property name="excludeUrls">
+					<list>
+						<value>/connect/oauth2/authorize</value>
+						<value>/user/index.htm</value>
+						<value>/user/login.htm</value>
+						<value>/user/loginForm.htm</value>
+						<value>/user/redirect.htm</value>
+						<value>/user/bandAuthentication.htm</value>
+						<value>/wechat/index.htm</value>
+						<value>/user/register.htm</value>
+						<value>/about/index.htm</value>
+						<value>/service/index.htm</value>
+						<value>/service/list.htm</value>
+						<value>/order/cancel.htm</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>-->
+	<!-- 拦截器配置 -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:application.properties</value>
+			</list>
+		</property>
+		<property name="fileEncoding" value="UTF-8" />
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="order" value="1" />
+	</bean>
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<!-- hibernate validator 资源配置 -->
+	<bean name="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="validationMessageSource" ref="messageSource" />
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+	</bean>
+	<!-- 基于cookie的i18n -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="cookieName" value="clientlanguage" />
+		<property name="cookieMaxAge" value="94608000" />
+		<property name="defaultLocale" value="zh" />
+	</bean>
+	<!-- i18n -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:i18n/messages</value>
+			</list>
+		</property>
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="fallbackToSystemLocale" value="true" />
+		<property name="useCodeAsDefaultMessage" value="false" />
+	</bean>
+	<!-- 针对free marker的视图配置 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="cache" value="true" />
+		<property name="order" value="1" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
+		<property name="viewNames">
+			<array>
+				<value>*.ftl</value>
+			</array>
+		</property>
+		<property name="requestContextAttribute" value="request" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="exposeRequestAttributes" value="true" />
+		<property name="exposeSessionAttributes" value="true" />
+		<property name="allowSessionOverride" value="true" />
+		<property name="contentType" value="text/html;charset=utf-8" />
+	</bean>
+
+	<bean id="freeMarkerConfigurer"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<description>Required for Freemarker to work in web tier</description>
+		<property name="configuration" ref="freemarkerConfiguration" />
+	</bean>
+	<bean id="freemarkerConfiguration"
+		class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+		<description>Using the Config directly so we can use it outside the
+			web tier</description>
+		<!-- 模板加载路径 -->
+		<property name="templateLoaderPaths">
+			<list>
+				<value>/WEB-INF/view</value>
+			</list>
+		</property>
+		<property name="configLocation">
+			<value>classpath:freemarker/freemarker.properties</value>
+		</property>
+		<!--全局变量部分 -->
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="buildNo" value="{buildNo}" />
+				<entry key="domain" value="${ebiz.dealer.web.domain}" />
+				<entry key="base" value="${ebiz.dealer.web.base}" />
+				<entry key="memberBase" value="${ebiz.dealer.web.memberBase}" />
+				<entry key="resRoot" value="${ebiz.dealer.web.resRoot}" />
+				<entry key="orderBase" value="${ebiz.dealer.web.orderBase}" />
+				<entry key="financialProgram" value="${ebiz.dealer.web.financialProgram}" />
+				<entry key="financialProgram2" value="${ebiz.dealer.web.financialProgram2}" />
+				<entry key="imUrl" value="${ebiz.dealer.web.imUrl}" />
+				<entry key="minSuffix" value="${ebiz.dealer.web.minSuffix}" />
+				<!--  <entry key="jscssUrl" value-ref="fmJsscssUrl" />
+				<entry key="jscssCommonUrl" value-ref="fmJsscssCommonUrl" />-->
+			</map>
+		</property>
+		<property name="defaultEncoding" value="utf-8" />
+	</bean>
+
+	<!--  <bean id="fmJsscssUrl" class="com.ibm.framework.web.freemarker.MultiDomUrl">
+		<property name="host" value="${ebiz.dealer.web.jscssHost}" />
+		<property name="imgHostTag" value="${ebiz.dealer.web.jscssHostTag}" />
+		<property name="imgUrlStarNum" value="1" />
+		<property name="imgHostNumber" value="1" />
+	</bean>
+
+	<bean id="fmJsscssCommonUrl" class="com.ibm.framework.web.freemarker.MultiDomUrl">
+		<property name="host" value="${ebiz.dealer.web.jscssCommonHost}" />
+		<property name="imgHostTag" value="${ebiz.dealer.web.jscssCommonHostTag}" />
+		<property name="imgUrlStarNum" value="1" />
+		<property name="imgHostNumber" value="1" />
+	</bean>-->
+	<!-- json解析 -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="2" />
+	</bean>
+	<bean id="gsonView" class="com.newtouch.lion.web.servlet.view.GsonView" />
+
+	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+	<!-- 为了支持forward,redirect -->
+	<bean id="jsltViewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="order" value="3" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+	<!-- 统一异常处理 -->
+	<bean id="exceptionResolver" class="com.newtouch.lion.web.exception.ErrorCodeMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="com.ibm.framework.exception.BaseException">common/errorpage.ftl</prop>
+				<prop key="java.lang.Throwable">common/errorpage.ftl</prop>
+			</props>
+		</property>
+		<property name="defaultErrorView" value="index/errorPage404.ftl" />
+		<property name="warnLogCategory"
+			value="com.saic.ebiz.web.exception.ErrorCodeMappingExceptionResolver" />
+	</bean>
+</beans>

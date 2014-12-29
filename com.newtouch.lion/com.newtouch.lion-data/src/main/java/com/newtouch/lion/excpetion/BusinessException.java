@@ -3,13 +3,12 @@
  */
 package com.newtouch.lion.excpetion;
 
-import org.springframework.core.NestedRuntimeException;
 
 /**
  * @author wanglijun
  * 
  */
-public class BusinessException extends NestedRuntimeException{
+public class BusinessException extends BaseException{
 	private static final long serialVersionUID = 8717800943293251036L;
 	private String code;
 	private Object[] params;

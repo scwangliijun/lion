@@ -6,14 +6,13 @@
  */
 package com.newtouch.lion.excpetion;
 
-import org.springframework.core.NestedRuntimeException;
 
 /**
  * <p>
- * Title:
+ * Title:系统基础异常
  * </p>
  * <p>
- * Description:
+ * Description:系统基础异常
  * </p>
  * <p>
  * Copyright: Copyright (c) 2013
@@ -25,7 +24,7 @@ import org.springframework.core.NestedRuntimeException;
  * @author WangLijun
  * @version 1.0
  */
-public class SystemException extends NestedRuntimeException {
+public class SystemException extends BaseException {
 
 	
 	private static final long serialVersionUID = -1490742393672145880L;

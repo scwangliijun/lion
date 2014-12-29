@@ -12,7 +12,8 @@ import java.util.Collection;
  * @author wanglijun
  * 
  */
-public class AppException extends RuntimeException {
+public class AppException  extends BaseException {
+		
 	private static final long serialVersionUID = 5439915454935047935L;
 	
 	public static final String copyright = "";
@@ -35,17 +36,14 @@ public class AppException extends RuntimeException {
 		super(message);
 		this.errorCode = errorCode;
 	}
+	
+	
+	
 
 	public String getErrorCode() {
 		return this.errorCode;
 	}
 
-	public AppException() {
-	}
-
-	public AppException(Throwable rootCause) {
-		this.rootCause = rootCause;
-	}
 
 	public Collection<AppException> getCollection() {
 		return this.exceptions;
