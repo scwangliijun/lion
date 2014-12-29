@@ -6,6 +6,7 @@
  */
 package com.newtouch.lion.service.system.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -58,6 +59,23 @@ public class UserServiceImpl extends AbstractService implements UserService {
 	private GroupService groupService;
 	@Autowired
 	private RoleService roleService;
+	
+	
+
+	/* (non-Javadoc)
+	 * @see com.newtouch.lion.service.system.UserService#doFindRoles(java.lang.String)
+	 */
+	@Override
+	public List<Role> doFindRoles(String userName) {
+		User user=this.doFindByUserName(userName);
+		//将用户关联的用户组下的角色和用户联系的角色相合并
+		Set<Role> userRoles=user.getRoles();
+		Set<Group> groups=user.getGroups();
+		for(Group group:groups){
+			userRoles.addAll(group.getRoles());
+		}
+		return new ArrayList<Role>(userRoles);
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -296,6 +314,8 @@ public class UserServiceImpl extends AbstractService implements UserService {
 				.doFindColumnsByTableId(tableId);
 		return JSONParser.toJSONDataGridString(user.getGroups(), properties);
 	}
+	
+	
 
 	/*
 	 * (non-Javadoc)

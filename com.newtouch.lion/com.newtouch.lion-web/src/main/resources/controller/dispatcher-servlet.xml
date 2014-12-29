@@ -148,7 +148,6 @@
 			</props>
 		</property>
 		<property name="defaultErrorView" value="index/errorPage404.ftl" />
-		<property name="warnLogCategory"
-			value="com.saic.ebiz.web.exception.ErrorCodeMappingExceptionResolver" />
+		<!--  <property name="warnLogCategory" value="com.saic.ebiz.web.exception.ErrorCodeMappingExceptionResolver" />-->
 	</bean>
 </beans>

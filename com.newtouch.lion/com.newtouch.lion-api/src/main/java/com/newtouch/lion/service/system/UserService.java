@@ -8,6 +8,7 @@ package com.newtouch.lion.service.system;
 
 import java.util.List;
 
+import com.newtouch.lion.model.system.Role;
 import com.newtouch.lion.model.system.User;
 import com.newtouch.lion.page.PageResult;
 import com.newtouch.lion.query.QueryCriteria;
@@ -141,5 +142,12 @@ public interface UserService {
 	 * @retun String 返回JSON
 	 * */
 	public String doFindAllAuthRole(Long userId, String tableId);
+	
+	/***
+	 * 根据用户名查询所有的角色
+	 * @param userName
+	 * @return List<Role>  角色列表
+	 */
+	public List<Role> doFindRoles(String userName);
 
 }
