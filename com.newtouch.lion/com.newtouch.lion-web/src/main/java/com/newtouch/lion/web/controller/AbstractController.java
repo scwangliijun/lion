@@ -40,7 +40,7 @@ import com.newtouch.lion.web.support.editor.StringEscapeEditor;
 public class AbstractController {
 	
 	/**日志*/
-	protected Logger loger=LoggerFactory.getLogger(super.getClass());
+	protected Logger logger=LoggerFactory.getLogger(super.getClass());
 	
 	@InitBinder
 	public void initBinder(ServletRequestDataBinder binder) {

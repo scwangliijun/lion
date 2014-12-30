@@ -17,7 +17,6 @@
 	<!-- Repository End -->
 
 	<!-- shiro Start-->
-	<import resource="classpath:shiro/applicationContext-shiro.xml" />
 	<import resource="classpath:shiro/applicationContext-shiroweb.xml" />
 	<!-- shiro End-->
 </beans>

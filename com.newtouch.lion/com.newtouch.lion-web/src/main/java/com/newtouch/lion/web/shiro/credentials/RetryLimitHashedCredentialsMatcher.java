@@ -15,12 +15,14 @@ import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
 
+import com.newtouch.lion.common.constant.Constants;
+
 /**
  * <p>
- * Title:
+ * Title:用户登录密码校验
  * </p>
  * <p>
- * Description:
+ * Description:登录登录密码校验
  * </p>
  * <p>
  * Copyright: Copyright (c) 2014
@@ -33,9 +35,11 @@ import org.apache.shiro.cache.CacheManager;
  * @version 1.0
  */
 public class   RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher {
-
+	/**密码*/
     private Cache<String, AtomicInteger> passwordRetryCache;
-
+    /**密码重试最大次数*/
+    private Integer retryMaxCount=Constants.PASSWORD_RETYR_MAXCOUNT;
+    /**密码重试缓存*/
     public RetryLimitHashedCredentialsMatcher(CacheManager cacheManager) {
         passwordRetryCache = cacheManager.getCache("passwordRetryCache");
     }
@@ -49,17 +53,35 @@ public class   RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatch
             retryCount = new AtomicInteger(0);
             passwordRetryCache.put(username, retryCount);
         }
-        if(retryCount.incrementAndGet() > 5) {
+        
+        if(retryCount.incrementAndGet() > this.retryMaxCount) {
             //if retry count > 5 throw
             throw new ExcessiveAttemptsException();
         }
 
         boolean matches = super.doCredentialsMatch(token, info);
+        
         if(matches) {
             //clear retry count
             passwordRetryCache.remove(username);
         }
         return matches;
     }
+
+	/**
+	 * @return the retryMaxCount 密码最大重试次数
+	 */
+	public Integer getRetryMaxCount() {
+		return retryMaxCount;
+	}
+
+	/**
+	 * @param retryMaxCount the 密码最大重试次数 to set
+	 */
+	public void setRetryMaxCount(Integer retryMaxCount) {
+		this.retryMaxCount = retryMaxCount;
+	}
+    
+    
 
 }

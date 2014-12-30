@@ -187,8 +187,8 @@
 				<join-column name="BAS_DEPARTMENT_ID" insertable="false"
 					updatable="false" />
 			</many-to-one>
-			<many-to-one name="department" fetch="LAZY">
-				<join-column name="BAS_DEPARTMENT_ID" insertable="false"
+			<many-to-one name="position" fetch="LAZY">
+				<join-column name="BAS_POSITION_ID" insertable="false"
 					updatable="false" />
 			</many-to-one>
 			<many-to-many name="roles" fetch="LAZY">
