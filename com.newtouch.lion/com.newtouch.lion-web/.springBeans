@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/resources/applicationContext-admin.xml</config>
 		<config>src/main/resources/controller/dispatcher-servlet.xml</config>
+		<config>src/main/resources/shiro/applicationContext-shiro.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
