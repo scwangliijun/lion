@@ -26,13 +26,11 @@ import org.apache.shiro.authc.AccountException;
  * @version 1.0
  */
 public class CredentialExpiredException extends AccountException {
-
 	/**
-	 * 
+	 * 序列化
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	
+	private static final long serialVersionUID = 479248188994814102L;
+
 	/***
 	 * 默认
 	 */

@@ -27,10 +27,12 @@ import org.apache.shiro.authc.DisabledAccountException;
  */
 public class ExpiredAccountException  extends  DisabledAccountException{
 
+ 
 	/**
-	 * 
+	 * 序列化
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2725156421667788427L;
+
 	/***
 	 * 默认
 	 */

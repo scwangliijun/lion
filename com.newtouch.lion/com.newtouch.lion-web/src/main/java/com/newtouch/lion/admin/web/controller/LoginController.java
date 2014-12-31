@@ -6,6 +6,8 @@
 */
 package com.newtouch.lion.admin.web.controller; 
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,10 +35,17 @@ import com.newtouch.lion.web.controller.AbstractController;
 public class LoginController extends AbstractController{
 	/**进入登录页面*/
 	private static final String LOGIN_RETURN="/login";
+	/**登录成功*/
+	private static final String LOGIN_SUCCESS="/index.htm";
 	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String  login(){
 		logger.info("进入登录页面");
+		Subject  subject=SecurityUtils.getSubject();
+		if(subject.getPrincipal()!=null){
+			logger.info("用户：{}已经登录，重定向到首页",subject.getPrincipal());
+			return this.redirect(LOGIN_SUCCESS);
+		}
 		return LOGIN_RETURN;
 	}
 }

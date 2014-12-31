@@ -67,6 +67,30 @@ public class AbstractController {
 			@PathVariable String jspName) {
 		return "/" + folder + "/" + jspName;
 	}
+	
+	/***
+	 * 转发到URL
+	 * @param url 转发到的URL
+	 * @return 转发路径
+	 */
+	public String forward(String url){
+		StringBuilder sb=new StringBuilder();
+		sb.append("forward:");
+		sb.append(url);
+		return sb.toString();
+	}
+	
+	/***
+	 * 重定向到相关页面
+	 * @param url
+	 * @return
+	 */
+	protected String redirect(String url){
+		StringBuilder sb=new StringBuilder();
+		sb.append("redirect:");
+		sb.append(url);
+		return sb.toString();
+	}
 }
 
 	
