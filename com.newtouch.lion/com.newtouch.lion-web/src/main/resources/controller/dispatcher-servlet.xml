@@ -96,12 +96,6 @@
 	<bean id="freeMarkerConfigurer"
 		class="com.newtouch.lion.web.freemarker.ShiroFreeMarkerConfigurer">
 		<property name="configuration" ref="freemarkerConfiguration" />
-		<property name="freemarkerSettings">
-			<props>
-				<prop key="defaultEncoding">UTF-8</prop>
-				<prop key="classic_compatible">true</prop>
-			</props>
-		</property>
 	</bean>
 	<bean id="freemarkerConfiguration"
 		class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">

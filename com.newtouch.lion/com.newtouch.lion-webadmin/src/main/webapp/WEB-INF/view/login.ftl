@@ -1,7 +1,7 @@
 <#assign contextPath = request.contextPath/>
 <!DOCTYPE html>
 <!-- 
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.1
+Template Name:  Newtouch Admin Dashboard Template build with Twitter Bootstrap 3.3.1
 Version: 3.3.0
 Author: wanglijun
 -->
