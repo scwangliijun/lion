@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<#assign contextPath = request.contextPath/>
+<#assign context = request.contextPath/>
 <#import "/common/spring.ftl" as spring/> 
 </head>
 <body >

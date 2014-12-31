@@ -1,4 +1,4 @@
-<#assign contextPath = request.contextPath/>
+<#assign contextPath= request.contextPath/>
 <!DOCTYPE html>
 <!-- 
 Template Name: Newtouch Admin Dashboard Template build with Twitter Bootstrap 3.3.1
@@ -13,37 +13,7 @@ Author: wanglijun
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Metronic | Admin Dashboard Template</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="" name="description"/>
-<meta content="" name="author"/>
-<!-- BEGIN GLOBAL MANDATORY STYLES -->
-<link href="http://fonts.useso.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
-<link href="${contextPath}/resources/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="${contextPath}/resources/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
-<link href="${contextPath}/resources/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="${contextPath}/resources/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-<link href="${contextPath}/resources/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
-<!-- END GLOBAL MANDATORY STYLES -->
-<!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
-<link href="${contextPath}/resources/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
-<link href="${contextPath}/resources/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
-<link href="${contextPath}/resources/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
-<link href="${contextPath}/resources/global/plugins/morris/morris.css" rel="stylesheet" type="text/css">
-<!-- END PAGE LEVEL PLUGIN STYLES -->
-<!-- BEGIN PAGE STYLES -->
-<link href="${contextPath}/resources/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
-<!-- END PAGE STYLES -->
-<!-- BEGIN THEME STYLES -->
-<!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
-<link href="${contextPath}/resources/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
-<link href="${contextPath}/resources/global/css/plugins.css" rel="stylesheet" type="text/css"/>
-<link href="${contextPath}/resources/admin/layout4/css/layout.css" rel="stylesheet" type="text/css"/>
-<link href="${contextPath}/resources/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css" id="style_color"/>
-<link href="${contextPath}/resources/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
-<!-- END THEME STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
+<title>应用管理系统</title>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -502,10 +472,75 @@ Author: wanglijun
 			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
 				<li class="start active ">
-					<a href="index.html">
+					<a href="index.htm">
 					<i class="icon-home"></i>
-					<span class="title">Dashboard</span>
+					<span class="title">控制面板</span>
 					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+					<i class="icon-settings"></i>
+					<span class="title">系统设置</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="javascript:;">
+							<i class="icon-globe"></i>DataGrid管理<span class="arrow"></span>
+							</a>
+							<ul class="sub-menu">
+								<li>
+									<a href="#"><i class="icon-tag"></i>DataGrid</a>
+								</li>
+								<li>
+									<a href="#"><i class="icon-pencil"></i>数据表格管理</a>
+								</li>
+								<li>
+									<a href="#"><i class="icon-graph"></i>数据表格列管理</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="javascript:;">
+							<i class="icon-settings"></i>DataGrid管理<span class="arrow"></span>
+							</a>
+							<ul class="sub-menu">
+								<li>
+									<a href="javascript:;">
+									<i class="icon-user"></i>
+									Sample Link 1 <span class="arrow"></span>
+									</a>
+									<ul class="sub-menu">
+										<li>
+											<a href="#"><i class="icon-power"></i> Sample Link 1</a>
+										</li>
+										<li>
+											<a href="#"><i class="icon-paper-plane"></i> Sample Link 1</a>
+										</li>
+										<li>
+											<a href="#"><i class="icon-star"></i> Sample Link 1</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#"><i class="icon-camera"></i> Sample Link 1</a>
+								</li>
+								<li>
+									<a href="#"><i class="icon-link"></i> Sample Link 2</a>
+								</li>
+								<li>
+									<a href="#"><i class="icon-pointer"></i> Sample Link 3</a>
+								</li>
+							</ul>
+						</li>
+						
+						<li>
+							<a href="#">
+							<i class="icon-bar-chart"></i>
+							系统信息
+							</a>
+						</li>
+					</ul>
 				</li>
 				<li>
 					<a href="javascript:;">
@@ -2772,16 +2807,7 @@ Author: wanglijun
 	<!-- END CONTENT -->
 </div>
 <!-- END CONTAINER -->
-<!-- BEGIN FOOTER -->
-<div class="page-footer">
-	<div class="page-footer-inner">
-		 2014 &copy; LionAdmin by Newtouch.
-	</div>
-	<div class="scroll-to-top">
-		<i class="icon-arrow-up"></i>
-	</div>
-</div>
-<!-- END FOOTER -->
+
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
@@ -2821,7 +2847,7 @@ Author: wanglijun
 <script src="${contextPath}/resources/admin/pages/scripts/tasks.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
-jQuery(document).ready(function() {    
+$(document).ready(function() {    
    Metronic.init(); // init metronic core componets
    Layout.init(); // init layout
    Demo.init(); // init demo features 

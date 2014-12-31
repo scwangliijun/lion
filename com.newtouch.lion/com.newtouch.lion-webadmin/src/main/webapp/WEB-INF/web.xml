@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	version="2.5" 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	version="2.5"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
 	<display-name>NewTouch Framework Web Application</display-name>
 	<!-- Context Param Initialization Start -->
@@ -74,8 +75,11 @@
 			<param-value>true</param-value>
 		</init-param>
 	</filter>
-	<!--struts2 Definision -->
-
+	<!--SiteMash Definision -->
+	<filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+	</filter>
 	<!-- Filter Definitions Start -->
 
 	<!-- Filter Mappings Start -->
@@ -87,6 +91,10 @@
 	<!--characterEncodingFilter mapping -->
 	<filter-mapping>
 		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	<!--Shiro Fitler mapping -->
@@ -106,6 +114,24 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>sitemeshServlet</servlet-name>
+		<servlet-class>com.newtouch.lion.web.sitemash.SitemeshFreemarkerDecoratorServlet</servlet-class>
+		<init-param>
+			<param-name>TemplatePath</param-name>
+			<param-value>/</param-value>
+		</init-param>
+		<init-param>
+			<param-name>NoCache</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>default_encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
 	<servlet>
 		<servlet-name>DruidStatView</servlet-name>
 		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
@@ -116,6 +142,10 @@
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>sitemeshServlet</servlet-name>
+		<url-pattern>*.ftl</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>DruidStatView</servlet-name>

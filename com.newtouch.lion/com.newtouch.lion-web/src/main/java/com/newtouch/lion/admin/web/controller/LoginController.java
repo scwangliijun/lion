@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.newtouch.lion.model.system.User;
 import com.newtouch.lion.web.controller.AbstractController;
+import com.newtouch.lion.web.shiro.session.LoginSecurityUtil;
 
 /**
  * <p>
@@ -41,9 +43,9 @@ public class LoginController extends AbstractController{
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String  login(){
 		logger.info("进入登录页面");
-		Subject  subject=SecurityUtils.getSubject();
-		if(subject.getPrincipal()!=null){
-			logger.info("用户：{}已经登录，重定向到首页",subject.getPrincipal());
+		 User user=LoginSecurityUtil.
+				logger.info("用户名:{}，ID：{} 已经登录，重定向到首页",user.getUsername(),user.getId());
+			 
 			return this.redirect(LOGIN_SUCCESS);
 		}
 		return LOGIN_RETURN;
