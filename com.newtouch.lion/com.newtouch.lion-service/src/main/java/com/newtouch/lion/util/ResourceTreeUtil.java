@@ -4,7 +4,7 @@
  *
  * $id: ResourceTreeUtil.java 9552 2014-4-7 下午11:31:28 WangLijun$
  */
-package com.newtouch.lion.service.util;
+package com.newtouch.lion.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,9 +17,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.newtouch.lion.common.codelist.CodeListConstant;
+import com.newtouch.lion.comparator.ResourceComparator;
 import com.newtouch.lion.model.system.Attributes;
 import com.newtouch.lion.model.system.Resource;
-import com.newtouch.lion.service.comparator.ResourceComparator;
 import com.newtouch.lion.tree.State;
 import com.newtouch.lion.tree.TreeNode;
 

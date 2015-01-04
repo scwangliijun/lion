@@ -4,7 +4,7 @@
  *
  * $id: DataColumnComparator.java 9552 2014-4-7 下午11:31:28 WangLijun$
  */
-package com.newtouch.lion.service.comparator;
+package com.newtouch.lion.comparator;
 
 import java.util.Comparator;
 
