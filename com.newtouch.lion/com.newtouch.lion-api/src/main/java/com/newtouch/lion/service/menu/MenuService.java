@@ -26,7 +26,17 @@ import com.newtouch.lion.model.menu.Menu;
  * @version 1.0
  */
 public interface MenuService {
-	public  Menu doFindByUser(String userName);
+	
+	/***
+	 * 根据用户名查询该用户所有菜单列表
+	 * @param userName 用户名
+	 * @return Menu 菜单对象
+	 */
+	public  Menu doFindByUserName(String userName);
+	
+	
+	public Menu doFindByUserId(Long userId);
+	
 }	
 
 	

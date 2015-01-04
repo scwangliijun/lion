@@ -33,10 +33,21 @@ public class MenuServiceImpl   implements MenuService{
 	 * @see com.newtouch.lion.service.menu.MenuService#doFindByUser(java.lang.String)
 	 */
 	@Override
-	public Menu doFindByUser(String userName) {
+	public Menu doFindByUserName(String userName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/* (non-Javadoc)
+	 * @see com.newtouch.lion.service.menu.MenuService#doFindByUserId(java.lang.Long)
+	 */
+	@Override
+	public Menu doFindByUserId(Long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 	
 	
 }
