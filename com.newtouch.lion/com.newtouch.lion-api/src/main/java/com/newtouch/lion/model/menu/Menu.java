@@ -7,8 +7,7 @@
 package com.newtouch.lion.model.menu;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 /**
  * <p>
@@ -52,14 +51,53 @@ public class Menu implements Serializable {
 	private int seqNum;
 	/** 资源是否叶节点，其下没有子资源 默认为：true */
 	private Boolean isLeaf;
-	/** 资源是否可编辑 */
-	private Boolean editable;
 	/** 资源目标 指HTML链接的target属性 */
 	private String target;
 	/** 子资源关联父资源对象 */
 	private Menu menu;
 	/** 父资源关联父资源对象 */
-	private Set<Menu> menus = new HashSet<Menu>(0);
+	private List<Menu> menus;
+	
+	
+	
+	/***
+	 * 默认构造函数
+	 */
+	public Menu() {
+		super();
+	}
+
+	
+	/***
+	 * 
+	 * @param id
+	 * @param parentId
+	 * @param type
+	 * @param path
+	 * @param nameZh
+	 * @param nameEn
+	 * @param seqNum
+	 * @param isLeaf
+	 * @param editable
+	 * @param target
+	 * @param menus
+	 */
+	public Menu(Long id, Long parentId, String type, String path,
+			String nameZh, String nameEn, int seqNum, Boolean isLeaf, String target, List<Menu> menus) {
+		super();
+		this.id = id;
+		this.parentId = parentId;
+		this.type = type;
+		this.path = path;
+		this.nameZh = nameZh;
+		this.nameEn = nameEn;
+		this.seqNum = seqNum;
+		this.isLeaf = isLeaf;
+		this.target = target;
+		this.menus = menus;
+	}
+
+
 
 	/**
 	 * @return the id
@@ -181,20 +219,7 @@ public class Menu implements Serializable {
 		this.isLeaf = isLeaf;
 	}
 
-	/**
-	 * @return the editable
-	 */
-	public Boolean getEditable() {
-		return editable;
-	}
-
-	/**
-	 * @param editable
-	 *            the editable to set
-	 */
-	public void setEditable(Boolean editable) {
-		this.editable = editable;
-	}
+	 
 
 	/**
 	 * @return the target
@@ -229,7 +254,7 @@ public class Menu implements Serializable {
 	/**
 	 * @return the menus
 	 */
-	public Set<Menu> getMenus() {
+	public List<Menu> getMenus() {
 		return menus;
 	}
 
@@ -237,7 +262,7 @@ public class Menu implements Serializable {
 	 * @param menus
 	 *            the menus to set
 	 */
-	public void setMenus(Set<Menu> menus) {
+	public void setMenus(List<Menu> menus) {
 		this.menus = menus;
 	}
 

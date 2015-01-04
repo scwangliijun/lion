@@ -4,7 +4,7 @@
  *
  * $id: ResourceComparator.java 9552 2014-4-7 下午11:31:28 WangLijun$
  */
-package com.newtouch.lion.service.comparator;
+package com.newtouch.lion.comparator;
 
 import java.util.Comparator;
 
@@ -12,7 +12,7 @@ import com.newtouch.lion.model.system.Resource;
 
 /**
  * <p>
- * Title: 菜单排序实现方式
+ * Title: 菜单排序
  * </p>
  * <p>
  * Description: 菜单排序实现类，根据指定顺序进行升序排序，如果顺序相等则根据菜单ID升序排序

@@ -6,8 +6,19 @@
 */
 package com.newtouch.lion.service.menu.impl; 
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.newtouch.lion.common.codelist.CodeListConstant;
 import com.newtouch.lion.model.menu.Menu;
+import com.newtouch.lion.model.system.Resource;
 import com.newtouch.lion.service.menu.MenuService;
+import com.newtouch.lion.service.system.ResourceService;
+import com.newtouch.lion.util.MenuTreeUtil;
+import com.newtouch.lion.util.ResourceConvertUtil;
 
 /**
  * <p>
@@ -26,14 +37,19 @@ import com.newtouch.lion.service.menu.MenuService;
  * @author WangLijun
  * @version 1.0
  */
+@Service
 public class MenuServiceImpl   implements MenuService{
+
+	/**资源*/
+	@Autowired
+	private ResourceService resourceService;
 	
 
 	/* (non-Javadoc)
 	 * @see com.newtouch.lion.service.menu.MenuService#doFindByUser(java.lang.String)
 	 */
 	@Override
-	public Menu doFindByUserName(String userName) {
+	public List<Menu> doFindByUserName(String userName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -42,9 +58,13 @@ public class MenuServiceImpl   implements MenuService{
 	 * @see com.newtouch.lion.service.menu.MenuService#doFindByUserId(java.lang.Long)
 	 */
 	@Override
-	public Menu doFindByUserId(Long userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Menu> doFindByUserId(Long userId) {
+		List<Resource> resources=resourceService.doFindByParentId(2L);
+		String[]  menuResourceType={CodeListConstant.RESTYPE_MODULE_MENU_CATEGORY,CodeListConstant.RESTYPE_MODULE_CATEGORY_ITEM};
+		List<Resource>  userResources=resourceService.doFindByUserIdAndType(userId, menuResourceType);
+		Map<Long,Resource>  menuResourcesMap=ResourceConvertUtil.convertListToMap(userResources);
+		List<Menu> menus=MenuTreeUtil.treeResource(resources, menuResourcesMap,Boolean.TRUE,0);
+		return menus;
 	}
 	
 	

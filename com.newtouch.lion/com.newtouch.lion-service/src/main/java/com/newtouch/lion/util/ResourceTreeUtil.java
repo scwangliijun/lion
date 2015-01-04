@@ -4,22 +4,21 @@
  *
  * $id: ResourceTreeUtil.java 9552 2014-4-7 下午11:31:28 WangLijun$
  */
-package com.newtouch.lion.service.util;
+package com.newtouch.lion.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.newtouch.lion.common.codelist.CodeListConstant;
+import com.newtouch.lion.comparator.ResourceComparator;
 import com.newtouch.lion.model.system.Attributes;
 import com.newtouch.lion.model.system.Resource;
-import com.newtouch.lion.service.comparator.ResourceComparator;
 import com.newtouch.lion.tree.State;
 import com.newtouch.lion.tree.TreeNode;
 
@@ -55,30 +54,7 @@ public class ResourceTreeUtil {
 		menusMap.put(CodeListConstant.RESTYPE_APPLICATION,CodeListConstant.RESTYPE_APPLICATION);
 		menusMap.put(CodeListConstant.RESTYPE_MODULE_CATEGORY_ITEM,CodeListConstant.RESTYPE_MODULE_CATEGORY_ITEM);
 	}
-	/***
-	 * 将Set集合转换为Map集合
-	 * @param resources Set集合
-	 * @return Map<Long,Resource>
-	 */
-	public  static Map<Long,Resource> convertSetToMap(Set<Resource> resources){
-		Map<Long,Resource> resourcesMap=new HashMap<Long, Resource>();
-		for(Resource resource:resources){
-			resourcesMap.put(resource.getId(), resource); 
-		}
-		return resourcesMap;
-	}
-	/***
-	 * 将List集合转换为Map集合
-	 * @param resources List集合
-	 * @return Map<Long,Resource>
-	 */
-	public  static Map<Long,Resource> convertListToMap(List<Resource> resources){
-		Map<Long,Resource> resourcesMap=new HashMap<Long, Resource>();
-		for(Resource resource:resources){
-			resourcesMap.put(resource.getId(), resource); 
-		}
-		return resourcesMap;
-	}
+	 
 	/***
 	 * 递归调用过滤已经授权的菜单TreeNode
 	 * @param resources  未过滤的菜单
