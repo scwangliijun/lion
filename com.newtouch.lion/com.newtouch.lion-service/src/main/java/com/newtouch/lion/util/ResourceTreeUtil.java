@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,10 @@ import com.newtouch.lion.model.system.Attributes;
 import com.newtouch.lion.model.system.Resource;
 import com.newtouch.lion.tree.State;
 import com.newtouch.lion.tree.TreeNode;
+
+
+ 
+
 
 
 /**
@@ -53,6 +58,18 @@ public class ResourceTreeUtil {
 		menusMap.put(CodeListConstant.RESTYPE_MODULE_MENU_CATEGORY,CodeListConstant.RESTYPE_MODULE_MENU_CATEGORY);
 		menusMap.put(CodeListConstant.RESTYPE_APPLICATION,CodeListConstant.RESTYPE_APPLICATION);
 		menusMap.put(CodeListConstant.RESTYPE_MODULE_CATEGORY_ITEM,CodeListConstant.RESTYPE_MODULE_CATEGORY_ITEM);
+	}
+	/***
+	 * 将Set集合转换为Map集合
+	 * @param resources Set集合
+	 * @return Map<Long,Resource>
+	 */
+	public  static Map<Long,Resource> convertSetToMap(Set<Resource> resources){
+		Map<Long,Resource> resourcesMap=new HashMap<Long, Resource>();
+		for(Resource resource:resources){
+			resourcesMap.put(resource.getId(), resource); 
+		}
+		return resourcesMap;
 	}
 	 
 	/***
