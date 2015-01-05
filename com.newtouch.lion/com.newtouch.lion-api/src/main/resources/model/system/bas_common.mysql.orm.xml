@@ -76,7 +76,7 @@
 			<basic name="textZh">
 				<column name="TEXT_ZH" length="400" nullable="true" />
 			</basic>
-			<basic name="nameEn">
+			<basic name="textEn">
 				<column name="TEXT_EN" length="400" nullable="true" />
 			</basic>
 		</attributes>
@@ -124,10 +124,6 @@
 					precision="11" scale="0" />
 				<generated-value strategy="IDENTITY" />
 			</id>
-			<basic name="type">
-				<column name="BAS_CODE_TYPE_ID" length="30" nullable="true" />
-			</basic>
-
 			<basic name="codeValue">
 				<column name="CODE_VALUE" length="256" nullable="true" />
 			</basic>
@@ -150,6 +146,7 @@
 				<join-column name="BAS_CODE_TYPE_ID" insertable="true"
 					updatable="true" nullable="false" />
 			</many-to-one>
+			<transient name="codeTypeId"/>
 		</attributes>
 	</entity>
 </entity-mappings>

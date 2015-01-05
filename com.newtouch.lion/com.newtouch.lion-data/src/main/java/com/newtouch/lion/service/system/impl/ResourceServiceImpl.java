@@ -7,6 +7,7 @@
 package com.newtouch.lion.service.system.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -245,7 +246,7 @@ public class ResourceServiceImpl extends AbstractService implements
 	    String hql = "select distinct r from User user join user.roles role join role.resources r  where user.id=:userId and r.type in (:resourceType) order by r.seqNum asc,r.parentResourceId asc";
 	    Map<String,Object> params = new HashMap<String,Object>();
 	    params.put("userId", userId);
-	    params.put("resourceType", resourceType);
+	    params.put("resourceType", Arrays.asList(resourceType));
 		return this.resourceDao.query(hql, params);
 	}
 	

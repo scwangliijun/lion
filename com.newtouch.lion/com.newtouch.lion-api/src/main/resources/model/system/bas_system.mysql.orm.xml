@@ -67,12 +67,6 @@
 			<basic name="nameEn">
 				<column name="NAME_EN" length="128" nullable="true" />
 			</basic>
-			<basic name="departmentNo">
-				<column name="DEPARTMENTNO" length="128" nullable="false" />
-			</basic>
-			<basic name="editable">
-				<column name="EDITABLE" precision="1" scale="0" />
-			</basic>
 			<basic name="description">
 				<column name="DESCRIPTION" length="256" nullable="true" />
 			</basic>
