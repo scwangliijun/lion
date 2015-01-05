@@ -1,5 +1,11 @@
 <#assign contextPath = request.contextPath/>
+
 <!DOCTYPE html>
+<!-- 
+Template Name: Newtouch Admin Dashboard Template build with Twitter Bootstrap 3.3.1
+Version: 1.0
+Author: wanglijun
+-->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->

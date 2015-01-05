@@ -40,6 +40,7 @@ import com.newtouch.lion.model.system.Resource;
  */
 public class MenuTreeUtil {
 	/** 日志 */
+	@SuppressWarnings("unused")
 	private final static Logger logger = LoggerFactory
 			.getLogger(ResourceTreeUtil.class);
 	/** 菜单列表 */
@@ -81,16 +82,15 @@ public class MenuTreeUtil {
 			attributes.setPath(resource.getPath());
 			attributes.setTarget(resource.getTarget());
 			if (CodeListConstant.RESTYPE_MODULE_CATEGORY_ITEM.equals(resource
-					.getType())
-					&& menuResourcesMap.containsKey(resource.getId())) {
-				checked = Boolean.FALSE;
-			} else {
-
-				logger.info("checked:{}:count:", checked,count);
-				continue;
+					.getType())){
+				if(menuResourcesMap.containsKey(resource.getId())){
+					checked=Boolean.FALSE;
+				}
+				if(checked){
+					continue;
+				}
 
 			}
-			logger.info("count:{}",count);
 			List<Menu> childrenNext = new ArrayList<Menu>();
 			// 当资源子集大于1时，进入递归调用；
 			if (resource.getResources().size() > 0) {

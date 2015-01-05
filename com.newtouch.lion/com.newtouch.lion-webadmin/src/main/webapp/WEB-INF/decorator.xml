@@ -10,6 +10,7 @@
 		<pattern>**/json*</pattern>
 		<pattern>/logout.htm</pattern>
 		<pattern>/login.htm</pattern>
+		<!-- <pattern>/test.htm</pattern> -->
 	</excludes>
 	
 	<!-- 主装饰器 -->

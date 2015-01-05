@@ -6,6 +6,9 @@
  */
 package com.newtouch.lion.web.shiro.tags;
 
+import java.util.Map;
+import java.util.Map.Entry;
+
 import freemarker.template.SimpleHash;
 
 /**
@@ -29,23 +32,16 @@ import freemarker.template.SimpleHash;
 public class ShiroTag extends SimpleHash {
 
 	/**
-	 * 
+	 * 序列化
 	 */
 	private static final long serialVersionUID = -8452498774839515503L;
 
 	/**
 	 * 在构造函数中初始化Shiro标签库
 	 * */
-	public ShiroTag() {
-		put("authenticated", new AuthenticatedTag());
-		put("guest", new GuestTag());
-		put("hasAnyRoles", new HasAnyRolesTag());
-		put("hasPermission", new HasPermissionTag());
-		put("hasRole", new HasRoleTag());
-		put("lacksPermission", new LacksPermissionTag());
-		put("lacksRole", new LacksRoleTag());
-		put("notAuthenticated", new NotAuthenticatedTag());
-		put("principal", new PrincipalTag());
-		put("user", new UserTag());
+	public ShiroTag(Map<String,Object> params) {
+		for(Entry<String, Object> enrty:params.entrySet()){
+			put(enrty.getKey(),enrty.getValue());
+		}
 	}
 }

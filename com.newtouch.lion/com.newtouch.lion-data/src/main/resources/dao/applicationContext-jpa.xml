@@ -31,7 +31,7 @@
 				<value>model/system/bas_system.${database.prefix}.orm.xml</value>
 			</list>
 		</property>
-		<property name="jpaPropertyMap">
+		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>

@@ -11,10 +11,11 @@
 
 	
 	<!-- 配置事务管理器 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 	<bean name="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	
 	<bean id="methodTimerAdvice" class="com.newtouch.lion.advice.MethodTimerAdvice" />
 	<bean id="methodTraceAdvice" class="com.newtouch.lion.advice.MethodTraceAdvice">
 		 <property name="enabledMethodTrace" value="true" />

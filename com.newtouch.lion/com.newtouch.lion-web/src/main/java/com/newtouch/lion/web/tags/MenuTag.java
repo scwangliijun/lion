@@ -1,16 +1,27 @@
 /*
-* Copyright (c)  2014, Newtouch
-* All rights reserved. 
-*
-* $id: MenuTag.java 9552 2014年12月31日 下午4:42:30 WangLijun$
-*/
-package com.newtouch.lion.web.tags; 
+ * Copyright (c)  2014, Newtouch
+ * All rights reserved. 
+ *
+ * $id: MenuTag.java 9552 2014年12月31日 下午4:42:30 WangLijun$
+ */
+package com.newtouch.lion.web.tags;
+
+import static freemarker.template.ObjectWrapper.DEFAULT_WRAPPER;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.newtouch.lion.model.menu.Menu;
+import com.newtouch.lion.model.system.User;
+import com.newtouch.lion.service.menu.MenuService;
+import com.newtouch.lion.web.freemarker.DirectiveUtils;
+import com.newtouch.lion.web.shiro.session.LoginSecurityUtil;
 
 import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;
@@ -35,20 +46,33 @@ import freemarker.template.TemplateModel;
  * @author WangLijun
  * @version 1.0
  */
-public class MenuTag implements TemplateDirectiveModel{
-	
-	/**日志*/
-	private static final Logger logger=LoggerFactory.getLogger(MenuTag.class);
-	
+public class MenuTag implements TemplateDirectiveModel {
 
-	@SuppressWarnings("rawtypes")
+	/** 日志 */
+	private static final Logger logger = LoggerFactory.getLogger(MenuTag.class);
+	/***/
+	private static final String MENUS="menus";
+	/** 菜单Service */
+	@Autowired
+	private MenuService menuService;
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void execute(Environment env, Map params, TemplateModel[] loopVars,
 			TemplateDirectiveBody body) throws TemplateException, IOException {
-		// TODO Auto-generated method stub
-		
-	}
-	
-}
+		// 获取登录信息
+		User user = LoginSecurityUtil.getUser();
+		if (user == null) {
+			logger.error("用户未登录，无法获取用户菜单信息的");
+			return;
+		}
+		List<Menu> menus = menuService.doFindByUserId(user.getId());
+		Map<String, TemplateModel> paramWrap = new HashMap<String, TemplateModel>(params);
+		paramWrap.put(MENUS, DEFAULT_WRAPPER.wrap(menus));
+		Map<String, TemplateModel> origMap = DirectiveUtils.addParamsToVariable(env, paramWrap);
+		body.render(env.getOut());
+		DirectiveUtils.removeParamsFromVariable(env, paramWrap, origMap);
 
-	
+	}
+
+}

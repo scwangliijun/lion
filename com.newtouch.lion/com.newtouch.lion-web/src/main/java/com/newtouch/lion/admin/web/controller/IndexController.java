@@ -31,14 +31,21 @@ import com.newtouch.lion.web.controller.AbstractController;
 @Controller
 @RequestMapping("/")
 public class IndexController extends  AbstractController{
-	
+	/**首页模板路径*/
 	private static final String INDEX_RETURN="/index";
-	
+	/**测试页面*/
+	private static final String TEST_RETURN="/test";
 	
 	@RequestMapping("/index")
 	public String index(){
 		logger.info("进入首页.....");
 		return INDEX_RETURN;
+	}
+	
+	@RequestMapping("/test")
+	public String test(){
+		logger.info("进入测试页面");
+		return TEST_RETURN;
 	}
 }
 

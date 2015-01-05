@@ -7,6 +7,8 @@
 package com.newtouch.lion.web.freemarker;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
@@ -32,9 +34,22 @@ import freemarker.template.TemplateException;
  * @version 1.0
  */
 public class ShiroFreeMarkerConfigurer extends FreeMarkerConfigurer {
+	
+	
+	
 	@Override
 	public void afterPropertiesSet() throws IOException, TemplateException {
 		super.afterPropertiesSet();
-		this.getConfiguration().setSharedVariable("shiro", new ShiroTag());
+		
+	}
+	
+	/**
+	 * 设置标签库
+	 * @param shiroTag
+	 */
+	public  void setSharedVariable(HashMap<String,ShiroTag> params){
+		for(Entry<String,ShiroTag> entry:params.entrySet()){
+			this.getConfiguration().setSharedVariable(entry.getKey(),entry.getValue());
+		}
 	}
 }

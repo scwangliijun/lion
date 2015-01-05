@@ -12,8 +12,8 @@
 
 	<!-- 扫描加载注解 -->
 	<context:annotation-config />
-	<context:component-scan
-		base-package="com.newtouch.lion.web,com.newtouch.lion.admin.web" />
+	<context:component-scan base-package="com.newtouch.lion.admin.web" />
+	<context:component-scan base-package="com.newtouch.lion.web" />
 	<aop:config proxy-target-class="true" />
 	<bean
 		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
@@ -96,7 +96,52 @@
 	<bean id="freeMarkerConfigurer"
 		class="com.newtouch.lion.web.freemarker.ShiroFreeMarkerConfigurer">
 		<property name="configuration" ref="freemarkerConfiguration" />
+		<property name="sharedVariable">
+			<map>
+				<entry  key="shiro"  value-ref="shiro"/>
+				<entry  key="ui"   value-ref="ui"/>
+			</map>
+		</property>
 	</bean>
+	<!-- Tag definition Start -->
+	<bean id="authenticated" class="com.newtouch.lion.web.shiro.tags.AuthenticatedTag" />
+	<bean id="guest" class="com.newtouch.lion.web.shiro.tags.GuestTag" />
+	<bean id="hasAnyRoles" class="com.newtouch.lion.web.shiro.tags.HasAnyRolesTag" />
+	<bean id="hasPermission" class="com.newtouch.lion.web.shiro.tags.HasPermissionTag" />
+	<bean id="hasRole" class="com.newtouch.lion.web.shiro.tags.HasRoleTag" />
+	<bean id="lacksPermission" class="com.newtouch.lion.web.shiro.tags.LacksPermissionTag" />
+	<bean id="lacksRole" class="com.newtouch.lion.web.shiro.tags.LacksRoleTag" />
+	<bean id="notAuthenticated" class="com.newtouch.lion.web.shiro.tags.NotAuthenticatedTag" />
+	<bean id="principal" class="com.newtouch.lion.web.shiro.tags.PrincipalTag" />
+	<bean id="user" class="com.newtouch.lion.web.shiro.tags.UserTag" />
+	<bean id="menu" class="com.newtouch.lion.web.tags.MenuTag" />
+	
+
+	<util:map id="shiroTag" map-class="java.util.HashMap">
+		<entry key="authenticated" value-ref="authenticated" />
+		<entry key="guest" value-ref="guest" />
+		<entry key="hasAnyRoles" value-ref="hasAnyRoles" />
+		<entry key="hasPermission" value-ref="hasPermission" />
+		<entry key="hasRole" value-ref="hasRole" />
+		<entry key="lacksPermission" value-ref="lacksPermission" />
+		<entry key="lacksRole" value-ref="lacksRole" />
+		<entry key="notAuthenticated" value-ref="notAuthenticated" />
+		<entry key="principal" value-ref="principal" />
+		<entry key="user" value-ref="user" />
+	</util:map>
+	
+	<util:map id="uiTag" map-class="java.util.HashMap">
+		<entry key="menu" value-ref="menu" />
+	</util:map>
+	
+	<bean  id="shiro"  class="com.newtouch.lion.web.shiro.tags.ShiroTag">
+		<constructor-arg  index="0"  ref="shiroTag"/>
+	</bean>
+	<bean  id="ui"  class="com.newtouch.lion.web.shiro.tags.ShiroTag">
+		<constructor-arg  index="0"  ref="uiTag"/>
+	</bean>
+	<!-- Tag definition End -->
+	
 	<bean id="freemarkerConfiguration"
 		class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
 		<!-- 模板加载路径 -->
@@ -108,28 +153,10 @@
 		<property name="configLocation">
 			<value>classpath:freemarker/freemarker.properties</value>
 		</property>
-		<!--全局变量部分 <property name="freemarkerVariables"> <map> <entry key="buildNo" 
-			value="{buildNo}" /> <entry key="domain" value="${ebiz.dealer.web.domain}" 
-			/> <entry key="base" value="${ebiz.dealer.web.base}" /> <entry key="memberBase" 
-			value="${ebiz.dealer.web.memberBase}" /> <entry key="resRoot" value="${ebiz.dealer.web.resRoot}" 
-			/> <entry key="orderBase" value="${ebiz.dealer.web.orderBase}" /> <entry 
-			key="financialProgram" value="${ebiz.dealer.web.financialProgram}" /> <entry 
-			key="financialProgram2" value="${ebiz.dealer.web.financialProgram2}" /> <entry 
-			key="imUrl" value="${ebiz.dealer.web.imUrl}" /> <entry key="minSuffix" value="${ebiz.dealer.web.minSuffix}" 
-			/> <entry key="jscssUrl" value-ref="fmJsscssUrl" /> <entry key="jscssCommonUrl" 
-			value-ref="fmJsscssCommonUrl" /> </map> </property> -->
 		<property name="defaultEncoding" value="utf-8" />
 	</bean>
 
-	<!-- <bean id="fmJsscssUrl" class="com.ibm.framework.web.freemarker.MultiDomUrl"> 
-		<property name="host" value="${ebiz.dealer.web.jscssHost}" /> <property name="imgHostTag" 
-		value="${ebiz.dealer.web.jscssHostTag}" /> <property name="imgUrlStarNum" 
-		value="1" /> <property name="imgHostNumber" value="1" /> </bean> <bean id="fmJsscssCommonUrl" 
-		class="com.ibm.framework.web.freemarker.MultiDomUrl"> <property name="host" 
-		value="${ebiz.dealer.web.jscssCommonHost}" /> <property name="imgHostTag" 
-		value="${ebiz.dealer.web.jscssCommonHostTag}" /> <property name="imgUrlStarNum" 
-		value="1" /> <property name="imgHostNumber" value="1" /> </bean> -->
-	<!-- json解析 -->
+
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="2" />
 	</bean>

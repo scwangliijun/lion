@@ -3,7 +3,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <#assign context = request.contextPath/>
 <#import "/common/spring.ftl" as spring/>
-<#import "/common/spring.ftl" as shiro/> 
 <script type="text/javascript">
 	var b=233;
 </script>

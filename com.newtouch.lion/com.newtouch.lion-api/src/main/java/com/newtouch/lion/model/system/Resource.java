@@ -62,6 +62,8 @@ public class Resource extends VersionEntity<Long> {
 	private Boolean editable;
 	/** 资源目标 指HTML链接的target属性 */
 	private String target;
+	/**资源图标*/
+	private String icon;
 	/** 资源性 */
 	private Attributes attributes;
 	/** 子资源关联父资源对象 */
@@ -283,6 +285,22 @@ public class Resource extends VersionEntity<Long> {
 	 */
 	public void setTarget(String target) {
 		this.target = target;
+	}
+
+	
+	
+	/**
+	 * @return the icon
+	 */
+	public String getIcon() {
+		return icon;
+	}
+
+	/**
+	 * @param icon the icon to set
+	 */
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 	/**
