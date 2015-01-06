@@ -6,12 +6,14 @@
  */
 package com.newtouch.lion.service.application.impl;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
 import com.newtouch.lion.common.constant.Constants;
+import com.newtouch.lion.common.date.DateUtil;
 import com.newtouch.lion.model.application.ApplicationInfo;
 import com.newtouch.lion.model.application.AuthorizeInfo;
 import com.newtouch.lion.model.application.DataBaseInfo;
@@ -49,6 +51,13 @@ public class ApplicationInfoServiceImpl extends AbstractService implements
 	/** 静态变量－授权信息 */
 	public static final String AUTHORIZE_INFO = "AuthorizeInfo";
 	
+	/**系统运行时间*/
+	public static Date START_DATE;
+	
+	static{
+		START_DATE=new Date();
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -78,8 +87,7 @@ public class ApplicationInfoServiceImpl extends AbstractService implements
 		// 应用版本
 		applicationInfo.setVersion(Constants.APPLICATION_VERSION);
 		// 应用启动的时间
-		applicationInfo.setStartDate(params
-				.get(Constants.WEB_CONTAINER_STARTDATE));
+		applicationInfo.setStartDate(DateUtil.formatDate(START_DATE,DateUtil.FORMAT_DATETIME_YYYY_MM_DD_HH_MM_SS));
 		// 用户登录数
 		applicationInfo.setLoginUserCount(50);
 		// 启动模式 DEV-开发 PRODUCTION-生产环境

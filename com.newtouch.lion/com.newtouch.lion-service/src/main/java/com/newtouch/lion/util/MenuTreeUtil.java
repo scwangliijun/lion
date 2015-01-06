@@ -47,16 +47,11 @@ public class MenuTreeUtil {
 	private static Map<String, String> menusMap = new HashMap<String, String>();
 	/** 菜单列表 */
 	static {
-		menusMap.put(CodeListConstant.RESTYPE_MENU,
-				CodeListConstant.RESTYPE_MENU);
-		menusMap.put(CodeListConstant.RESTYPE_MODULE,
-				CodeListConstant.RESTYPE_MODULE);
-		menusMap.put(CodeListConstant.RESTYPE_MODULE_MENU_CATEGORY,
-				CodeListConstant.RESTYPE_MODULE_MENU_CATEGORY);
-		menusMap.put(CodeListConstant.RESTYPE_APPLICATION,
-				CodeListConstant.RESTYPE_APPLICATION);
-		menusMap.put(CodeListConstant.RESTYPE_MODULE_CATEGORY_ITEM,
-				CodeListConstant.RESTYPE_MODULE_CATEGORY_ITEM);
+		menusMap.put(CodeListConstant.RESTYPE_MENU,CodeListConstant.RESTYPE_MENU);
+		menusMap.put(CodeListConstant.RESTYPE_MODULE,CodeListConstant.RESTYPE_MODULE);
+		menusMap.put(CodeListConstant.RESTYPE_MODULE_MENU_CATEGORY,CodeListConstant.RESTYPE_MODULE_MENU_CATEGORY);
+		menusMap.put(CodeListConstant.RESTYPE_APPLICATION,CodeListConstant.RESTYPE_APPLICATION);
+		menusMap.put(CodeListConstant.RESTYPE_MODULE_CATEGORY_ITEM,CodeListConstant.RESTYPE_MODULE_CATEGORY_ITEM);
 	}
 
 	/***
@@ -112,7 +107,7 @@ public class MenuTreeUtil {
 					resource.getParentResourceId(), resource.getType(),
 					resource.getPath(), resource.getNameZh(),
 					resource.getNameEn(), resource.getSeqNum(), isLeaf,
-					resource.getTarget(), childrenNext);
+					resource.getTarget(),resource.getIcon(),childrenNext);
 			childrenMenu.add(menu);
 
 		}

@@ -59,7 +59,7 @@ public class MenuServiceImpl   implements MenuService{
 	 */
 	@Override
 	public List<Menu> doFindByUserId(Long userId) {
-		List<Resource> resources=resourceService.doFindByParentId(2L);
+		List<Resource> resources=resourceService.doFindByParentId(1L);
 		String[]  menuResourceType={CodeListConstant.RESTYPE_MODULE,CodeListConstant.RESTYPE_MODULE_MENU_CATEGORY,CodeListConstant.RESTYPE_MODULE_CATEGORY_ITEM};
 		List<Resource>  userResources=resourceService.doFindByUserIdAndType(userId, menuResourceType);
 		Map<Long,Resource>  menuResourcesMap=ResourceConvertUtil.convertListToMap(userResources);

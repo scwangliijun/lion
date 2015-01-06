@@ -10,6 +10,8 @@ package com.newtouch.lion.web.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.newtouch.lion.web.support.editor.StringEscapeEditor;
 
@@ -90,6 +94,11 @@ public class AbstractController {
 		sb.append("redirect:");
 		sb.append(url);
 		return sb.toString();
+	}
+	
+	protected HttpServletRequest  getRequest(){
+		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();  
+        return servletRequestAttributes.getRequest();     
 	}
 }
 

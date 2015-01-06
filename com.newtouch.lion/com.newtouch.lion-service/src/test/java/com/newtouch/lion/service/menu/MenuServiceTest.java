@@ -40,6 +40,7 @@ public class MenuServiceTest extends AllServiceTest{
 	public void doFindByUserId(){
 		Long userId=1L;
 		List<Menu>  list=menuService.doFindByUserId(userId);
+
 		
 		logger.info("list.size:{}",list.size());
 		for(Menu menu:list){
@@ -51,6 +52,8 @@ public class MenuServiceTest extends AllServiceTest{
 				}
 			}
 		}
+		logger.info("list.size:{}",list.size());
+
 	}
 	
 }

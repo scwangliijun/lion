@@ -12,7 +12,7 @@ import java.util.Map.Entry;
 
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
-import com.newtouch.lion.web.shiro.tags.ShiroTag;
+import com.newtouch.lion.web.tags.FreemarkerHashTag;
 
 import freemarker.template.TemplateException;
 
@@ -33,7 +33,7 @@ import freemarker.template.TemplateException;
  * @author WangLijun
  * @version 1.0
  */
-public class ShiroFreeMarkerConfigurer extends FreeMarkerConfigurer {
+public class WebFreeMarkerConfigurer extends FreeMarkerConfigurer {
 	
 	
 	
@@ -47,8 +47,8 @@ public class ShiroFreeMarkerConfigurer extends FreeMarkerConfigurer {
 	 * 设置标签库
 	 * @param shiroTag
 	 */
-	public  void setSharedVariable(HashMap<String,ShiroTag> params){
-		for(Entry<String,ShiroTag> entry:params.entrySet()){
+	public  void setSharedVariable(HashMap<String,FreemarkerHashTag> params){
+		for(Entry<String,FreemarkerHashTag> entry:params.entrySet()){
 			this.getConfiguration().setSharedVariable(entry.getKey(),entry.getValue());
 		}
 	}

@@ -53,6 +53,8 @@ public class Menu implements Serializable {
 	private Boolean isLeaf;
 	/** 资源目标 指HTML链接的target属性 */
 	private String target;
+	/**资源图标*/
+	private String icon;
 	/** 子资源关联父资源对象 */
 	private Menu menu;
 	/** 父资源关联父资源对象 */
@@ -70,20 +72,20 @@ public class Menu implements Serializable {
 	
 	/***
 	 * 
-	 * @param id
-	 * @param parentId
-	 * @param type
-	 * @param path
-	 * @param nameZh
-	 * @param nameEn
-	 * @param seqNum
-	 * @param isLeaf
-	 * @param editable
-	 * @param target
-	 * @param menus
+	 * @param id   ID
+	 * @param parentId  
+	 * @param type    菜单类型
+	 * @param path    URL路径
+	 * @param nameZh  中文名称
+	 * @param nameEn  英文名称
+	 * @param seqNum  显示顺序
+	 * @param isLeaf  是否是子节点
+	 * @param target HTML目标
+	 * @param icon 图标
+	 * @param menus  下级菜单集合
 	 */
 	public Menu(Long id, Long parentId, String type, String path,
-			String nameZh, String nameEn, int seqNum, Boolean isLeaf, String target, List<Menu> menus) {
+			String nameZh, String nameEn, int seqNum, Boolean isLeaf, String target,String icon, List<Menu> menus) {
 		super();
 		this.id = id;
 		this.parentId = parentId;
@@ -94,6 +96,7 @@ public class Menu implements Serializable {
 		this.seqNum = seqNum;
 		this.isLeaf = isLeaf;
 		this.target = target;
+		this.icon=icon;
 		this.menus = menus;
 	}
 
@@ -273,4 +276,19 @@ public class Menu implements Serializable {
 		return serialVersionUID;
 	}
 
+
+	/**
+	 * @return the icon
+	 */
+	public String getIcon() {
+		return icon;
+	}
+
+
+	/**
+	 * @param icon the icon to set
+	 */
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
 }

@@ -85,23 +85,36 @@
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
 		<property name="suffix" value=".ftl" />
-		<property name="requestContextAttribute" value="request" />
+		<property name="requestContextAttribute"  value="request" />
 		<property name="exposeSpringMacroHelpers" value="true" />
-		<property name="exposeRequestAttributes" value="true" />
-		<property name="exposeSessionAttributes" value="true" />
-		<property name="allowSessionOverride" value="true" />
+		<property name="exposeRequestAttributes"  value="true" />
+		<property name="exposeSessionAttributes"  value="true" />
+		<property name="allowSessionOverride"     value="true" />
 		<property name="contentType" value="text/html;charset=utf-8" />
 	</bean>
 
-	<bean id="freeMarkerConfigurer"
-		class="com.newtouch.lion.web.freemarker.ShiroFreeMarkerConfigurer">
-		<property name="configuration" ref="freemarkerConfiguration" />
+	<bean id="freeMarkerConfigurer" class="com.newtouch.lion.web.freemarker.WebFreeMarkerConfigurer">
+		<property name="configuration" ref="freemarkerConfiguration"/>
 		<property name="sharedVariable">
 			<map>
+				<!-- 标签前缀 标签Map对象 -->
 				<entry  key="shiro"  value-ref="shiro"/>
 				<entry  key="ui"   value-ref="ui"/>
 			</map>
+		</property>		
+	</bean>
+	<bean id="freemarkerConfiguration"
+		class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+		<!-- 模板加载路径 -->
+		<property name="templateLoaderPaths">
+			<list>
+				<value>/WEB-INF/view/</value>
+			</list>
 		</property>
+		<property name="configLocation">
+			<value>classpath:freemarker/freemarker.properties</value>
+		</property>
+		<property name="defaultEncoding" value="utf-8" />
 	</bean>
 	<!-- Tag definition Start -->
 	<bean id="authenticated" class="com.newtouch.lion.web.shiro.tags.AuthenticatedTag" />
@@ -134,27 +147,15 @@
 		<entry key="menu" value-ref="menu" />
 	</util:map>
 	
-	<bean  id="shiro"  class="com.newtouch.lion.web.shiro.tags.ShiroTag">
+	<bean  id="shiro"  class="com.newtouch.lion.web.tags.FreemarkerHashTag">
 		<constructor-arg  index="0"  ref="shiroTag"/>
 	</bean>
-	<bean  id="ui"  class="com.newtouch.lion.web.shiro.tags.ShiroTag">
+	<bean  id="ui"  class="com.newtouch.lion.web.tags.FreemarkerHashTag">
 		<constructor-arg  index="0"  ref="uiTag"/>
 	</bean>
 	<!-- Tag definition End -->
 	
-	<bean id="freemarkerConfiguration"
-		class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
-		<!-- 模板加载路径 -->
-		<property name="templateLoaderPaths">
-			<list>
-				<value>/WEB-INF/view/</value>
-			</list>
-		</property>
-		<property name="configLocation">
-			<value>classpath:freemarker/freemarker.properties</value>
-		</property>
-		<property name="defaultEncoding" value="utf-8" />
-	</bean>
+	
 
 
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">

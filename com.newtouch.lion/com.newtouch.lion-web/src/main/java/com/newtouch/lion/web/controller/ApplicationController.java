@@ -34,7 +34,7 @@ import com.newtouch.lion.service.application.ApplicationInfoService;
  * @version 1.0
  */
 @Controller
-@RequestMapping("/system/appliction")
+@RequestMapping("/system/application")
 public class ApplicationController {
 
 	@Autowired

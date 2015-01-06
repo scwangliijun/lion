@@ -4,7 +4,7 @@
  *
  * $id: ShiroTag.java 9552 2014年12月31日 上午11:31:15 WangLijun$
  */
-package com.newtouch.lion.web.shiro.tags;
+package com.newtouch.lion.web.tags;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -29,7 +29,7 @@ import freemarker.template.SimpleHash;
  * @author WangLijun
  * @version 1.0
  */
-public class ShiroTag extends SimpleHash {
+public class FreemarkerHashTag extends SimpleHash {
 
 	/**
 	 * 序列化
@@ -39,7 +39,7 @@ public class ShiroTag extends SimpleHash {
 	/**
 	 * 在构造函数中初始化Shiro标签库
 	 * */
-	public ShiroTag(Map<String,Object> params) {
+	public FreemarkerHashTag(Map<String,Object> params) {
 		for(Entry<String, Object> enrty:params.entrySet()){
 			put(enrty.getKey(),enrty.getValue());
 		}
