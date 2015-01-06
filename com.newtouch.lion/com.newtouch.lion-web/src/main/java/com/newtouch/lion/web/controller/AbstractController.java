@@ -95,7 +95,10 @@ public class AbstractController {
 		sb.append(url);
 		return sb.toString();
 	}
-	
+	/***
+	 * 获取Request对象
+	 * @return  HttpServletRequest
+	 */
 	protected HttpServletRequest  getRequest(){
 		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();  
         return servletRequestAttributes.getRequest();     

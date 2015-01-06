@@ -13,7 +13,7 @@ Author: wanglijun
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>${title} | Application Management System </title>
+<title>${title}| Application Management System </title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="" name="description"/>
@@ -43,7 +43,6 @@ Author: wanglijun
 <link href="${contextPath}/resources/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="${contextPath}/resources/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->

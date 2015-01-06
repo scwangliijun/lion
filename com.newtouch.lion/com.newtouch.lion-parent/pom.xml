@@ -25,7 +25,7 @@
 		<poi.version>3.9</poi.version>
 		<logback.version>1.1.2</logback.version>
 		<logback-ext-spring.version>0.1.1</logback-ext-spring.version>
-		<javax.persistence.version>2.1</javax.persistence.version>
+		<javax.persistence.version>2.0</javax.persistence.version>
 		<hibernate.version>4.2.2.Final</hibernate.version>
 		<aopalliance.version>1.0</aopalliance.version>
 		<springframework.version>3.2.12.RELEASE</springframework.version>

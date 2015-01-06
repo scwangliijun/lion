@@ -25,7 +25,6 @@ import com.newtouch.lion.web.shiro.session.LoginSecurityUtil;
 
 import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;
-import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 
@@ -46,11 +45,11 @@ import freemarker.template.TemplateModel;
  * @author WangLijun
  * @version 1.0
  */
-public class MenuTag implements TemplateDirectiveModel {
+public class MenuTag  extends AbstractTag{
 
 	/** 日志 */
 	private static final Logger logger = LoggerFactory.getLogger(MenuTag.class);
-	/***/
+	/**菜单列表 */
 	private static final String MENUS="menus";
 	/** 菜单Service */
 	@Autowired
@@ -66,13 +65,12 @@ public class MenuTag implements TemplateDirectiveModel {
 			logger.error("用户未登录，无法获取用户菜单信息的");
 			return;
 		}
-		List<Menu> menus = menuService.doFindByUserId(user.getId());
+		List<Menu> menus = menuService.doFindByUserId(user.getId(),this.getRequestURL(),this.getContextPath());
 		Map<String, TemplateModel> paramWrap = new HashMap<String, TemplateModel>(params);
 		paramWrap.put(MENUS, DEFAULT_WRAPPER.wrap(menus));
 		Map<String, TemplateModel> origMap = DirectiveUtils.addParamsToVariable(env, paramWrap);
 		body.render(env.getOut());
 		DirectiveUtils.removeParamsFromVariable(env, paramWrap, origMap);
-
 	}
 
 }

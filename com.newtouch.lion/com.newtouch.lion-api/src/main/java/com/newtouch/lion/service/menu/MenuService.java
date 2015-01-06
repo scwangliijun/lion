@@ -39,9 +39,17 @@ public interface MenuService {
 	
 	/***
 	 * 根据用户ID查询该用户所有菜单列表
-	 * @param userName  用户名
+	 * @param userName  用户ID
 	 * @return Menus 菜单集合对象
 	 */
 	public List<Menu> doFindByUserId(Long userId);
+	/***
+	 * 根据用户ID查询该用户所有菜单列表，根据用户当前请求路径并匹配用户所有选择菜单
+	 * @param userId  用户ID
+	 * @param requestURL 请求URL
+	 * @param contextPath 请求上下文路径
+	 * @return List<Menu> 菜单集合对象
+	 */
+	public List<Menu> doFindByUserId(Long userId,String requestURL,String contextPath);
 
 }

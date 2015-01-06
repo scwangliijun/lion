@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity-mappings version="2.1"
-	xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+	version="2.0">
 	<package>com.newtouch.lion.model.system</package>
 	<access>PROPERTY</access>
 	<mapped-superclass class="com.newtouch.lion.model.AuditEntity">
@@ -39,7 +40,7 @@
 			</many-to-one>
 			<one-to-many name="demoModels" fetch="LAZY" mapped-by="demoModel">
 				<cascade>
-					<cascade-all/>
+					<cascade-all />
 				</cascade>
 			</one-to-many>
 		</attributes>

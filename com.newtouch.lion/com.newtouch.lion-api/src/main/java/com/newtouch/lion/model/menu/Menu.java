@@ -59,6 +59,8 @@ public class Menu implements Serializable {
 	private Menu menu;
 	/** 父资源关联父资源对象 */
 	private List<Menu> menus;
+	/**是否被选择**/
+	private Boolean selected;
 	
 	
 	
@@ -100,6 +102,37 @@ public class Menu implements Serializable {
 		this.menus = menus;
 	}
 
+	
+	/***
+	 * 
+	 * @param id   ID
+	 * @param parentId  
+	 * @param type    菜单类型
+	 * @param path    URL路径
+	 * @param nameZh  中文名称
+	 * @param nameEn  英文名称
+	 * @param seqNum  显示顺序
+	 * @param isLeaf  是否是子节点
+	 * @param target HTML目标
+	 * @param icon 图标
+	 * @param menus  下级菜单集合
+	 */
+	public Menu(Long id, Long parentId, String type, String path,
+			String nameZh, String nameEn, int seqNum, Boolean isLeaf, String target,String icon,Boolean selected, List<Menu> menus) {
+		super();
+		this.id = id;
+		this.parentId = parentId;
+		this.type = type;
+		this.path = path;
+		this.nameZh = nameZh;
+		this.nameEn = nameEn;
+		this.seqNum = seqNum;
+		this.isLeaf = isLeaf;
+		this.target = target;
+		this.icon=icon;
+		this.selected=selected;
+		this.menus = menus;
+	}
 
 
 	/**
@@ -284,4 +317,22 @@ public class Menu implements Serializable {
 	public void setIcon(String icon) {
 		this.icon = icon;
 	}
+
+
+	/**
+	 * @return the selected
+	 */
+	public Boolean getSelected() {
+		return selected;
+	}
+
+
+	/**
+	 * @param selected the selected to set
+	 */
+	public void setSelected(Boolean selected) {
+		this.selected = selected;
+	}
+	
+	
 }
