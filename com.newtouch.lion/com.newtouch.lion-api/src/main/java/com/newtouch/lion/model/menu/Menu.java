@@ -269,13 +269,6 @@ public class Menu implements Serializable {
 		this.menus = menus;
 	}
 
-	/**
-	 * @return the serialversionuid
-	 */
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 
 	/**
 	 * @return the icon
