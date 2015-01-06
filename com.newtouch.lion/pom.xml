@@ -13,10 +13,10 @@
   </properties>
   <modules>
     <module>com.newtouch.lion-parent</module>
-    <module>com.newtouch.lion-im</module>
+    <module>com.newtouch.lion-api</module>
     <module>com.newtouch.lion-data</module>
     <module>com.newtouch.lion-service</module>
-    <module>com.newtouch.lion-api</module>
+    <module>com.newtouch.lion-im</module>
     <module>com.newtouch.lion-common</module>
     <module>com.newtouch.lion-web</module>
     <module>com.newtouch.lion-webadmin</module>
