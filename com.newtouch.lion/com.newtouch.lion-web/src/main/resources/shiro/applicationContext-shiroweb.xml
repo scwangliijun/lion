@@ -10,8 +10,7 @@
 		<property name="cacheManagerConfigFile" value="classpath:ehcache-shiro.xml" />
 	</bean>
 	<!-- 密码凭证匹配器 -->
-	<bean id="credentialsMatcher"
-		class="com.newtouch.lion.web.shiro.credentials.RetryLimitHashedCredentialsMatcher">
+	<bean id="credentialsMatcher" class="com.newtouch.lion.web.shiro.credentials.RetryLimitHashedCredentialsMatcher">
 		<constructor-arg ref="cacheManagerShiro" />
 		<property name="hashAlgorithmName" value="sha1" />
 		<property name="hashIterations" value="2" />

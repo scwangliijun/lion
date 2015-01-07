@@ -13,6 +13,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.newtouch.lion.common.SpringContextUtil;
+import com.newtouch.lion.web.freemarker.WebFreeMarkerConfigurer;
 import com.opensymphony.module.sitemesh.HTMLPage;
 import com.opensymphony.module.sitemesh.RequestConstants;
 import com.opensymphony.module.sitemesh.freemarker.FreemarkerDecoratorServlet;
@@ -54,12 +56,10 @@ public class SitemeshFreemarkerDecoratorServlet extends
 		boolean result = super.preTemplateProcess(request, response, template,
 				templateModel);
 
-		Configuration config = getConfiguration();
-
+		Configuration config =this.getFreemarkerConfig();
 		SimpleHash hash = (SimpleHash) templateModel;
 
-		HTMLPage htmlPage = (HTMLPage) request
-				.getAttribute(RequestConstants.PAGE);
+		HTMLPage htmlPage = (HTMLPage) request.getAttribute(RequestConstants.PAGE);
 
 		String title, body, head;
 
@@ -84,7 +84,7 @@ public class SitemeshFreemarkerDecoratorServlet extends
 		hash.put("title", title);
 		hash.put("body", body);
 		hash.put("head", head);
-
+		
 		if (!config.getSharedVariableNames().isEmpty()) {
 			Object[] names = config.getSharedVariableNames().toArray();
 			for (Object name : names) {
@@ -94,6 +94,14 @@ public class SitemeshFreemarkerDecoratorServlet extends
 		}
 		
 		return result;
+	}
+	
+	/**加载Spring Freemarker配置，可使用自定义标签
+	 * 
+	 * */
+	protected Configuration getFreemarkerConfig(){
+		WebFreeMarkerConfigurer  freeMarkerConfigurer=(WebFreeMarkerConfigurer) SpringContextUtil.getBean("freeMarkerConfigurer");
+		return freeMarkerConfigurer.getConfiguration();
 	}
 
 }

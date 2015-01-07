@@ -37,8 +37,7 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
-	<bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath:application.properties</value>
@@ -93,71 +92,6 @@
 		<property name="contentType" value="text/html;charset=utf-8" />
 	</bean>
 
-	<bean id="freeMarkerConfigurer" class="com.newtouch.lion.web.freemarker.WebFreeMarkerConfigurer">
-		<property name="configuration" ref="freemarkerConfiguration"/>
-		<property name="sharedVariable">
-			<map>
-				<!-- 标签前缀 标签Map对象 -->
-				<entry  key="shiro"  value-ref="shiro"/>
-				<entry  key="ui"   value-ref="ui"/>
-			</map>
-		</property>		
-	</bean>
-	<bean id="freemarkerConfiguration"
-		class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
-		<!-- 模板加载路径 -->
-		<property name="templateLoaderPaths">
-			<list>
-				<value>/WEB-INF/view/</value>
-			</list>
-		</property>
-		<property name="configLocation">
-			<value>classpath:freemarker/freemarker.properties</value>
-		</property>
-		<property name="defaultEncoding" value="utf-8" />
-	</bean>
-	<!-- Tag definition Start -->
-	<bean id="authenticated" class="com.newtouch.lion.web.shiro.tags.AuthenticatedTag" />
-	<bean id="guest" class="com.newtouch.lion.web.shiro.tags.GuestTag" />
-	<bean id="hasAnyRoles" class="com.newtouch.lion.web.shiro.tags.HasAnyRolesTag" />
-	<bean id="hasPermission" class="com.newtouch.lion.web.shiro.tags.HasPermissionTag" />
-	<bean id="hasRole" class="com.newtouch.lion.web.shiro.tags.HasRoleTag" />
-	<bean id="lacksPermission" class="com.newtouch.lion.web.shiro.tags.LacksPermissionTag" />
-	<bean id="lacksRole" class="com.newtouch.lion.web.shiro.tags.LacksRoleTag" />
-	<bean id="notAuthenticated" class="com.newtouch.lion.web.shiro.tags.NotAuthenticatedTag" />
-	<bean id="principal" class="com.newtouch.lion.web.shiro.tags.PrincipalTag" />
-	<bean id="user" class="com.newtouch.lion.web.shiro.tags.UserTag" />
-	<bean id="menu" class="com.newtouch.lion.web.tags.MenuTag" />
-	
-
-	<util:map id="shiroTag" map-class="java.util.HashMap">
-		<entry key="authenticated" value-ref="authenticated" />
-		<entry key="guest" value-ref="guest" />
-		<entry key="hasAnyRoles" value-ref="hasAnyRoles" />
-		<entry key="hasPermission" value-ref="hasPermission" />
-		<entry key="hasRole" value-ref="hasRole" />
-		<entry key="lacksPermission" value-ref="lacksPermission" />
-		<entry key="lacksRole" value-ref="lacksRole" />
-		<entry key="notAuthenticated" value-ref="notAuthenticated" />
-		<entry key="principal" value-ref="principal" />
-		<entry key="user" value-ref="user" />
-	</util:map>
-	
-	<util:map id="uiTag" map-class="java.util.HashMap">
-		<entry key="menu" value-ref="menu" />
-	</util:map>
-	
-	<bean  id="shiro"  class="com.newtouch.lion.web.tags.FreemarkerHashTag">
-		<constructor-arg  index="0"  ref="shiroTag"/>
-	</bean>
-	<bean  id="ui"  class="com.newtouch.lion.web.tags.FreemarkerHashTag">
-		<constructor-arg  index="0"  ref="uiTag"/>
-	</bean>
-	<!-- Tag definition End -->
-	
-	
-
-
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="2" />
 	</bean>
@@ -173,8 +107,6 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
-
 	<!-- 统一异常处理 -->
 	<bean id="exceptionResolver"
 		class="com.newtouch.lion.web.exception.ErrorCodeMappingExceptionResolver">
