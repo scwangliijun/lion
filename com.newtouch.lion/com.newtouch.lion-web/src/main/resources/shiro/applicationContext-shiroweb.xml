@@ -6,13 +6,13 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 	<!-- 缓存管理器 使用Ehcache实现 -->
-	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
+	<bean id="cacheManagerShiro" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:ehcache-shiro.xml" />
 	</bean>
 	<!-- 密码凭证匹配器 -->
 	<bean id="credentialsMatcher"
 		class="com.newtouch.lion.web.shiro.credentials.RetryLimitHashedCredentialsMatcher">
-		<constructor-arg ref="cacheManager" />
+		<constructor-arg ref="cacheManagerShiro" />
 		<property name="hashAlgorithmName" value="sha1" />
 		<property name="hashIterations" value="2" />
 		<property name="storedCredentialsHexEncoded" value="true" />
@@ -69,7 +69,7 @@
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="userRealm" />
 		<property name="sessionManager" ref="sessionManager" />
-		<property name="cacheManager" ref="cacheManager" />
+		<property name="cacheManager" ref="cacheManagerShiro" />
 	</bean>
 
 	<!-- 相当于调用SecurityUtils.setSecurityManager(securityManager) -->

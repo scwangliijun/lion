@@ -11,6 +11,11 @@
 	<import resource="classpath:common/applicationContext-common.xml" />
 	<import resource="classpath:common/applicationContext-datasource.xml" />
 	<import resource="classpath:common/applicationContext-properties.xml" />
+	<!-- common End -->
+	
+	<!-- Cache Start -->
+	<import resource="classpath:cache/applicationContext-cache.xml" />
+	<!-- Cache End -->
 	<!-- Repository Start -->
 	<import resource="classpath:dao/applicationContext-jpa.xml" />
 	<import resource="classpath:tx/applicationContext-tx.xml" />

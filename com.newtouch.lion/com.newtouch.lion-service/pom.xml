@@ -79,5 +79,17 @@
 			<artifactId>shiro-spring</artifactId>
 		</dependency>
 		<!-- Apache Shiro End -->
+		<!-- Ehcache S -->
+		<dependency>
+			<groupId>com.googlecode.ehcache-spring-annotations</groupId>
+			<artifactId>ehcache-spring-annotations</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>net.sf.ehcache</groupId>
+					<artifactId>ehcache-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- Ehcache End -->
 	</dependencies>
 </project>
