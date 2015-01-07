@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-<title>系统信息</title>
+<title>用户管理</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo">
@@ -388,6 +388,7 @@
 <script src="${contextPath}/resources/global/plugins/respond.min.js"></script>
 <script src="${contextPath}/resources/global/plugins/excanvas.min.js"></script> 
 <![endif]-->
+<footer>
 <script src="${contextPath}/resources/global/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="${contextPath}/resources/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
@@ -417,6 +418,7 @@
 <script src="${contextPath}/resources/admin/layout4/scripts/layout.js" type="text/javascript"></script>
 <script src="${contextPath}/resources/admin/layout4/scripts/demo.js" type="text/javascript"></script>
 <script src="${contextPath}/resources/admin/pages/scripts/tasks.js" type="text/javascript"></script>
+</footer>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 $(document).ready(function() { 

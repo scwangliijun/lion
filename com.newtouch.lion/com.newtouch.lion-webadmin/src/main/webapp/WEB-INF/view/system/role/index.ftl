@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-<title>系统信息</title>
+<title>角色管理</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo">
