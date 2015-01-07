@@ -84,6 +84,7 @@ public class SitemeshFreemarkerDecoratorServlet extends
 		hash.put("title", title); 
 		hash.put("body", body);
 		hash.put("head", head);
+		hash.put("javascript","footer");
 		
 		if (!config.getSharedVariableNames().isEmpty()) {
 			Object[] names = config.getSharedVariableNames().toArray();
