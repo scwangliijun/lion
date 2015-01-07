@@ -8,6 +8,8 @@ package com.newtouch.lion.web.sitemash;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -56,10 +58,11 @@ public class SitemeshFreemarkerDecoratorServlet extends
 		boolean result = super.preTemplateProcess(request, response, template,
 				templateModel);
 
-		Configuration config =this.getFreemarkerConfig();
+		Configuration config = this.getFreemarkerConfig();
 		SimpleHash hash = (SimpleHash) templateModel;
 
-		HTMLPage htmlPage = (HTMLPage) request.getAttribute(RequestConstants.PAGE);
+		HTMLPage htmlPage = (HTMLPage) request
+				.getAttribute(RequestConstants.PAGE);
 
 		String title, body, head;
 
@@ -81,10 +84,11 @@ public class SitemeshFreemarkerDecoratorServlet extends
 			hash.put("page", htmlPage);
 		}
 
-		hash.put("title", title); 
+		hash.put("title", title);
 		hash.put("body", body);
 		hash.put("head", head);
-		
+		hash.put("javascript", head);
+
 		if (!config.getSharedVariableNames().isEmpty()) {
 			Object[] names = config.getSharedVariableNames().toArray();
 			for (Object name : names) {
@@ -92,16 +96,45 @@ public class SitemeshFreemarkerDecoratorServlet extends
 						config.getSharedVariable(name.toString()));
 			}
 		}
-		
+
 		return result;
 	}
-	
-	/**加载Spring Freemarker配置，可使用自定义标签
+
+	/**
+	 * 加载Spring Freemarker配置，可使用自定义标签
 	 * 
 	 * */
-	protected Configuration getFreemarkerConfig(){
-		WebFreeMarkerConfigurer  freeMarkerConfigurer=(WebFreeMarkerConfigurer) SpringContextUtil.getBean("freeMarkerConfigurer");
+	protected Configuration getFreemarkerConfig() {
+		WebFreeMarkerConfigurer freeMarkerConfigurer = (WebFreeMarkerConfigurer) SpringContextUtil
+				.getBean("freeMarkerConfigurer");
 		return freeMarkerConfigurer.getConfiguration();
 	}
 
+	public static void main(String[] args) {
+		String str = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"
+				+ "<link href=\"/admin/resources/admin/layout4/css/themes/light.css\" rel=\"stylesheet\" type=\"text/css\" id=\"style_color\"/>\n"
+				+ "<link href=\"/admin/resources/admin/layout4/css/custom.css\" rel=\"stylesheet\" type=\"text/css\"/>\n"
+				+ "<script src=\"/admin/resources/admin/layout4/scripts/layout.js\" type=\"text/javascript\"></script>\n"
+				+ "<script src=\"/admin/resources/admin/layout4/scripts/demo.js\" type=\"text/javascript\"></script>\n"
+				+ "<script src=\"/admin/resources/admin/pages/scripts/tasks.js\" type=\"text/javascript\"></script>\n";
+		   Pattern pattern = Pattern.compile("(<script.* type=.*>)(.*)(</script>)");
+		   System.out.println(str);
+           Matcher match = pattern.matcher(str);
+           StringBuilder sb=new StringBuilder();
+           while(match.find()){
+       		sb.append(match.group());
+       		sb.append(System.getProperty("line.separator"));
+           }
+        
+          
+      
+           String regEx_script = "<script[^>]*?>[\\s\\S]*?<\\/script>"; // 定义script的正则表达式
+           Pattern p_script = Pattern.compile(regEx_script, Pattern.CASE_INSENSITIVE);  
+           Matcher m_script = p_script.matcher(str);  
+           str = m_script.replaceAll(""); // 过滤script标签  
+           System.out.println(str);
+           sb.append(System.getProperty("line.separator"));
+           System.out.println(sb.toString());
+           
+	}
 }
