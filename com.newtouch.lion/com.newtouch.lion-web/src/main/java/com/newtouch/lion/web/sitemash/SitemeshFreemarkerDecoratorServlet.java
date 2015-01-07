@@ -45,11 +45,14 @@ import freemarker.template.TemplateModel;
  */
 public class SitemeshFreemarkerDecoratorServlet extends
 		FreemarkerDecoratorServlet {
-
 	/**
-	 * serialVersionUID
+	 * 序列化
 	 */
 	private static final long serialVersionUID = -932927776246721655L;
+	/**定义script的正则表达式*/
+	private static final String REGEX_SCRIPT = "<script[^>]*?>[\\s\\S]*?<\\/script>";
+	/**获取script正则表达式*/
+	private static Pattern PATTERN_SCRIPT = Pattern.compile(REGEX_SCRIPT, Pattern.CASE_INSENSITIVE);  
 
 	@Override
 	protected boolean preTemplateProcess(HttpServletRequest request,
@@ -86,8 +89,8 @@ public class SitemeshFreemarkerDecoratorServlet extends
 
 		hash.put("title", title);
 		hash.put("body", body);
-		hash.put("head", head);
-		hash.put("javascript", head);
+		hash.put("head", this.getHead(head));
+		hash.put("javascript",this.getScript(head));
 
 		if (!config.getSharedVariableNames().isEmpty()) {
 			Object[] names = config.getSharedVariableNames().toArray();
@@ -99,42 +102,38 @@ public class SitemeshFreemarkerDecoratorServlet extends
 
 		return result;
 	}
+	
+	
 
 	/**
 	 * 加载Spring Freemarker配置，可使用自定义标签
 	 * 
 	 * */
 	protected Configuration getFreemarkerConfig() {
-		WebFreeMarkerConfigurer freeMarkerConfigurer = (WebFreeMarkerConfigurer) SpringContextUtil
-				.getBean("freeMarkerConfigurer");
+		WebFreeMarkerConfigurer freeMarkerConfigurer = (WebFreeMarkerConfigurer) SpringContextUtil.getBean("freeMarkerConfigurer");
 		return freeMarkerConfigurer.getConfiguration();
 	}
-
-	public static void main(String[] args) {
-		String str = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"
-				+ "<link href=\"/admin/resources/admin/layout4/css/themes/light.css\" rel=\"stylesheet\" type=\"text/css\" id=\"style_color\"/>\n"
-				+ "<link href=\"/admin/resources/admin/layout4/css/custom.css\" rel=\"stylesheet\" type=\"text/css\"/>\n"
-				+ "<script src=\"/admin/resources/admin/layout4/scripts/layout.js\" type=\"text/javascript\"></script>\n"
-				+ "<script src=\"/admin/resources/admin/layout4/scripts/demo.js\" type=\"text/javascript\"></script>\n"
-				+ "<script src=\"/admin/resources/admin/pages/scripts/tasks.js\" type=\"text/javascript\"></script>\n";
-		   Pattern pattern = Pattern.compile("(<script.* type=.*>)(.*)(</script>)");
-		   System.out.println(str);
-           Matcher match = pattern.matcher(str);
-           StringBuilder sb=new StringBuilder();
-           while(match.find()){
-       		sb.append(match.group());
-       		sb.append(System.getProperty("line.separator"));
-           }
-        
-          
-      
-           String regEx_script = "<script[^>]*?>[\\s\\S]*?<\\/script>"; // 定义script的正则表达式
-           Pattern p_script = Pattern.compile(regEx_script, Pattern.CASE_INSENSITIVE);  
-           Matcher m_script = p_script.matcher(str);  
-           str = m_script.replaceAll(""); // 过滤script标签  
-           System.out.println(str);
-           sb.append(System.getProperty("line.separator"));
-           System.out.println(sb.toString());
-           
+	/***
+	 * 将JS过滤
+	 * @param head
+	 * @return 返回除script外的信息
+	 */
+	protected String  getHead(String head){
+	    Matcher script = PATTERN_SCRIPT.matcher(head);  
+        return script.replaceAll("");
+	}
+	/***
+	 * 获取JS引入代码
+	 * @param head  头信息
+	 * @return JS引入代码
+	 */
+	protected  String getScript(String head){
+		Matcher script = PATTERN_SCRIPT.matcher(head);
+		 StringBuilder sb=new StringBuilder();
+         while(script.find()){
+     		sb.append(script.group());
+     		sb.append(System.getProperty("line.separator"));
+         }
+         return sb.toString();
 	}
 }
