@@ -83,15 +83,16 @@ public class SitemeshFreemarkerDecoratorServlet extends
 			buffer = new StringWriter();
 			htmlPage.writeHead(buffer);
 			head = buffer.toString();
-
 			hash.put("page", htmlPage);
 		}
 
 		hash.put("title", title);
-		hash.put("body", body);
+		hash.put("body", body); 
 		hash.put("head", this.getHead(head));
 		hash.put("javascript",this.getScript(head));
-
+ 
+ 
+ 
 		if (!config.getSharedVariableNames().isEmpty()) {
 			Object[] names = config.getSharedVariableNames().toArray();
 			for (Object name : names) {
