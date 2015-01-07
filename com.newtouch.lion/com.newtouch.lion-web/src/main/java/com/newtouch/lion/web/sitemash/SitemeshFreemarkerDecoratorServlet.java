@@ -81,7 +81,7 @@ public class SitemeshFreemarkerDecoratorServlet extends
 			hash.put("page", htmlPage);
 		}
 
-		hash.put("title", title);
+		hash.put("title", title); 
 		hash.put("body", body);
 		hash.put("head", head);
 		
