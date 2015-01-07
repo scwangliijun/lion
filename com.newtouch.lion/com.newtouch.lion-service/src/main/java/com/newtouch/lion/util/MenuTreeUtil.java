@@ -45,8 +45,6 @@ public class MenuTreeUtil {
 	private final static Logger logger = LoggerFactory.getLogger(ResourceTreeUtil.class);
 	/** 菜单列表 */
 	private static Map<String, String> menusMap = new HashMap<String, String>();
-	/**菜单状态*/
-	private static Long selectedParentId=0L;
 	/** 菜单列表 */
 	static {
 		menusMap.put(CodeListConstant.RESTYPE_MENU,CodeListConstant.RESTYPE_MENU);
