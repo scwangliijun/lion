@@ -2,7 +2,7 @@
  * Copyright (c)  2012, Newtouch
  * All rights reserved. 
  *
- * $id: TsResourceServiceImpl.java 9552 2012-12-31 下午9:56:07 WangLijun$
+ * $id: ResourceServiceImpl.java 9552 2012-12-31 下午9:56:07 WangLijun$
  */
 package com.newtouch.lion.service.system.impl;
 
@@ -59,8 +59,8 @@ public class ResourceServiceImpl extends AbstractService implements
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.lion.framework.service.system.TsResourceService#idSaveTsResource
-	 * (com.lion.framework.model.system.TsResource)
+	 * com.newtouch.lion.service.system.ResourceService#idSaveTsResource
+	 * (com.lion.framework.model.system.Resource)
 	 */
 	@Override
 	public void doCreateResource(Resource resource) {
@@ -77,7 +77,7 @@ public class ResourceServiceImpl extends AbstractService implements
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.lion.framework.service.system.TsResourceService#doDelete(java.
+	 * com.newtouch.lion.service.system.ResourceService#doDelete(java.
 	 * util.Collection)
 	 */
 	@Override
@@ -90,7 +90,7 @@ public class ResourceServiceImpl extends AbstractService implements
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.lion.framework.service.system.TsResourceService#doDelete(java.
+	 * com.newtouch.lion.service.system.ResourceService#doDelete(java.
 	 * lang.Long)
 	 */
 	@Override
@@ -116,7 +116,7 @@ public class ResourceServiceImpl extends AbstractService implements
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.lion.framework.service.system.TsResourceService#doFindById(java
+	 * com.newtouch.lion.service.system.ResourceService#doFindById(java
 	 * .lang.Long)
 	 */
 	@Override
@@ -127,7 +127,7 @@ public class ResourceServiceImpl extends AbstractService implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.lion.framework.service.system.TsResourceService#doFindAll()
+	 * @see com.newtouch.lion.service.system.ResourceService#doFindAll()
 	 */
 	@Override
 	public List<Resource> doFindAll() {
@@ -139,7 +139,7 @@ public class ResourceServiceImpl extends AbstractService implements
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.lion.framework.service.system.TsResourceService#doFindByParentId
+	 * com.newtouch.lion.service.system.ResourceService#doFindByParentId
 	 * (java.lang.Long)
 	 */
 	@Override
@@ -179,7 +179,7 @@ public class ResourceServiceImpl extends AbstractService implements
 		}
 
 	/* (non-Javadoc)
-	 * @see com.lion.framework.service.system.ResourceService#doFindFirstLevel()
+	 * @see com.newtouch.lion.service.system.ResourceService#doFindFirstLevel()
 	 */
 	@Override
 	public List<Resource> doFindFirstLevel() {
@@ -194,7 +194,7 @@ public class ResourceServiceImpl extends AbstractService implements
 	}
 
 	/* (non-Javadoc)
-	 * @see com.lion.framework.service.system.ResourceService#doFindByType(java.lang.String[])
+	 * @see com.newtouch.lion.service.system.ResourceService#doFindByType(java.lang.String[])
 	 */
 	@Override
 	public List<Resource> doFindByType(String[] resTypes) {
@@ -208,7 +208,7 @@ public class ResourceServiceImpl extends AbstractService implements
 	}
 
 	/* (non-Javadoc)
-	 * @see com.lion.framework.service.system.ResourceService#doGetById(java.lang.Long)
+	 * @see com.newtouch.lion.service.system.ResourceService#doGetById(java.lang.Long)
 	 */
 	@Override
 	public Resource doGetById(Long id) {
@@ -216,7 +216,7 @@ public class ResourceServiceImpl extends AbstractService implements
 	}
 
 	/* (non-Javadoc)
-	 * @see com.lion.framework.service.system.ResourceService#doUpdate(com.lion.framework.model.system.Resource)
+	 * @see com.newtouch.lion.service.system.ResourceService#doUpdate(com.lion.framework.model.system.Resource)
 	 */
 	@Override
 	public Resource doUpdate(Resource resource) {
@@ -225,7 +225,7 @@ public class ResourceServiceImpl extends AbstractService implements
 	}
 
 	/* (non-Javadoc)
-	 * @see com.lion.framework.service.system.ResourceService#doFindAllToTree(java.lang.String)
+	 * @see com.newtouch.lion.service.system.ResourceService#doFindAllToTree(java.lang.String)
 	 */
 	@Override
 	public String doFindAllToTree(String tableId) {
@@ -237,7 +237,7 @@ public class ResourceServiceImpl extends AbstractService implements
 
  
 	/* (non-Javadoc)
-	 * @see com.lion.framework.service.system.ResourceService#doFindByUserIdAndType(java.lang.Long, java.lang.String[])
+	 * @see com.newtouch.lion.service.system.ResourceService#doFindByUserIdAndType(java.lang.Long, java.lang.String[])
 	 */
 	@Override
 	public List<Resource> doFindByUserIdAndType(Long userId,String[] resourceType) {
@@ -253,7 +253,7 @@ public class ResourceServiceImpl extends AbstractService implements
 	 
 
 	/* (non-Javadoc)
-	 * @see com.lion.framework.service.system.ResourceService#doFindByUserIdAndType(java.lang.Long, java.lang.Long, java.lang.String[])
+	 * @see com.newtouch.lion.service.system.ResourceService#doFindByUserIdAndType(java.lang.Long, java.lang.Long, java.lang.String[])
 	 */
 	@Override
 	public List<Resource> doFindByUserIdAndType(Long userId,
@@ -275,7 +275,7 @@ public class ResourceServiceImpl extends AbstractService implements
 	
 	
 	/* (non-Javadoc)
-	 * @see com.lion.framework.service.system.ResourceService#doFindByUserIdAndType(java.lang.Long, java.lang.Long, java.lang.String[], java.lang.String[])
+	 * @see com.newtouch.lion.service.system.ResourceService#doFindByUserIdAndType(java.lang.Long, java.lang.Long, java.lang.String[], java.lang.String[])
 	 */
 	@Override
 	public List<Resource> doFindByUserIdAndType(Long userId,
@@ -297,7 +297,7 @@ public class ResourceServiceImpl extends AbstractService implements
 	}
 
 	/* (non-Javadoc)
-	 * @see com.lion.framework.service.system.ResourceService#doFindByUserIdAndType(java.lang.Long, java.lang.String[], java.lang.String[])
+	 * @see com.newtouch.lion.service.system.ResourceService#doFindByUserIdAndType(java.lang.Long, java.lang.String[], java.lang.String[])
 	 */
 	@Override
 	public List<Resource> doFindByUserIdAndType(Long userId,
@@ -311,6 +311,16 @@ public class ResourceServiceImpl extends AbstractService implements
 	     return this.resourceDao.query(hql, params);
 	}
 	
-	
+	/* (non-Javadoc)
+	 * @see ccom.newtouch.lion.service.system.ResourceService#doFindByUserId(java.lang.Long)
+	 */
+	@Override
+	public List<Resource> doFindByUserId(Long userId) {
+		Assert.notNull(userId);
+	    String hql = "select distinct r from User user join user.roles role join role.resources r  where user.id=:userId";
+	    Map<String,Object> params = new HashMap<String,Object>();
+	    params.put("userId", userId);
+		return this.resourceDao.query(hql, params);
+	}
 	
 }

@@ -1,7 +1,7 @@
 /*
  * Copyright (c)  2014, Newtouch
  * All rights reserved. 
- *
+ * 
  * $id: UserRealm.java 9552 2014年12月29日 下午5:30:07 WangLijun$
  */
 package com.newtouch.lion.web.shiro.realm;

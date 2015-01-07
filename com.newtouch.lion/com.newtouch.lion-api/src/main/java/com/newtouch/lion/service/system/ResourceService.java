@@ -126,5 +126,13 @@ public interface ResourceService {
 	 */
 	public List<Resource> doFindByUserIdAndType(Long userId,String[]  parentResourceType,String[] resourceType);
 	
+	/***
+	 * 根据用户ID查询用户所有已授权资源
+	 * @param userId 用户Id
+	 * @return List<Resource>
+	 */
+	public List<Resource> doFindByUserId(Long userId);
 	
+
+		
 }

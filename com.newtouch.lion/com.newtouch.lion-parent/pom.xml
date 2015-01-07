@@ -47,6 +47,8 @@
 		<jstl.version>1.2</jstl.version>
 		<servlet-api.version>2.5</servlet-api.version>
 		<sitemesh.version>2.4.2</sitemesh.version>
+		<ehcache.version>2.7.0</ehcache.version>
+		<ehcache-spring-annotations.version>1.2.0</ehcache-spring-annotations.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -620,6 +622,29 @@
 				<scope>provided</scope>
 			</dependency>
 			<!-- Servlet&&JSP End -->
+			<!-- Ehcache Start -->
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache</artifactId>
+				<version>${ehcache.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache-terracotta</artifactId>
+				<version>${ehcache.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.ehcache-spring-annotations</groupId>
+				<artifactId>ehcache-spring-annotations</artifactId>
+				<version>${ehcache-spring-annotations.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>net.sf.ehcache</groupId>
+						<artifactId>ehcache-core</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!-- Ehcache End -->
 		</dependencies>
 	</dependencyManagement>
 	<build>

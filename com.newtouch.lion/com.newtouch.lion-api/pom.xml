@@ -33,5 +33,11 @@
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
 		<!-- Logger End -->
+		<!-- Ehcache Start -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+		</dependency>
+		<!-- Ehcache End -->
 	</dependencies>
 </project>

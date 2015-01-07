@@ -255,9 +255,7 @@ public class ParameterServiceImpl extends AbstractService implements
 
 		int startIndex = queryCriteria.getStartIndex();
 
-		PageResult<Parameter> result = this.parameterDao.query(hql,
-				HqlUtils.generateCountHql(hql, null), params, startIndex,
-				pageSize);
+		PageResult<Parameter> result = this.parameterDao.query(hql,HqlUtils.generateCountHql(hql, null), params, startIndex,pageSize);
 
 	}
 
@@ -287,8 +285,7 @@ public class ParameterServiceImpl extends AbstractService implements
 	@Override
 	public List<CodeList> doFindCodeListByNameEn(String codeTypeNameEn,
 			String selectedValue) {
-		List<CodeList> codeLists = codeListService
-				.doFindCodeListByCodeTypeNameEn(codeTypeNameEn);
+		List<CodeList> codeLists = codeListService.doFindCodeListByCodeTypeNameEn(codeTypeNameEn);
 		List<CodeList> returnCodeLists = null;
 		if (StringUtils.isNotEmpty(selectedValue)) {
 			returnCodeLists = new ArrayList<CodeList>();

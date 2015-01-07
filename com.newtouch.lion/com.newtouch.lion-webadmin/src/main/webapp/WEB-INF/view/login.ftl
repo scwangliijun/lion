@@ -48,7 +48,7 @@ Author: wanglijun
 <!-- BEGIN LOGO -->
 <div class="logo">
 	<a href="index.htm">
-		<img src="${contextPath}/resources/admin/layout4/img/logo-big.png" alt=""/>${contextPath}11
+		<img src="${contextPath}/resources/admin/layout4/img/logo-big.png" alt=""/>
 	</a>
 </div>
 <!-- END LOGO -->
