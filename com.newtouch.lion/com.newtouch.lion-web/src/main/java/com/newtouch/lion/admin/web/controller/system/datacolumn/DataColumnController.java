@@ -68,13 +68,13 @@ public class DataColumnController {
 	private DataColumnService dataColumnService;
 
 	/** 新增的对话框 */
-	@RequestMapping(value = "/system/datacolumn/adddialog.jhtml")
+	@RequestMapping(value = "/system/datacolumn/adddialog")
 	public String addDialog() {
 		return ADD_DIALOG_RETURN;
 	}
 
 	/** 删除 */
-	@RequestMapping(value = "/system/datacolumn/delete.jhtml")
+	@RequestMapping(value = "/system/datacolumn/delete")
 	@ResponseBody
 	public ModelAndView delete(@RequestParam Long id, ModelAndView modelAndView) {
 		Map<String, String> params = new HashMap<String, String>();
@@ -91,7 +91,7 @@ public class DataColumnController {
 	}
 
 	/** 添加 */
-	@RequestMapping(value = "/system/datacolumn/add.jhtml")
+	@RequestMapping(value = "/system/datacolumn/add")
 	@ResponseBody
 	public ModelAndView add(
 			@Valid @ModelAttribute("dataGridVo") DataColumnVo dataColumnVo,
@@ -110,7 +110,7 @@ public class DataColumnController {
 	}
 
 	/** 编辑对话框 */
-	@RequestMapping(value = "/system/datacolumn/editdialog.jhtml")
+	@RequestMapping(value = "/system/datacolumn/editdialog")
 	public String editDialog(@RequestParam Long id, Model model) {
 		if (id != null) {
 			DataColumn dataColumn = this.dataColumnService.doGetById(id);
@@ -122,7 +122,7 @@ public class DataColumnController {
 	}
 
 	/** 编辑 */
-	@RequestMapping(value = "/system/datacolumn/edit.jhtml")
+	@RequestMapping(value = "/system/datacolumn/edit")
 	@ResponseBody
 	public ModelAndView edit(
 			@Valid @ModelAttribute("d") DataColumnVo dataColumnVo,
@@ -153,13 +153,13 @@ public class DataColumnController {
 	}
 
 	/** 首页显示 */
-	@RequestMapping(value = "/system/datacolumn/index.jhtml")
+	@RequestMapping(value = "/system/datacolumn/index")
 	public String index() {
 		return INDEX_RETURN;
 	}
 
 	/** 列表显示 */
-	@RequestMapping(value = "/system/datacolumn/lists.jhtml")
+	@RequestMapping(value = "/system/datacolumn/lists")
 	@ResponseBody
 	public String lists(HttpServletRequest servletRequest, Model model,
 			@RequestParam(defaultValue = "1") int page,

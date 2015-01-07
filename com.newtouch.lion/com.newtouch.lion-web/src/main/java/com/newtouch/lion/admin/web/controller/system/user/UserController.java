@@ -409,21 +409,14 @@ public class UserController {
 		
 		List<Resource> resources = resourceService.doFindFirstLevel();
 
-		List<Resource> userResources = this.resourceService
-				.doFindByUserId(user.getId());
+		List<Resource> userResources = this.resourceService.doFindByUserId(user.getId());
 
-		for (Resource resource : userResources) {
-			logger.info("text:{},type:{},id:{}", resource.getNameZh(),
-					resource.getType(), resource.getId());
-		}
+		Map<Long, Resource> menuResourcesMap = ResourceConvertUtil.convertListToMap(userResources);
 
-		Map<Long, Resource> menuResourcesMap = ResourceConvertUtil
-				.convertListToMap(userResources);
-
-		List<TreeNode> children = ResourceTreeUtil.resourceAttrUser(resources,
-				menuResourcesMap, Boolean.TRUE, 0);
+		List<TreeNode> children = ResourceTreeUtil.resourceAttrUser(resources,menuResourcesMap, Boolean.TRUE, 0);
 
 		Set<String> properties = new HashSet<String>();
+		
 		properties.add("id");
 		properties.add("text");
 		properties.add("checked");

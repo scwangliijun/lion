@@ -68,13 +68,13 @@ public class DataGridController {
 	private DataGridService dataGridService;
 
 	/** 新增的对话框 */
-	@RequestMapping(value = "/system/datagrid/adddialog.jhtml")
+	@RequestMapping(value = "/system/datagrid/adddialog")
 	public String addDialog() {
 		return ADD_DIALOG_RETURN;
 	}
 
 	/** 编辑对话框 */
-	@RequestMapping(value = "/system/datagrid/editdialog.jhtml")
+	@RequestMapping(value = "/system/datagrid/editdialog")
 	public String editDialog(@RequestParam Long id, Model model) {
 		if (id != null) {
 			DataGrid dataGrid = this.dataGridService.doGetById(id);
@@ -86,26 +86,26 @@ public class DataGridController {
 	}
 
 	/** 首页显示 */
-	@RequestMapping(value = "/system/datagrid/index.jhtml")
+	@RequestMapping(value = "/system/datagrid/index")
 	public String index() {
 		return INDEX_RETURN;
 	}
 
 	/** DataGrid列表 */
-	@RequestMapping(value = "/system/datagrid/combox.jhtml")
+	@RequestMapping(value = "/system/datagrid/combox")
 	@ResponseBody
 	public String comobx() {
 		return this.dataGridService.doFindAllForCombox();
 	}
 
 	/** 首页显示 */
-	@RequestMapping(value = "/system/datagrid/comboxwithtype.jhtml")
+	@RequestMapping(value = "/system/datagrid/comboxwithtype")
 	@ResponseBody
 	public String comobxByType(@RequestParam(required = false) String type) {
 		return this.dataGridService.doFindComboxByType(type);
 	}
 
-	@RequestMapping(value = "/system/datagrid/delete.jhtml")
+	@RequestMapping(value = "/system/datagrid/delete")
 	@ResponseBody
 	public ModelAndView delete(@RequestParam Long id, ModelAndView modelAndView) {
 		Map<String, String> params = new HashMap<String, String>();
@@ -121,7 +121,7 @@ public class DataGridController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/system/datagrid/add.jhtml")
+	@RequestMapping(value = "/system/datagrid/add")
 	@ResponseBody
 	public ModelAndView add(
 			@Valid @ModelAttribute("dataGrid") DataGridVo dataGridVo,
@@ -139,7 +139,7 @@ public class DataGridController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/system/datagrid/checktableid.jhtml")
+	@RequestMapping(value = "/system/datagrid/checktableid")
 	@ResponseBody
 	public String checkTableId(String tableId) {
 		Boolean flag = true;
@@ -154,7 +154,7 @@ public class DataGridController {
 		return flag.toString();
 	}
 
-	@RequestMapping(value = "/system/datagrid/edit.jhtml")
+	@RequestMapping(value = "/system/datagrid/edit")
 	@ResponseBody
 	public ModelAndView edit(
 			@Valid @ModelAttribute("dataGrid") DataGridVo dataGridVo,
@@ -185,7 +185,7 @@ public class DataGridController {
 	}
 
 	/** 列表显示 */
-	@RequestMapping(value = "/system/datagrid/lists.jhtml")
+	@RequestMapping(value = "/system/datagrid/lists")
 	@ResponseBody
 	public String lists(Model model,
 			@RequestParam(defaultValue = "1") int page,

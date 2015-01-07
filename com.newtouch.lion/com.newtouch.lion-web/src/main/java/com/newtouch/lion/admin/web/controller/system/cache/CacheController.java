@@ -52,7 +52,7 @@ public class CacheController {
 	private DataColumnService dataColumnService;
 
 	/** 缓存首页 */
-	@RequestMapping("index")
+	@RequestMapping("/index")
 	public String index(Model model) {
 		CacheManagerModel cacheManagerModel = applicationCacheManager
 				.getCacheManager();
@@ -62,7 +62,7 @@ public class CacheController {
 	}
 
 	/** 缓存管理列表 */
-	@RequestMapping("lists")
+	@RequestMapping("/lists")
 	@ResponseBody
 	public String list() {
 		CacheManagerModel cacheManagerModel = applicationCacheManager

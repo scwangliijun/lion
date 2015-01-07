@@ -46,7 +46,7 @@ public class CodeController {
 	@Autowired
 	private CodeTypeService codeTypeService;
 
-	@RequestMapping("/system/code/combox.jhtml")
+	@RequestMapping("/system/code/combox")
 	@ResponseBody
 	public String combox(@RequestParam String nameEn) {
 		List<CodeList> codeLists = codeListService.doFindCodeListByCodeTypeNameEn(nameEn);
@@ -60,7 +60,7 @@ public class CodeController {
 		return JSONParser.toJSONString(codeLists, filterColumn, true);
 	}
 
-	@RequestMapping("/system/code/comboxselected.jhtml")
+	@RequestMapping("/system/code/comboxselected")
 	@ResponseBody
 	public String comboxDefaultSelectedValue(@RequestParam String nameEn,
 			@RequestParam(required = false) String selectedValue) {

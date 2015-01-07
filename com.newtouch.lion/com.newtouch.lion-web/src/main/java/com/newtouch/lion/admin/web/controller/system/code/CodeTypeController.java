@@ -40,10 +40,10 @@ import com.newtouch.lion.web.servlet.view.support.BindResult;
 
 /**
  * <p>
- * Title: 编码类型
+ * Title: IM-编码类型
  * </p>
  * <p>
- * Description: 编码类型-Controller
+ * Description: IM-编码类型-Controller
  * </p>
  * <p>
  * Copyright: Copyright (c) 2014
@@ -73,7 +73,7 @@ public class CodeTypeController {
 	/**
 	 * 编码类型下拉列表
 	 * */
-	@RequestMapping("/system/codetype/combox.jhtml")
+	@RequestMapping("/system/codetype/combox")
 	@ResponseBody
 	public String combox() {
 		List<CodeType> codeTypes = this.codeTypeService.doFindAll();
@@ -84,7 +84,7 @@ public class CodeTypeController {
 		return JSONParser.toJSONString(codeTypes, filterColumn);
 	}
 
-	@RequestMapping(value = "/system/codetype/editdialog.jhtml")
+	@RequestMapping(value = "/system/codetype/editdialog")
 	public String editDialog(@RequestParam Long id, Model model) {
 		if (id != null) {
 			CodeType codeType = this.codeTypeService.doFindById(id);
@@ -95,7 +95,7 @@ public class CodeTypeController {
 		return EDIT_DIALOG_RETURN;
 	}
 
-	@RequestMapping(value = "/system/codetype/add.jhtml")
+	@RequestMapping(value = "/system/codetype/add")
 	@ResponseBody
 	public ModelAndView add(
 			@Valid @ModelAttribute("codeList") CodeTypeVo codeTypeVo,
@@ -114,7 +114,7 @@ public class CodeTypeController {
 	}
 
 	/** 编辑 */
-	@RequestMapping(value = "/system/codetype/edit.jhtml")
+	@RequestMapping(value = "/system/codetype/edit")
 	@ResponseBody
 	public ModelAndView edit(
 			@Valid @ModelAttribute("codeTypeVo") CodeTypeVo codeTypeVo,
@@ -144,7 +144,7 @@ public class CodeTypeController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/system/codetype/delete.jhtml")
+	@RequestMapping(value = "/system/codetype/delete")
 	@ResponseBody
 	public ModelAndView delete(@RequestParam Long id, ModelAndView modelAndView) {
 		Map<String, String> params = new HashMap<String, String>();
@@ -160,7 +160,7 @@ public class CodeTypeController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/system/codetype/lists.jhtml")
+	@RequestMapping(value = "/system/codetype/lists")
 	@ResponseBody
 	public String list(HttpServletRequest servletRequest, Model model,
 			@RequestParam(defaultValue = "1") int page,

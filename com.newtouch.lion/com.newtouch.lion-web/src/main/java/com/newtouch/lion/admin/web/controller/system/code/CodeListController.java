@@ -46,10 +46,10 @@ import com.newtouch.lion.web.servlet.view.support.BindResult;
 
 /**
  * <p>
- * Title:
+ * Title:IM字典列表
  * </p>
  * <p>
- * Description:
+ * Description:IM字典列表
  * </p>
  * <p>
  * Copyright: Copyright (c) 2014
@@ -62,6 +62,7 @@ import com.newtouch.lion.web.servlet.view.support.BindResult;
  * @version 1.0
  */
 @Controller(value = "sysCodelistController")
+@RequestMapping("/system/codelist")
 public class CodeListController {
 
 	private final Logger logger = LoggerFactory.getLogger(super.getClass());
@@ -78,7 +79,7 @@ public class CodeListController {
 	@Autowired
 	private CodeTypeService codeTypeService;
 
-	@RequestMapping(value = "/system/codelist/editdialog")
+	@RequestMapping(value = "/editdialog")
 	public String editDialog(@RequestParam Long id, Model model) {
 		if (id != null) {
 			CodeList codeList = this.codeListService.doFindById(id);
@@ -90,7 +91,7 @@ public class CodeListController {
 	}
 
 	/** 编辑 */
-	@RequestMapping(value = "/system/codelist/edit")
+	@RequestMapping(value = "edit")
 	@ResponseBody
 	public ModelAndView edit(
 			@Valid @ModelAttribute("codeListVo") CodeListVo codeListVo,
@@ -131,12 +132,12 @@ public class CodeListController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/system/codelist/adddialog")
+	@RequestMapping(value = "/adddialog")
 	public String addDialog(HttpServletRequest servletRequest, Model model) {
 		return ADD_DIALOG_RETURN;
 	}
 
-	@RequestMapping(value = "/system/codelist/add")
+	@RequestMapping(value = "/add")
 	@ResponseBody
 	public ModelAndView add(
 			@Valid @ModelAttribute("codeList") CodeListVo codeListVo,
@@ -165,7 +166,7 @@ public class CodeListController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/system/codelist/delete")
+	@RequestMapping(value = "/delete")
 	@ResponseBody
 	public ModelAndView delete(@RequestParam Long id, ModelAndView modelAndView) {
 		Map<String, String> params = new HashMap<String, String>();
@@ -195,7 +196,7 @@ public class CodeListController {
 		return flag;
 	}
 
-	@RequestMapping(value = "/system/codelist/lists")
+	@RequestMapping(value = "/lists")
 	@ResponseBody
 	public String list(HttpServletRequest servletRequest, Model model,
 			@RequestParam(defaultValue = "1") int page,
@@ -263,10 +264,9 @@ public class CodeListController {
 		return sb.toString();
 	}
 
-	@RequestMapping(value = "/system/codelist/checkisexitnameen")
+	@RequestMapping(value = "/checkisexitnameen")
 	@ResponseBody
-	public String checkIsExistByNameEn(HttpServletRequest servletRequest,
-			@RequestParam(required = false) String nameEn) {
+	public String checkIsExistByNameEn(HttpServletRequest servletRequest, @RequestParam(required = false) String nameEn) {
 		Boolean flag = this.isExistByNameEn(nameEn) == true ? false : true;
 		return flag.toString();
 	}

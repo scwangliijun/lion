@@ -91,13 +91,13 @@ public class GroupController {
 	private RoleService roleService;
 
 	/** 用户组数据添加对话框 */
-	@RequestMapping(value = "/system/group/adddialog.jhtml")
+	@RequestMapping(value = "/system/group/adddialog")
 	public String addDialog() {
 		return ADD_DIALOG_RETURN;
 	}
 
 	/** 用户组数据添加保存 */
-	@RequestMapping(value = "/system/group/add.jhtml")
+	@RequestMapping(value = "/system/group/add")
 	@ResponseBody
 	public ModelAndView add(@Valid @ModelAttribute("group") GroupVo groupVo,
 			Errors errors, ModelAndView modelAndView) {
@@ -117,7 +117,7 @@ public class GroupController {
 	}
 
 	/** 用户组编辑对话框 */
-	@RequestMapping(value = "/system/group/editdialog.jhtml")
+	@RequestMapping(value = "/system/group/editdialog")
 	public String editDialog(@RequestParam Long id, Model model) {
 		if (id != null) {
 			Group group = groupService.doFindById(id);
@@ -129,7 +129,7 @@ public class GroupController {
 	}
 
 	/** 编辑用户组 */
-	@RequestMapping(value = "/system/group/edit.jhtml")
+	@RequestMapping(value = "/system/group/edit")
 	@ResponseBody
 	public ModelAndView edit(@Valid @ModelAttribute("group") GroupVo groupVo,
 			Errors errors, ModelAndView modelAndView) {
@@ -159,7 +159,7 @@ public class GroupController {
 	}
 
 	/** 用户组授权对话框 */
-	@RequestMapping(value = "/system/group/authdialog.jhtml")
+	@RequestMapping(value = "/system/group/authdialog")
 	public String authDialog(@RequestParam Long id, Model model) {
 		if (id != null) {
 			Group group = groupService.doFindById(id);
@@ -171,7 +171,7 @@ public class GroupController {
 	}
 
 	/** 授权到用户 */
-	@RequestMapping(value = "/system/group/addusertogroup.jhtml")
+	@RequestMapping(value = "/system/group/addusertogroup")
 	@ResponseBody
 	public ModelAndView addUsers(@RequestParam(required = false) Long groupId,
 			@RequestParam(required = false) String userId,
@@ -201,7 +201,7 @@ public class GroupController {
 	}
 
 	/** 授权到角色 */
-	@RequestMapping(value = "/system/group/addroletogroup.jhtml")
+	@RequestMapping(value = "/system/group/addroletogroup")
 	@ResponseBody
 	public ModelAndView addRoles(@RequestParam(required = false) Long groupId,
 			@RequestParam(required = false) String roleId,
@@ -231,21 +231,21 @@ public class GroupController {
 	}
 
 	/** 查询用户组已授权的角色 */
-	@RequestMapping(value = "/system/group/authroles.jhtml")
+	@RequestMapping(value = "/system/group/authroles")
 	@ResponseBody
 	public String authRoles(@RequestParam(required = false) Long id) {
 		return this.groupService.doFindAuthRolesById(id, AUTH_GROUP_ROLES_TB);
 	}
 
 	/** 查询用户组已授权的用户 */
-	@RequestMapping(value = "/system/group/authusers.jhtml")
+	@RequestMapping(value = "/system/group/authusers")
 	@ResponseBody
 	public String authUsers(@RequestParam(required = false) Long id) {
 		return this.groupService.doFindAuthUsersById(id, AUTH_GROUP_USERS__TB);
 	}
 
 	/** 查询所有的用户 */
-	@RequestMapping(value = "/system/group/users.jhtml")
+	@RequestMapping(value = "/system/group/users")
 	@ResponseBody
 	public String users() {
 		QueryCriteria queryCriteria = new QueryCriteria();
@@ -255,7 +255,7 @@ public class GroupController {
 	}
 
 	/** 查询所有的角色 */
-	@RequestMapping(value = "/system/group/roles.jhtml")
+	@RequestMapping(value = "/system/group/roles")
 	@ResponseBody
 	public String roles() {
 		QueryCriteria queryCriteria = new QueryCriteria();
@@ -263,13 +263,13 @@ public class GroupController {
 		return this.roleService.doFindByCriteria(queryCriteria, AUTH_ROLES_TB);
 	}
 
-	@RequestMapping(value = "/system/group/index.jhtml")
+	@RequestMapping(value = "/system/group/index")
 	public String index() {
 		return INDEX_RETURN;
 	}
 
 	/** 删除用户组 */
-	@RequestMapping(value = "/system/group/delete.jhtml")
+	@RequestMapping(value = "/system/group/delete")
 	@ResponseBody
 	public ModelAndView delete(@RequestParam Long id, ModelAndView modelAndView) {
 		Map<String, String> params = new HashMap<String, String>();
@@ -285,7 +285,7 @@ public class GroupController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/system/group/lists.jhtml")
+	@RequestMapping(value = "/system/group/lists")
 	@ResponseBody
 	public String list(HttpServletRequest servletRequest, Model model,
 			@RequestParam(defaultValue = "1") int page,

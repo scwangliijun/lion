@@ -33,10 +33,10 @@ import com.newtouch.lion.web.servlet.view.support.BindResult;
 
 /**
  * <p>
- * Title: 部门管理类
+ * Title: 部门管理控制器
  * </p>
  * <p>
- * Description: 部门管理类
+ * Description: 部门管理包括添加、删除、查询、修改等功能
  * </p>
  * <p>
  * Copyright: Copyright (c) 2014

@@ -79,12 +79,12 @@ public class ParameterController {
 	@Autowired
 	protected DataColumnService dataColumnService;
 
-	@RequestMapping(value = "/system/parameter/index.jhtml")
+	@RequestMapping(value = "/system/parameter/index")
 	public String index(HttpServletRequest servletRequest, Model model) {
 		return INDEX_RETURN;
 	}
 
-	@RequestMapping(value = "/system/parameter/editdialog.jhtml")
+	@RequestMapping(value = "/system/parameter/editdialog")
 	public String editDialog(@RequestParam(required = false) Long id,
 			Model model) {
 		Parameter parameter = parameterService.doFindById(id);
@@ -92,12 +92,12 @@ public class ParameterController {
 		return EDIT_DIALOG_RETURN;
 	}
 
-	@RequestMapping(value = "/system/parameter/adddialog.jhtml")
+	@RequestMapping(value = "/system/parameter/adddialog")
 	public String addDialog(HttpServletRequest servletRequest, Model model) {
 		return ADD_DIALOG_RETURN;
 	}
 
-	@RequestMapping(value = "/system/parameter/edit.jhtml")
+	@RequestMapping(value = "/system/parameter/edit")
 	@ResponseBody
 	public ModelAndView edit(
 			@Valid @ModelAttribute("parameter") ParameterVo parameterVo,
@@ -137,7 +137,7 @@ public class ParameterController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/system/parameter/delete.jhtml")
+	@RequestMapping(value = "/system/parameter/delete")
 	@ResponseBody
 	public ModelAndView delete(@RequestParam Long id, ModelAndView modelAndView) {
 		Map<String, String> params = new HashMap<String, String>();
@@ -151,7 +151,7 @@ public class ParameterController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/system/parameter/add.jhtml")
+	@RequestMapping(value = "/system/parameter/add")
 	@ResponseBody
 	public ModelAndView add(
 			@Valid @ModelAttribute("parameter") ParameterVo parameterVo,
@@ -177,7 +177,7 @@ public class ParameterController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/system/parameter/checkisexitnameen.jhtml")
+	@RequestMapping(value = "/system/parameter/checkisexitnameen")
 	@ResponseBody
 	public String checkIsExistByNameEn(HttpServletRequest servletRequest,
 			@RequestParam(required = false) String nameEn) {
@@ -201,7 +201,7 @@ public class ParameterController {
 		return flag;
 	}
 
-	@RequestMapping(value = "/system/parameter/lists.jhtml")
+	@RequestMapping(value = "/system/parameter/lists")
 	@ResponseBody
 	public String list(HttpServletRequest servletRequest, Model model,
 			@RequestParam(defaultValue = "1") int page,
