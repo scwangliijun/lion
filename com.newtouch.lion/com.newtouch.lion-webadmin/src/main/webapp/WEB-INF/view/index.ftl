@@ -1,4 +1,4 @@
-<#assign contextPath= request.contextPath/>
+<#assign base = request.contextPath/>
 <!DOCTYPE html>
 <!-- 
 Template Name: Newtouch Admin Dashboard Template build with Twitter Bootstrap 3.3.1
@@ -14,140 +14,18 @@ Author: wanglijun
 <head>
 <meta charset="utf-8"/>
 <title>应用管理系统</title>
+<script src="${base}/resources/global/plugins/morris/morris.min.js" type="text/javascript"></script>
+<script src="${base}/resources/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
+<script src="${base}/resources/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="${base}/resources/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+<script src="${base}/resources/admin/pages/scripts/index3.js" type="text/javascript"></script>
+<script src="${base}/resources/admin/index/index.js" type="text/javascript"></script>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo">
-<!-- BEGIN CONTAINER -->
-<div class="page-container">
-	<!-- BEGIN SIDEBAR -->
-	<div class="page-sidebar-wrapper">
-		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-		<div class="page-sidebar navbar-collapse collapse">
-			<!-- BEGIN SIDEBAR MENU -->
-			<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-			<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-			<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-			<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-			<@lion.menus/>
-			<!-- END SIDEBAR MENU -->
-		</div>
-	</div>
-	<!-- END SIDEBAR -->
-	<!-- BEGIN CONTENT -->
-	<div class="page-content-wrapper">
-		<div class="page-content">
-			<!-- BEGIN PAGE HEAD -->
-			<div class="page-head">
-				<!-- BEGIN PAGE TITLE -->
-				<div class="page-title">
-					<h1>Dashboard <small>statistics & reports</small></h1>
-				</div>
-				<!-- END PAGE TITLE -->
-				<!-- BEGIN PAGE TOOLBAR -->
-				<div class="page-toolbar">
-					<!-- BEGIN THEME PANEL -->
-					<div class="btn-group btn-theme-panel">
-						<a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-settings"></i>
-						</a>
-						<div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
-							<div class="row">
-								<div class="col-md-4 col-sm-4 col-xs-12">
-									<h3>THEME</h3>
-									<ul class="theme-colors">
-										<li class="theme-color theme-color-default" data-theme="default">
-											<span class="theme-color-view"></span>
-											<span class="theme-color-name">Dark Header</span>
-										</li>
-										<li class="theme-color theme-color-light active" data-theme="light">
-											<span class="theme-color-view"></span>
-											<span class="theme-color-name">Light Header</span>
-										</li>
-									</ul>
-								</div>
-								<div class="col-md-8 col-sm-8 col-xs-12 seperator">
-									<h3>LAYOUT</h3>
-									<ul class="theme-settings">
-										<li>
-											 Theme Style
-											<select class="layout-style-option form-control input-small input-sm">
-												<option value="square">Square corners</option>
-												<option value="rounded" selected="selected">Rounded corners</option>
-											</select>
-										</li>
-										<li>
-											 Layout
-											<select class="layout-option form-control input-small input-sm">
-												<option value="fluid" selected="selected">Fluid</option>
-												<option value="boxed">Boxed</option>
-											</select>
-										</li>
-										<li>
-											 Header
-											<select class="page-header-option form-control input-small input-sm">
-												<option value="fixed" selected="selected">Fixed</option>
-												<option value="default">Default</option>
-											</select>
-										</li>
-										<li>
-											 Top Dropdowns
-											<select class="page-header-top-dropdown-style-option form-control input-small input-sm">
-												<option value="light">Light</option>
-												<option value="dark" selected="selected">Dark</option>
-											</select>
-										</li>
-										<li>
-											 Sidebar Mode
-											<select class="sidebar-option form-control input-small input-sm">
-												<option value="fixed">Fixed</option>
-												<option value="default" selected="selected">Default</option>
-											</select>
-										</li>
-										<li>
-											 Sidebar Menu
-											<select class="sidebar-menu-option form-control input-small input-sm">
-												<option value="accordion" selected="selected">Accordion</option>
-												<option value="hover">Hover</option>
-											</select>
-										</li>
-										<li>
-											 Sidebar Position
-											<select class="sidebar-pos-option form-control input-small input-sm">
-												<option value="left" selected="selected">Left</option>
-												<option value="right">Right</option>
-											</select>
-										</li>
-										<li>
-											 Footer
-											<select class="page-footer-option form-control input-small input-sm">
-												<option value="fixed">Fixed</option>
-												<option value="default" selected="selected">Default</option>
-											</select>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- END THEME PANEL -->
-				</div>
-				<!-- END PAGE TOOLBAR -->
-			</div>
-			<!-- END PAGE HEAD -->
-			<!-- BEGIN PAGE BREADCRUMB -->
-			<ul class="page-breadcrumb breadcrumb hide">
-				<li>
-					<a href="#">Home</a><i class="fa fa-circle"></i>
-				</li>
-				<li class="active">
-					 Dashboard
-				</li>
-			</ul>
-			<!-- END PAGE BREADCRUMB -->
 			<!-- BEGIN PAGE CONTENT INNER -->
 			<div class="row margin-top-10">
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -443,7 +321,7 @@ Author: wanglijun
 								</thead>
 								<tr>
 									<td class="fit">
-										<img class="user-pic" src="${contextPath}/resources/admin/layout3/img/avatar4.jpg">
+										<img class="user-pic" src="${base}/resources/admin/layout3/img/avatar4.jpg">
 									</td>
 									<td>
 										<a href="javascript:;" class="primary-link">Brain</a>
@@ -463,7 +341,7 @@ Author: wanglijun
 								</tr>
 								<tr>
 									<td class="fit">
-										<img class="user-pic" src="${contextPath}/resources/admin/layout3/img/avatar5.jpg">
+										<img class="user-pic" src="${base}/resources/admin/layout3/img/avatar5.jpg">
 									</td>
 									<td>
 										<a href="javascript:;" class="primary-link">Nick</a>
@@ -483,7 +361,7 @@ Author: wanglijun
 								</tr>
 								<tr>
 									<td class="fit">
-										<img class="user-pic" src="${contextPath}/resources/admin/layout3/img/avatar6.jpg">
+										<img class="user-pic" src="${base}/resources/admin/layout3/img/avatar6.jpg">
 									</td>
 									<td>
 										<a href="javascript:;" class="primary-link">Tim</a>
@@ -503,7 +381,7 @@ Author: wanglijun
 								</tr>
 								<tr>
 									<td class="fit">
-										<img class="user-pic" src="${contextPath}/resources/admin/layout3/img/avatar7.jpg">
+										<img class="user-pic" src="${base}/resources/admin/layout3/img/avatar7.jpg">
 									</td>
 									<td>
 										<a href="javascript:;" class="primary-link">Tom</a>
@@ -881,7 +759,7 @@ Author: wanglijun
 									<div class="item">
 										<div class="item-head">
 											<div class="item-details">
-												<img class="item-pic" src="${contextPath}/resources/admin/layout3/img/avatar4.jpg">
+												<img class="item-pic" src="${base}/resources/admin/layout3/img/avatar4.jpg">
 												<a href="" class="item-name primary-link">Nick Larson</a>
 												<span class="item-label">3 hrs ago</span>
 											</div>
@@ -894,7 +772,7 @@ Author: wanglijun
 									<div class="item">
 										<div class="item-head">
 											<div class="item-details">
-												<img class="item-pic" src="${contextPath}/resources/admin/layout3/img/avatar3.jpg">
+												<img class="item-pic" src="${base}/resources/admin/layout3/img/avatar3.jpg">
 												<a href="" class="item-name primary-link">Mark</a>
 												<span class="item-label">5 hrs ago</span>
 											</div>
@@ -907,7 +785,7 @@ Author: wanglijun
 									<div class="item">
 										<div class="item-head">
 											<div class="item-details">
-												<img class="item-pic" src="${contextPath}/resources/admin/layout3/img/avatar6.jpg">
+												<img class="item-pic" src="${base}/resources/admin/layout3/img/avatar6.jpg">
 												<a href="" class="item-name primary-link">Nick Larson</a>
 												<span class="item-label">8 hrs ago</span>
 											</div>
@@ -920,7 +798,7 @@ Author: wanglijun
 									<div class="item">
 										<div class="item-head">
 											<div class="item-details">
-												<img class="item-pic" src="${contextPath}/resources/admin/layout3/img/avatar7.jpg">
+												<img class="item-pic" src="${base}/resources/admin/layout3/img/avatar7.jpg">
 												<a href="" class="item-name primary-link">Nick Larson</a>
 												<span class="item-label">12 hrs ago</span>
 											</div>
@@ -933,7 +811,7 @@ Author: wanglijun
 									<div class="item">
 										<div class="item-head">
 											<div class="item-details">
-												<img class="item-pic" src="${contextPath}/resources/admin/layout3/img/avatar9.jpg">
+												<img class="item-pic" src="${base}/resources/admin/layout3/img/avatar9.jpg">
 												<a href="" class="item-name primary-link">Richard Stone</a>
 												<span class="item-label">2 days ago</span>
 											</div>
@@ -946,7 +824,7 @@ Author: wanglijun
 									<div class="item">
 										<div class="item-head">
 											<div class="item-details">
-												<img class="item-pic" src="${contextPath}/resources/admin/layout3/img/avatar8.jpg">
+												<img class="item-pic" src="${base}/resources/admin/layout3/img/avatar8.jpg">
 												<a href="" class="item-name primary-link">Dan</a>
 												<span class="item-label">3 days ago</span>
 											</div>
@@ -959,7 +837,7 @@ Author: wanglijun
 									<div class="item">
 										<div class="item-head">
 											<div class="item-details">
-												<img class="item-pic" src="${contextPath}/resources/admin/layout3/img/avatar2.jpg">
+												<img class="item-pic" src="${base}/resources/admin/layout3/img/avatar2.jpg">
 												<a href="" class="item-name primary-link">Larry</a>
 												<span class="item-label">4 hrs ago</span>
 											</div>
@@ -1001,7 +879,7 @@ Author: wanglijun
 						</div>
 						<div class="portlet-body">
 							<div id="region_statistics_loading">
-								<img src="${contextPath}/resources/admin/layout/img/loading.gif" alt="loading"/>
+								<img src="${base}/resources/admin/layout/img/loading.gif" alt="loading"/>
 							</div>
 							<div id="region_statistics_content" class="display-none">
 								<div class="btn-toolbar margin-bottom-10">
@@ -1709,61 +1587,6 @@ Author: wanglijun
 					<!-- END PORTLET-->
 				</div>
 			</div>
-			<!-- END PAGE CONTENT INNER -->
-		</div>
-	</div>
-	<!-- END CONTENT -->
-</div>
-<!-- END CONTAINER -->
-
-<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN CORE PLUGINS -->
-<!--[if lt IE 9]>
-<script src="${contextPath}/resources/global/plugins/respond.min.js"></script>
-<script src="${contextPath}/resources/global/plugins/excanvas.min.js"></script> 
-<![endif]-->
-<script src="${contextPath}/resources/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-<!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-<script src="${contextPath}/resources/global/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-<!-- END CORE PLUGINS -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="${contextPath}/resources/global/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
-<!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
-<script src="${contextPath}/resources/global/plugins/morris/morris.min.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL PLUGINS -->
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="${contextPath}/resources/global/scripts/metronic.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/admin/layout4/scripts/layout.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/admin/layout4/scripts/demo.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/admin/pages/scripts/index3.js" type="text/javascript"></script>
-<script src="${contextPath}/resources/admin/pages/scripts/tasks.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL SCRIPTS -->
-<script>
-$(document).ready(function() {    
-   Metronic.init(); // init metronic core componets
-   Layout.init(); // init layout
-   Demo.init(); // init demo features 
-   Index.init(); // init index page
-   Tasks.initDashboardWidget(); // init tash dashboard widget  
-});
-</script>
-<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
 </html>

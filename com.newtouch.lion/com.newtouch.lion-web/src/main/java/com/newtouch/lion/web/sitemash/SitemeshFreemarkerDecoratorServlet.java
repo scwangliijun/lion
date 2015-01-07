@@ -49,10 +49,11 @@ public class SitemeshFreemarkerDecoratorServlet extends
 	 * 序列化
 	 */
 	private static final long serialVersionUID = -932927776246721655L;
-	/**定义script的正则表达式*/
+	/** 定义script的正则表达式 */
 	private static final String REGEX_SCRIPT = "<script[^>]*?>[\\s\\S]*?<\\/script>";
-	/**获取script正则表达式*/
-	private static Pattern PATTERN_SCRIPT = Pattern.compile(REGEX_SCRIPT, Pattern.CASE_INSENSITIVE);  
+	/** 获取script正则表达式 */
+	private static Pattern PATTERN_SCRIPT = Pattern.compile(REGEX_SCRIPT,
+			Pattern.CASE_INSENSITIVE);
 
 	@Override
 	protected boolean preTemplateProcess(HttpServletRequest request,
@@ -63,7 +64,7 @@ public class SitemeshFreemarkerDecoratorServlet extends
 
 		Configuration config = this.getFreemarkerConfig();
 		SimpleHash hash = (SimpleHash) templateModel;
-
+		
 		HTMLPage htmlPage = (HTMLPage) request
 				.getAttribute(RequestConstants.PAGE);
 
@@ -87,12 +88,10 @@ public class SitemeshFreemarkerDecoratorServlet extends
 		}
 
 		hash.put("title", title);
-		hash.put("body", body); 
+		hash.put("body", body);
 		hash.put("head", this.getHead(head));
-		hash.put("javascript",this.getScript(head));
- 
- 
- 
+		hash.put("javascript", this.getScript(head));
+
 		if (!config.getSharedVariableNames().isEmpty()) {
 			Object[] names = config.getSharedVariableNames().toArray();
 			for (Object name : names) {
@@ -100,41 +99,44 @@ public class SitemeshFreemarkerDecoratorServlet extends
 						config.getSharedVariable(name.toString()));
 			}
 		}
-
 		return result;
 	}
-	
-	
 
 	/**
 	 * 加载Spring Freemarker配置，可使用自定义标签
 	 * 
 	 * */
 	protected Configuration getFreemarkerConfig() {
-		WebFreeMarkerConfigurer freeMarkerConfigurer = (WebFreeMarkerConfigurer) SpringContextUtil.getBean("freeMarkerConfigurer");
+		WebFreeMarkerConfigurer freeMarkerConfigurer = (WebFreeMarkerConfigurer) SpringContextUtil
+				.getBean("freeMarkerConfigurer");
 		return freeMarkerConfigurer.getConfiguration();
 	}
+
 	/***
 	 * 将JS过滤
+	 * 
 	 * @param head
 	 * @return 返回除script外的信息
 	 */
-	protected String  getHead(String head){
-	    Matcher script = PATTERN_SCRIPT.matcher(head);  
-        return script.replaceAll("");
+	protected String getHead(String head) {
+		Matcher script = PATTERN_SCRIPT.matcher(head);
+		return script.replaceAll("");
 	}
+
 	/***
 	 * 获取JS引入代码
-	 * @param head  头信息
+	 * 
+	 * @param head
+	 *            头信息
 	 * @return JS引入代码
 	 */
-	protected  String getScript(String head){
+	protected String getScript(String head) {
 		Matcher script = PATTERN_SCRIPT.matcher(head);
-		 StringBuilder sb=new StringBuilder();
-         while(script.find()){
-     		sb.append(script.group());
-     		sb.append(System.getProperty("line.separator"));
-         }
-         return sb.toString();
+		StringBuilder sb = new StringBuilder();
+		while (script.find()) {
+			sb.append(script.group());
+			sb.append(System.getProperty("line.separator"));
+		}
+		return sb.toString();
 	}
 }

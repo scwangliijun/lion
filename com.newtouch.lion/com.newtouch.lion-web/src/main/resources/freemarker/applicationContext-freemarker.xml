@@ -21,6 +21,7 @@
 		<property name="templateLoaderPaths">
 			<list>
 				<value>/WEB-INF/view/</value>
+				<value>/WEB-INF/tags/</value>
 			</list>
 		</property>
 		<property name="configLocation">
