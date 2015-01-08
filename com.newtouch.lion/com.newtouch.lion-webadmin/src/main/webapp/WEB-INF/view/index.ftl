@@ -21,7 +21,7 @@ Author: wanglijun
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="${base}/resources/admin/layout4/scripts/demo.js" type="text/javascript"></script>
 <script src="${base}/resources/admin/pages/scripts/index3.js" type="text/javascript"></script>
-<script src="${base}/resources/admin/index/index.js" type="text/javascript"></script>
+<script src="${base}/resources/admin/scripts/index/index.js" type="text/javascript"></script>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->

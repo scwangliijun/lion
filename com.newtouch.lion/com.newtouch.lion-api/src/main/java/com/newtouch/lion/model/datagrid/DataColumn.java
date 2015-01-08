@@ -10,10 +10,10 @@ import com.newtouch.lion.model.VersionEntity;
 
 /**
  * <p>
- * Title:DatColumn 定义
+ * Title:DataColumn 定义
  * </p>
  * <p>
- * Description:DatColumn 定义
+ * Description:DataColumn 定义
  * </p>
  * <p>
  * Copyright: Copyright (c) 2013
