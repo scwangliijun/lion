@@ -2,7 +2,7 @@
  * Copyright (c)  2012, Newtouch
  * All rights reserved. 
  *
- * $id: TsParameterService.java 9552 2012-7-8 下午09:24:04 WangLijun$
+ * $id: ParameterService.java 9552 2012-7-8 下午09:24:04 WangLijun$
  */
 package com.newtouch.lion.service.system;
 

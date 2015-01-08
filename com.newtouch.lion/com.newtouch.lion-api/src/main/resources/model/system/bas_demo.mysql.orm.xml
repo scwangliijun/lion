@@ -5,24 +5,7 @@
 	version="2.0">
 	<package>com.newtouch.lion.model.system</package>
 	<access>PROPERTY</access>
-	<mapped-superclass class="com.newtouch.lion.model.AuditEntity">
-		<attributes>
-			<basic name="createdById">
-				<column name="CREATE_BY" length="11" scale="0" nullable="true" />
-			</basic>
-			<basic name="createdDate">
-				<column name="CREATE_DATE" />
-				<temporal>TIMESTAMP</temporal>
-			</basic>
-			<basic name="updatedById">
-				<column name="UPDATE_BY" length="11" scale="0" nullable="true" />
-			</basic>
-			<basic name="updatedDate">
-				<column name="UPDATE_DATE" />
-				<temporal>TIMESTAMP</temporal>
-			</basic>
-		</attributes>
-	</mapped-superclass>
+	
 	<entity class="DemoModel">
 		<table name="bas_demo" />
 		<attributes>

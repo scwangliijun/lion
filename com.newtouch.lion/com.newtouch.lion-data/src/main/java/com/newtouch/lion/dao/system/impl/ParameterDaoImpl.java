@@ -30,8 +30,7 @@ import com.newtouch.lion.model.system.Parameter;
  * @version 1.0
  */
 @Repository("parameterDao")
-public class ParameterDaoImpl extends BaseDaoImpl<Parameter,Long> implements
-		ParameterDao {
+public class ParameterDaoImpl extends BaseDaoImpl<Parameter,Long> implements ParameterDao {
 
 	/**
 	 * 

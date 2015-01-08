@@ -6,6 +6,24 @@
 	<package>com.newtouch.lion.model.system</package>
 	<access>PROPERTY</access>
 	<!-- 抽象类 -->
+	<mapped-superclass class="com.newtouch.lion.model.AuditEntity">
+		<attributes>
+			<basic name="createdById">
+				<column name="CREATE_BY" length="11" scale="0" nullable="true" />
+			</basic>
+			<basic name="createdDate">
+				<column name="CREATE_DATE" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedById">
+				<column name="UPDATE_BY" length="11" scale="0" nullable="true" />
+			</basic>
+			<basic name="updatedDate">
+				<column name="UPDATE_DATE" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+		</attributes>
+	</mapped-superclass>
 	<mapped-superclass class="com.newtouch.lion.model.VersionEntity">
 		<attributes>
 			<basic name="createdById">

@@ -15,6 +15,4 @@
 	<import resource="tx/applicationContext-tx.xml" />
 	<!-- repository End -->
 
-	
-
 </beans>

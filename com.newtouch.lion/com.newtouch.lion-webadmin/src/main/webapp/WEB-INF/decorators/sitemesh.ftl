@@ -94,7 +94,6 @@ ${head}
 <script src="${base}/resources/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="${base}/resources/admin/layout4/scripts/layout.js" type="text/javascript"></script>
 <script src="${base}/resources/admin/pages/scripts/tasks.js" type="text/javascript"></script>
-
 ${javascript!}
 <!-- END PAGE LEVEL SCRIPTS 
 <script>
